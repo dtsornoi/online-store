@@ -36,10 +36,6 @@ public class Product {
     private double price;
 
     @ManyToOne
-    @JoinColumn(name = "product_type_id")
-    private ProductType productType;
-
-    @ManyToOne
     @JoinColumn(name = "category_id")
     private Category category;
 
