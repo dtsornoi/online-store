@@ -6,6 +6,12 @@ import lombok.RequiredArgsConstructor;
 
 import javax.persistence.*;
 
+/**
+ * POJO class for Product Entity
+ *
+ * @author Mark Salumaa
+ */
+
 @Entity
 @Table(name = "product")
 @Data
