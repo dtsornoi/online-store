@@ -6,8 +6,13 @@ import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
 
+/**
+ * Entity class for Category
+ *
+ * @author Dmitri Tsornoi
+ */
+
 @Entity
-@Table(name = "category")
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
@@ -15,10 +20,8 @@ public class Category {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "id")
-    private long id;
+    private Long id;
 
-    @Column(name = "id")
     @Enumerated(EnumType.STRING)
-    private CategoryEnum name;
+    private CategoryType name;
 }

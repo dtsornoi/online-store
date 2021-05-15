@@ -6,8 +6,13 @@ import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
 
+/**
+ * Entity class for Customer
+ *
+ * @author Dmitri Tsornoi
+ */
+
 @Entity
-@Table(name = "customers")
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
@@ -15,8 +20,7 @@ public class Customer {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "id")
-    private long id;
+    private Long id;
 
     @OneToOne(mappedBy = "author_id")
     private Author author;

@@ -5,6 +5,6 @@ package com.online.store.entity;
  *
  * @author Dmitri Tsornoi
  */
-public enum EnumRole {
+public enum roleType {
     ROLE_USER, ROLE_ADMIN
 }

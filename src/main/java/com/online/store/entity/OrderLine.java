@@ -14,7 +14,6 @@ import javax.persistence.*;
  */
 
 @Entity
-@Table(name = "order_line")
 @Data
 @NoArgsConstructor
 @RequiredArgsConstructor
@@ -22,13 +21,10 @@ public class OrderLine {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "id")
-    private long id;
+    private Long id;
 
-    @Column(name = "quantity_of_products")
-    private long quantityOfProducts;
+    private Long quantityOfProducts;
 
     @ManyToOne
-    @JoinColumn(name = "product_id")
     private Product product;
 }

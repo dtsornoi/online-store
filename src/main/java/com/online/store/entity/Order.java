@@ -15,38 +15,28 @@ import java.util.List;
  * @author Vladimir
  */
 @Entity
-@Table(name = "user_account")
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-
 public class Order {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "id")
-    private long id;
+    private Long id;
 
-    @Column(name = "username")
     String userName;
 
-    @Column(name = "total_cost")
     double totalCost;
 
-    @Column(name = "delivery_address")
     String deliveryAddress;
 
-    @Column(name = "date_of_order")
     Date dateOfOrder;
 
-
-    @OneToMany(mappedBy = "cart")
-    private List<OrderLine> orderLine;
+    @OneToMany
+    private List<OrderLine> orderLines;
 
     @ManyToOne
-    @JoinColumn(name = "customer_id")
     private Customer customer;
 
-    @Column(name = "status")
     String status;
 
 

@@ -1,5 +1,6 @@
 package com.online.store.entity;
 
+import javassist.bytecode.ByteArray;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -12,8 +13,8 @@ import java.util.List;
  *
  * @author Dmitry Tsornoi
  */
+
 @Entity
-@Table(name = "user_account")
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
@@ -21,8 +22,7 @@ public class UserAccount {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "id")
-    private long id;
+    private Long id;
 
     private String login;
 
@@ -38,6 +38,5 @@ public class UserAccount {
             inverseJoinColumns = @JoinColumn(name = "role_id"))
     private List<Role> roles;
 
-    @Column(name = "avatar")
-    private byte avatar;
+    private Byte[] avatar;
 }
