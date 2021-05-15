@@ -22,9 +22,9 @@ public class Customer {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
 
-    @OneToOne(mappedBy = "author_id")
+    @OneToOne
     private Author author;
 
-    @OneToOne(mappedBy = "user_account_id")
+    @OneToOne
     private UserAccount userAccount;
 }
