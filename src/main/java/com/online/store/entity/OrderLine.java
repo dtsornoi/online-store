@@ -1,5 +1,6 @@
 package com.online.store.entity;
 
+import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 import lombok.RequiredArgsConstructor;
@@ -16,7 +17,7 @@ import javax.persistence.*;
 @Entity
 @Data
 @NoArgsConstructor
-@RequiredArgsConstructor
+@AllArgsConstructor
 public class OrderLine {
 
     @Id
