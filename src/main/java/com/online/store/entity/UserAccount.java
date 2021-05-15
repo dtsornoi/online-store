@@ -29,7 +29,6 @@ public class UserAccount {
     private String password;
 
     @OneToOne
-    @JoinColumn(name = "address_id", referencedColumnName = "id")
     private Address address;
 
     @ManyToMany(fetch = FetchType.EAGER)
