@@ -16,20 +16,20 @@ import java.util.List;
  */
 @Entity
 @Data
-@NoArgsConstructor
 @AllArgsConstructor
-public class Order {
+@NoArgsConstructor
+public class Orderr {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
 
-    String userName;
+    private String userName;
 
-    double totalCost;
+    private Double totalCost;
 
-    String deliveryAddress;
+    private String deliveryAddress;
 
-    Date dateOfOrder;
+    private Date dateOfOrder;
 
     @OneToMany
     private List<OrderLine> orderLines;
@@ -37,7 +37,5 @@ public class Order {
     @ManyToOne
     private Customer customer;
 
-    String status;
-
-
+    private String status;
 }
