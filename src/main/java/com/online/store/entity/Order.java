@@ -8,6 +8,7 @@ import javax.persistence.*;
 import java.util.Date;
 import java.util.List;
 
+
 /**
  * Entity class Order
  *
@@ -36,6 +37,7 @@ public class Order {
 
     @Column(name = "date_of_order")
     Date dateOfOrder;
+
 
     @OneToMany(mappedBy = "cart")
     private List<OrderLine> orderLine;
