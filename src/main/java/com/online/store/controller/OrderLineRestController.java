@@ -16,7 +16,7 @@ import java.util.List;
  */
 
 @RestController
-@RequestMapping("/api/orderline")
+@RequestMapping("/api/order-line")
 public class OrderLineRestController {
     private OrderLineService orderLineService;
 
