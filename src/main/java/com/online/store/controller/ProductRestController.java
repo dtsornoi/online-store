@@ -8,10 +8,9 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
-import java.util.Optional;
 
 /**
- * Order controller
+ * Product controller
  *
  * @author Vladimir
  */
@@ -36,45 +35,32 @@ public class ProductRestController {
 
     @GetMapping("/{id}")
     public ResponseEntity<Product> getProductById(@PathVariable ("id") long id){
-        Optional<Product> productData = productService.findOne(id);
-        if (productData.isPresent()){
-            return new ResponseEntity<>(productData.get(), HttpStatus.OK);
-        } else {
-            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
-        }
+        Product product = productService.findOne(id);
+        return new ResponseEntity<>(product, HttpStatus.OK);
     }
 
-    @PostMapping("/")
-    public ResponseEntity<Product> saveProduct(@RequestBody Product product){
-        Product responseProduct = productService.save(product);
-        return new ResponseEntity<>(responseProduct, HttpStatus.CREATED);
+    @PostMapping("/save")
+    public ResponseEntity<HttpStatus> saveProduct(@RequestBody Product product){
+        productService.save(product);
+        return new ResponseEntity<>(HttpStatus.CREATED);
     }
 
-    @PutMapping("/{id}")
-    public ResponseEntity<Product> updateOrder(@PathVariable("id") long id, @RequestBody Product product){
-        Optional<Product> oldProduct = productService.findOne(id);
-        if (oldProduct.isPresent()) {
-            Product oldProductItem = oldProduct.get();
-            oldProductItem.setDescription(product.getDescription());
-            oldProductItem.setAuthor(product.getAuthor());
-            oldProductItem.setPrice(product.getPrice());
-            oldProductItem.setThumbnail(product.getThumbnail());
-            oldProductItem.setTitle(product.getTitle());
-            Product responseOrder = productService.save(oldProductItem);
-            return new ResponseEntity<>(responseOrder,HttpStatus.OK);
-        }else{
-            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
-        }
+    @PutMapping("/update")
+    public ResponseEntity<HttpStatus> updateOrder(@RequestBody Product product){
+        productService.update(product);
+        return new ResponseEntity<>(HttpStatus.OK);
     }
 
-    @DeleteMapping("/{id}")
+    @PostMapping("/delete/{id}")
     public ResponseEntity<HttpStatus> deleteProduct(@PathVariable("id") long id){
-        try {
-            productService.delete(id);
-            return new ResponseEntity<>(HttpStatus.OK);
-        } catch (Exception e) {
-            return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
-        }
+        productService.delete(id);
+        return new ResponseEntity<>(HttpStatus.OK);
+    }
+
+    @PostMapping("/restore/{id}")
+    public ResponseEntity<HttpStatus> deleteProduct(@PathVariable("id") long id){
+        productService.restore(id);
+        return new ResponseEntity<>(HttpStatus.OK);
     }
 
 }
