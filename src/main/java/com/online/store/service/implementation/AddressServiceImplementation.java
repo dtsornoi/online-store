@@ -31,42 +31,41 @@ public class AddressServiceImplementation implements AddressService {
     }
 
     @Override
-    public Optional<Address> findOne(Long id) {
-        return addressRepository.findById(id);
+    public Address findOne(Long id) {
+        return addressRepository.findById(id).orElseThrow(() -> new RuntimeException("Address Not Found"));
     }
 
     @Override
-    public Address save(Address address) {
-        return addressRepository.save(address);
+    public void save(Address address) {
+        addressRepository.saveAndFlush(address);
     }
 
     @Override
-    public Address update(Long id, Address address) {
-        Optional<Address> optionalAddress = findOne(id);
+    public void update(Address address) {
 
-        if(optionalAddress.isPresent()){
-            Address oldAddress = optionalAddress.get();
+            Address oldAddress = findOne(address.getId());
             oldAddress.setCountry(address.getCountry());
             oldAddress.setCity(address.getCity());
             oldAddress.setStreet(address.getStreet());
             oldAddress.setZip(address.getZip());
             oldAddress.setCode(address.getCode());
 
-            return save(oldAddress);
-        } else {
-            throw new RuntimeException("Address Not Found!");
-        }
+           save(oldAddress);
 
     }
 
     @Override
-    public Address delete(Long id, Address address) {
-        Optional<Address> optionalAddress = findOne(id);
-
-        if(optionalAddress.isPresent()){
-            addressRepository.delete(address);
-        } else {
-
-        } throw new RuntimeException("Address Not Found");
+    public void delete(Long id) {
+        Address address = findOne(id);
+        address.setActive(false);
+        save(address);
     }
+
+    @Override
+    public void restore(Long id){
+        Address address = findOne(id);
+        address.setActive(true);
+        save(address);
+    }
+
 }

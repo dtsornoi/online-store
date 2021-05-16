@@ -8,11 +8,13 @@ import java.util.Optional;
 public interface CustomerService {
     List<Customer> findAll();
 
-    Optional<Customer> findOne();
+    Customer findOne(Long id);
 
-    Customer save(Customer customer);
+    void save(Customer customer);
 
-    Customer update(Long id, Customer customer);
+    void update(Customer customer);
 
-    Customer delete(Long id);
+    void delete(Long id);
+
+    void restore(Long id);
 }

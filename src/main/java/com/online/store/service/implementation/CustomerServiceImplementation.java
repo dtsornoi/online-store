@@ -21,26 +21,40 @@ public class CustomerServiceImplementation implements CustomerService {
 
     @Override
     public List<Customer> findAll() {
-        return null;
+        return customerRepository.findAll();
     }
 
     @Override
-    public Optional<Customer> findOne() {
-        return Optional.empty();
+    public Customer findOne(Long id) {
+        return customerRepository.findById(id).orElseThrow(() -> new RuntimeException("Author not found"));
     }
 
     @Override
-    public Customer save(Customer customer) {
-        return null;
+    public void save(Customer customer) {
+        customerRepository.saveAndFlush(customer);
     }
 
     @Override
-    public Customer update(Long id, Customer customer) {
-        return null;
+    public void update(Customer customer) {
+        Customer oldCustomer = findOne(customer.getId());
+        oldCustomer.setAuthor(customer.getAuthor());
+        oldCustomer.setUserAccount(customer.getUserAccount());
+        save(customer);
+    }
+
+    
+    @Override
+    public void delete(Long id) {
+        Customer customer = findOne(id);
+        customer.setActive(false);
+        save(customer);
     }
 
     @Override
-    public Customer delete(Long id) {
-        return null;
+    public void restore(Long id){
+        Customer customer = findOne(id);
+        customer.setActive(true);
+        save(customer);
     }
+
 }

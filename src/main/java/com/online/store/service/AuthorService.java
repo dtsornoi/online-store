@@ -15,7 +15,7 @@ public interface AuthorService {
 
     Author findOne(Long id);
 
-    void save(Author customer);
+    void save(Author author);
 
     void update(Author author);
 

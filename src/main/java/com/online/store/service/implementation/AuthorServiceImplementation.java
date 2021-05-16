@@ -35,8 +35,8 @@ public class AuthorServiceImplementation implements AuthorService {
     }
 
     @Override
-    public void save(Author customer) {
-        authorRepository.saveAndFlush(customer);
+    public void save(Author author) {
+        authorRepository.saveAndFlush(author);
     }
 
     @Override
