@@ -5,14 +5,21 @@ import com.online.store.entity.Product;
 import java.util.List;
 import java.util.Optional;
 
+/**
+ * Service interface for Product.class
+ *
+ * @author Dmitri Tsornoi
+ */
 public interface ProductService {
     List<Product> findAll();
 
-    Optional<Product> findOne();
+    Product findOne(Long id);
 
-    Product save(Product product);
+    void save(Product product);
 
-    Product update(Long id, Product product);
+    void update(Product product);
 
     void delete(Long id);
+
+    void restore(Long id);
 }

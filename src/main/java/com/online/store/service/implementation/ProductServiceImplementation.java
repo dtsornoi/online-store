@@ -7,8 +7,12 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
-import java.util.Optional;
 
+/**
+ * Service implementation for Product.class
+ *
+ * @author Dmitri Tsornoi
+ */
 @Service
 public class ProductServiceImplementation implements ProductService {
 
@@ -21,26 +25,43 @@ public class ProductServiceImplementation implements ProductService {
 
     @Override
     public List<Product> findAll() {
-        return null;
+        return productRepository.findAll();
     }
 
     @Override
-    public Optional<Product> findOne() {
-        return Optional.empty();
+    public Product findOne(Long id) {
+        return productRepository.findById(id).orElseThrow(() -> new RuntimeException("Product not found"));
     }
 
     @Override
-    public Product save(Product product) {
-        return null;
+    public void save(Product product) {
+        productRepository.save(product);
     }
 
     @Override
-    public Product update(Long id, Product product) {
-        return null;
+    public void update(Product product) {
+        Product oldProduct = findOne(product.getId());
+        oldProduct.setAuthor(product.getAuthor());
+        oldProduct.setCategory(product.getCategory());
+        oldProduct.setDescription(product.getDescription());
+        oldProduct.setThumbnail(product.getThumbnail());
+        oldProduct.setTitle(product.getTitle());
+        oldProduct.setPrice(product.getPrice());
+
+        save(oldProduct);
     }
 
     @Override
     public void delete(Long id) {
+        Product product = findOne(id);
+        product.setActive(false);
+        save(product);
+    }
 
+    @Override
+    public void restore(Long id) {
+        Product product = findOne(id);
+        product.setActive(true);
+        save(product);
     }
 }
