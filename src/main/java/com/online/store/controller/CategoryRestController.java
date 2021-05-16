@@ -50,12 +50,12 @@ public class CategoryRestController {
     }
 
     /**
-     * POST:<code>/create</code>
+     * POST:<code>/</code>
      *
      * @param category from UI to be persisted to DB
      * @return HttpStatus 201
      */
-    @PostMapping("/create")
+    @PostMapping("/")
     public ResponseEntity<HttpStatus> createCategory(@RequestBody Category category) {
         categoryService.save(category);
         return new ResponseEntity<>(HttpStatus.CREATED);

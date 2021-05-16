@@ -49,24 +49,24 @@ public class OrderLineRestController {
     }
 
     /**
-     * POST:<code>/create</code>
+     * POST:<code>/</code>
      *
      * @param orderLine from UI to be persisted to DB
      * @return HttpStatus 201
      */
-    @PostMapping("/create")
+    @PostMapping("/")
     public ResponseEntity<HttpStatus> createOrderLine(@RequestBody OrderLine orderLine) {
         orderLineService.save(orderLine);
         return new ResponseEntity<>(HttpStatus.CREATED);
     }
 
     /**
-     * PUT:<code>/update</code>
+     * PUT:<code>/</code>
      *
      * @param orderLine from UI to be updated to DB
      * @return HttpStatus 200
      */
-    @PutMapping("/update")
+    @PutMapping("/")
     public ResponseEntity<HttpStatus> updateOrderLine(@RequestBody OrderLine orderLine) {
         orderLineService.update(orderLine);
         return new ResponseEntity<>(HttpStatus.OK);
