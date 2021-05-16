@@ -1,7 +1,8 @@
-package com.online.store.service;
+package com.online.store.service.implementation;
 
 import com.online.store.entity.Address;
 import com.online.store.repository.AddressRepository;
+import com.online.store.service.AddressService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -15,7 +16,7 @@ import java.util.Optional;
  */
 
 @Service
-public class AddressServiceImplementation implements AddressService{
+public class AddressServiceImplementation implements AddressService {
 
     private AddressRepository addressRepository;
 

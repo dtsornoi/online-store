@@ -1,7 +1,8 @@
-package com.online.store.service;
+package com.online.store.service.implementation;
 
 import com.online.store.entity.Customer;
 import com.online.store.repository.CustomerRepository;
+import com.online.store.service.CustomerService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -9,7 +10,7 @@ import java.util.List;
 import java.util.Optional;
 
 @Service
-public class CustomerServiceImplementation implements CustomerService{
+public class CustomerServiceImplementation implements CustomerService {
 
     private CustomerRepository customerRepository;
 

@@ -13,11 +13,13 @@ import java.util.Optional;
 public interface AuthorService {
     List<Author> findAll();
 
-    Optional<Author> findOne(Long id);
+    Author findOne(Long id);
 
-    Author save(Author customer);
+    void save(Author customer);
 
-    Author update(Long id, Author author);
+    void update(Author author);
 
-    void delete(Long id, Author author);
+    void delete(Long id);
+
+    void restore(Long id);
 }

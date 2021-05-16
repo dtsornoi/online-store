@@ -1,14 +1,15 @@
-package com.online.store.service;
+package com.online.store.service.implementation;
 
 import com.online.store.entity.OrderLine;
 import com.online.store.repository.OrderLineRepository;
+import com.online.store.service.OrderLineService;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
 import java.util.Optional;
 
 @Service
-public class OrderLineServiceImplementation implements OrderLineService{
+public class OrderLineServiceImplementation implements OrderLineService {
 
     private OrderLineRepository orderLineRepository;
 

@@ -1,14 +1,15 @@
-package com.online.store.service;
+package com.online.store.service.implementation;
 
 import com.online.store.entity.UserAccount;
 import com.online.store.repository.UserAccountRepository;
+import com.online.store.service.UserAccountService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.Optional;
 
 @Service
-public class UserAccountServiceImplementation implements UserAccountService{
+public class UserAccountServiceImplementation implements UserAccountService {
 
     private UserAccountRepository userAccountRepository;
 
