@@ -3,7 +3,6 @@ package com.online.store.service;
 import com.online.store.entity.Product;
 
 import java.util.List;
-import java.util.Optional;
 
 /**
  * Service interface for Product.class

@@ -3,7 +3,6 @@ package com.online.store.service;
 import com.online.store.entity.Author;
 
 import java.util.List;
-import java.util.Optional;
 
 /**
  * Service Interface for Author.class
