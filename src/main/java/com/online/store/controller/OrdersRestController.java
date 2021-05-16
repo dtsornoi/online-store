@@ -57,7 +57,7 @@ public class OrdersRestController {
     }
 
     @PostMapping("/restore/{id}")
-    public ResponseEntity<HttpStatus> deleteOrder(@PathVariable("id") long id){
+    public ResponseEntity<HttpStatus> restoreOrder(@PathVariable("id") long id){
         ordersService.restore(id);
         return new ResponseEntity<>(HttpStatus.OK);
     }
