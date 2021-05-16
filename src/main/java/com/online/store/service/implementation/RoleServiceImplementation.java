@@ -5,9 +5,17 @@ import com.online.store.entity.RoleType;
 import com.online.store.repository.RoleRepository;
 import com.online.store.service.RoleService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import java.util.List;
 
+/**
+ * Service implementation for service control class
+ *
+ * @author Mark Salumaa
+ */
+
+@Service
 public class RoleServiceImplementation implements RoleService {
 
     private RoleRepository roleRepository;

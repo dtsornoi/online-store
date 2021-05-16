@@ -4,6 +4,12 @@ import com.online.store.entity.Customer;
 
 import java.util.List;
 
+/**
+ * Service interface for Customer.class
+ *
+ * @author Mark Salumaa
+ */
+
 public interface CustomerService {
     List<Customer> findAll();
 
