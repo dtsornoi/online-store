@@ -22,24 +22,26 @@ public class CategoryRestController {
     private CategoryService categoryService;
 
     @Autowired
-    public CategoryRestController(CategoryService categoryService){
+    public CategoryRestController(CategoryService categoryService) {
         this.categoryService = categoryService;
     }
 
     /**
+     * GET:<code>/</code>
      *
-     * @return
+     * @return List of all Categories
      */
     @GetMapping("/")
-    public ResponseEntity<List<Category>> getAllCategories(){
+    public ResponseEntity<List<Category>> getAllCategories() {
         List<Category> category = categoryService.findAll();
         return new ResponseEntity<>(category, HttpStatus.OK);
     }
 
     /**
+     * GET:<code>/id</code>
      *
-     * @param id
-     * @return
+     * @param id of type Long for searching Category by Id in DB
+     * @return Category with with specified Id and HttpStatus.OK
      */
     @GetMapping("/{id}")
     public ResponseEntity<Category> getCategoryById(@PathVariable("id") long id) {
@@ -48,9 +50,10 @@ public class CategoryRestController {
     }
 
     /**
+     * GET:<code>/create</code>
      *
-     * @param category
-     * @return
+     * @param category from UI to be persisted to DB
+     * @return HttpStatus 201
      */
     @PostMapping("/create")
     public ResponseEntity<HttpStatus> createCategory(@RequestBody Category category) {

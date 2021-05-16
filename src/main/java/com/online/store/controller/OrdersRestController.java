@@ -26,38 +26,73 @@ public class OrdersRestController {
         this.ordersService = ordersService;
     }
 
+    /**
+     * GET:<code>/</code>
+     *
+     * @return List of all Orders
+     */
     @GetMapping("/")
-    public ResponseEntity<List<Orders>> getAllOrders(){
+    public ResponseEntity<List<Orders>> getAllOrders() {
         List<Orders> orders = ordersService.findAll();
         return new ResponseEntity<>(orders, HttpStatus.OK);
     }
 
+    /**
+     * GET:<code>/id</code>
+     *
+     * @param id of type Long for searching Order by Id in DB
+     * @return Order with with specified Id and HttpStatus.OK
+     */
     @GetMapping("/{id}")
     public ResponseEntity<Orders> getOrdersById(@PathVariable("id") long id) {
         Orders order = ordersService.findOne(id);
         return new ResponseEntity<>(order, HttpStatus.OK);
     }
 
+    /**
+     * GET:<code>/create</code>
+     *
+     * @param orders from UI to be persisted to DB
+     * @return HttpStatus 201
+     */
     @PostMapping("/create")
-    public ResponseEntity<HttpStatus> createOrder(@RequestBody Orders orders){
+    public ResponseEntity<HttpStatus> createOrder(@RequestBody Orders orders) {
         ordersService.save(orders);
         return new ResponseEntity<>(HttpStatus.CREATED);
     }
 
+    /**
+     * GET:<code>/update</code>
+     *
+     * @param orders from UI to be updated to DB
+     * @return HttpStatus 200
+     */
     @PutMapping("/update")
-    public ResponseEntity<HttpStatus> updateOrder(@RequestBody Orders orders){
+    public ResponseEntity<HttpStatus> updateOrder(@RequestBody Orders orders) {
         ordersService.update(orders);
         return new ResponseEntity<>(HttpStatus.OK);
     }
 
+    /**
+     * GET:<code>/delete/id</code>
+     *
+     * @param id of type Long for deleting Order by Id in DB
+     * @return HttpStatus 200
+     */
     @PostMapping("/delete/{id}")
-    public ResponseEntity<HttpStatus> deleteOrder(@PathVariable("id") long id){
+    public ResponseEntity<HttpStatus> deleteOrder(@PathVariable("id") long id) {
         ordersService.delete(id);
         return new ResponseEntity<>(HttpStatus.OK);
     }
 
+    /**
+     * GET:<code>/restore/id</code>
+     *
+     * @param id of type Long for restoring Order by Id in DB
+     * @return HttpStatus 200
+     */
     @PostMapping("/restore/{id}")
-    public ResponseEntity<HttpStatus> restoreOrder(@PathVariable("id") long id){
+    public ResponseEntity<HttpStatus> restoreOrder(@PathVariable("id") long id) {
         ordersService.restore(id);
         return new ResponseEntity<>(HttpStatus.OK);
     }

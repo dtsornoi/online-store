@@ -21,42 +21,77 @@ public class OrderLineRestController {
     private OrderLineService orderLineService;
 
     @Autowired
-    public OrderLineRestController(OrderLineService orderLineService){
+    public OrderLineRestController(OrderLineService orderLineService) {
         this.orderLineService = orderLineService;
     }
 
+    /**
+     * GET:<code>/</code>
+     *
+     * @return List of all OrderLines
+     */
     @GetMapping("/")
-    public ResponseEntity<List<OrderLine>> getAllOrderLines(){
+    public ResponseEntity<List<OrderLine>> getAllOrderLines() {
         List<OrderLine> orderLines = orderLineService.findAll();
         return new ResponseEntity<>(orderLines, HttpStatus.OK);
     }
 
+    /**
+     * GET:<code>/id</code>
+     *
+     * @param id of type Long for searching OrderLine by Id in DB
+     * @return OrderLine with with specified Id and HttpStatus.OK
+     */
     @GetMapping("/{id}")
     public ResponseEntity<OrderLine> getOrderLineById(@PathVariable("id") long id) {
         OrderLine orderLine = orderLineService.findOne(id);
         return new ResponseEntity<>(orderLine, HttpStatus.OK);
     }
 
+    /**
+     * GET:<code>/create</code>
+     *
+     * @param orderLine from UI to be persisted to DB
+     * @return HttpStatus 201
+     */
     @PostMapping("/create")
-    public ResponseEntity<HttpStatus> createOrderLine(@RequestBody OrderLine orderLine){
+    public ResponseEntity<HttpStatus> createOrderLine(@RequestBody OrderLine orderLine) {
         orderLineService.save(orderLine);
         return new ResponseEntity<>(HttpStatus.CREATED);
     }
 
+    /**
+     * GET:<code>/update</code>
+     *
+     * @param orderLine from UI to be updated to DB
+     * @return HttpStatus 200
+     */
     @PutMapping("/update")
-    public ResponseEntity<HttpStatus> updateOrderLine(@RequestBody OrderLine orderLine){
+    public ResponseEntity<HttpStatus> updateOrderLine(@RequestBody OrderLine orderLine) {
         orderLineService.update(orderLine);
         return new ResponseEntity<>(HttpStatus.OK);
     }
 
+    /**
+     * GET:<code>/delete/id</code>
+     *
+     * @param id of type Long for deleting OrderLine by Id in DB
+     * @return HttpStatus 200
+     */
     @PostMapping("/delete/{id}")
-    public ResponseEntity<HttpStatus> deleteOrderLine(@PathVariable("id") long id){
+    public ResponseEntity<HttpStatus> deleteOrderLine(@PathVariable("id") long id) {
         orderLineService.delete(id);
         return new ResponseEntity<>(HttpStatus.OK);
     }
 
+    /**
+     * GET:<code>/restore/id</code>
+     *
+     * @param id of type Long for restoring OrderLine by Id in DB
+     * @return HttpStatus 200
+     */
     @PostMapping("/restore/{id}")
-    public ResponseEntity<HttpStatus> restoreOrderLine(@PathVariable("id") long id){
+    public ResponseEntity<HttpStatus> restoreOrderLine(@PathVariable("id") long id) {
         orderLineService.restore(id);
         return new ResponseEntity<>(HttpStatus.OK);
     }
