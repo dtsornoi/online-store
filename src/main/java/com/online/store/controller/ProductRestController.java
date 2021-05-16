@@ -50,7 +50,7 @@ public class ProductRestController {
     }
 
     /**
-     * GET:<code>/create</code>
+     * POST:<code>/create</code>
      *
      * @param product from UI to be persisted to DB
      * @return HttpStatus 201
@@ -62,7 +62,7 @@ public class ProductRestController {
     }
 
     /**
-     * GET:<code>/update</code>
+     * PUT:<code>/update</code>
      *
      * @param product from UI to be updated to DB
      * @return HttpStatus 200
@@ -74,7 +74,7 @@ public class ProductRestController {
     }
 
     /**
-     * GET:<code>/delete/id</code>
+     * POST:<code>/delete/id</code>
      *
      * @param id of type Long for deleting Product by Id in DB
      * @return HttpStatus 200
@@ -86,7 +86,7 @@ public class ProductRestController {
     }
 
     /**
-     * GET:<code>/restore/id</code>
+     * POST:<code>/restore/id</code>
      *
      * @param id of type Long for restoring Product by Id in DB
      * @return HttpStatus 200

@@ -50,7 +50,7 @@ public class CustomerRestController {
     }
 
     /**
-     * GET:<code>/create</code>
+     * POST:<code>/create</code>
      *
      * @param customer from UI to be persisted to DB
      * @return HttpStatus 201
@@ -62,7 +62,7 @@ public class CustomerRestController {
     }
 
     /**
-     * GET:<code>/update</code>
+     * PUT:<code>/update</code>
      *
      * @param customer from UI to be updated to DB
      * @return HttpStatus 200
@@ -74,7 +74,7 @@ public class CustomerRestController {
     }
 
     /**
-     * GET:<code>/delete/id</code>
+     * POST:<code>/delete/id</code>
      *
      * @param id of type Long for deleting Customer by Id in DB
      * @return HttpStatus 200
@@ -86,7 +86,7 @@ public class CustomerRestController {
     }
 
     /**
-     * GET:<code>/restore/id</code>
+     * POST:<code>/restore/id</code>
      *
      * @param id of type Long for restoring Customer by Id in DB
      * @return HttpStatus 200
