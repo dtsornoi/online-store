@@ -3,16 +3,23 @@ package com.online.store.service;
 import com.online.store.entity.Orders;
 
 import java.util.List;
-import java.util.Optional;
 
+/**
+ * Service interface for Orders.class
+ *
+ * @author Dmitri Tsornoi
+ */
 public interface OrdersService {
+
     List<Orders> findAll();
 
-    Orders save(Orders order);
+    Orders findOne(Long id);
 
-    Orders update(Long id, Orders orders);
+    void save(Orders order);
 
-    Optional<Orders> findOne(Long id);
+    void update(Orders orders);
 
-    Optional<Orders> delete(Long id);
+    void delete(Long id);
+
+    void restore(Long id);
 }
