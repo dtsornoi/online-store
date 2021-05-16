@@ -20,26 +20,42 @@ public class AuthorServiceImplementation implements AuthorService{
 
     @Override
     public List<Author> findAll() {
-        return null;
+        return authorRepository.findAll();
     }
 
     @Override
-    public Optional<Author> findOne() {
-        return Optional.empty();
+    public Optional<Author> findOne(Long id) {
+        return authorRepository.findById(id);
     }
 
     @Override
     public Author save(Author customer) {
-        return null;
+        return authorRepository.save(customer);
     }
 
     @Override
-    public Author update(Long id, Author customer) {
-        return null;
+    public Author update(Long id, Author author) {
+        Optional<Author> optionalAuthor = findOne(id);
+
+        if (optionalAuthor.isPresent()){
+            Author oldAuthor = optionalAuthor.get();
+            oldAuthor.setFirstName(author.getFirstName());
+            oldAuthor.setLastName(author.getLastName());
+
+            return save(oldAuthor);
+        }else{
+            throw new RuntimeException("Author Not found");
+        }
     }
 
     @Override
-    public Author delete(Long id) {
-        return null;
+    public void delete(Long id, Author author) {
+        Optional<Author> authorOptional = findOne(id);
+
+        if (authorOptional.isPresent()){
+            authorRepository.delete(author);
+        }else {
+            throw new RuntimeException("Author not found");
+        }
     }
 }

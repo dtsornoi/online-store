@@ -8,11 +8,11 @@ import java.util.Optional;
 public interface AuthorService {
     List<Author> findAll();
 
-    Optional<Author> findOne();
+    Optional<Author> findOne(Long id);
 
     Author save(Author customer);
 
-    Author update(Long id, Author customer);
+    Author update(Long id, Author author);
 
-    Author delete(Long id);
+    void delete(Long id, Author author);
 }
