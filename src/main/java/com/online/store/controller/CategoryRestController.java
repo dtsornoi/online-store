@@ -10,7 +10,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 /**
- * Customer controller
+ * Category controller
  *
  * @author Vladimir
  */
@@ -26,18 +26,32 @@ public class CategoryRestController {
         this.categoryService = categoryService;
     }
 
+    /**
+     *
+     * @return
+     */
     @GetMapping("/")
     public ResponseEntity<List<Category>> getAllCategories(){
         List<Category> category = categoryService.findAll();
         return new ResponseEntity<>(category, HttpStatus.OK);
     }
 
+    /**
+     *
+     * @param id
+     * @return
+     */
     @GetMapping("/{id}")
     public ResponseEntity<Category> getCategoryById(@PathVariable("id") long id) {
         Category category = categoryService.findOne(id);
         return new ResponseEntity<>(category, HttpStatus.OK);
     }
 
+    /**
+     *
+     * @param category
+     * @return
+     */
     @PostMapping("/create")
     public ResponseEntity<HttpStatus> createCategory(@RequestBody Category category) {
         categoryService.save(category);
