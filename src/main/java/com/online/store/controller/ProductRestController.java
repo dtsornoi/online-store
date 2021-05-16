@@ -17,7 +17,6 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/api/product")
-
 public class ProductRestController {
 
     private ProductService productService;
@@ -28,7 +27,7 @@ public class ProductRestController {
     }
 
     @GetMapping("/")
-    public ResponseEntity<List<Product>> getAllProductss(){
+    public ResponseEntity<List<Product>> getAllProducts(){
         List<Product> orders = productService.findAll();
         return new ResponseEntity<>(orders, HttpStatus.OK);
     }
@@ -58,7 +57,7 @@ public class ProductRestController {
     }
 
     @PostMapping("/restore/{id}")
-    public ResponseEntity<HttpStatus> deleteProduct(@PathVariable("id") long id){
+    public ResponseEntity<HttpStatus> restoreProduct(@PathVariable("id") long id){
         productService.restore(id);
         return new ResponseEntity<>(HttpStatus.OK);
     }
