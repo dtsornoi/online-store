@@ -37,7 +37,7 @@ Backend techonolgies used:
  **Backend main port is: 8080**
 ## Front-End  
    
-The frontend part of project is located in src/main/frontend and Angular was used to build it,  
+The frontend part of project is located in src/main/frontend and **Angular** was used to build it,  
 so do not forget to run in the angular root folder:  
 ```
 npm install
