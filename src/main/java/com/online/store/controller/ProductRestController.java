@@ -50,24 +50,24 @@ public class ProductRestController {
     }
 
     /**
-     * POST:<code>/create</code>
+     * POST:<code>/</code>
      *
      * @param product from UI to be persisted to DB
      * @return HttpStatus 201
      */
-    @PostMapping("/create")
+    @PostMapping("/")
     public ResponseEntity<HttpStatus> createProduct(@RequestBody Product product) {
         productService.save(product);
         return new ResponseEntity<>(HttpStatus.CREATED);
     }
 
     /**
-     * PUT:<code>/update</code>
+     * PUT:<code>/</code>
      *
      * @param product from UI to be updated to DB
      * @return HttpStatus 200
      */
-    @PutMapping("/update")
+    @PutMapping("/")
     public ResponseEntity<HttpStatus> updateOrder(@RequestBody Product product) {
         productService.update(product);
         return new ResponseEntity<>(HttpStatus.OK);

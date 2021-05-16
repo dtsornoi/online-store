@@ -50,24 +50,24 @@ public class CustomerRestController {
     }
 
     /**
-     * POST:<code>/create</code>
+     * POST:<code>/</code>
      *
      * @param customer from UI to be persisted to DB
      * @return HttpStatus 201
      */
-    @PostMapping("/create")
+    @PostMapping("/")
     public ResponseEntity<HttpStatus> createCustomer(@RequestBody Customer customer) {
         customerService.save(customer);
         return new ResponseEntity<>(HttpStatus.CREATED);
     }
 
     /**
-     * PUT:<code>/update</code>
+     * PUT:<code>/</code>
      *
      * @param customer from UI to be updated to DB
      * @return HttpStatus 200
      */
-    @PutMapping("/update")
+    @PutMapping("/")
     public ResponseEntity<HttpStatus> updateCustomer(@RequestBody Customer customer) {
         customerService.update(customer);
         return new ResponseEntity<>(HttpStatus.OK);
