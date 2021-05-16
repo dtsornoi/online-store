@@ -5,6 +5,12 @@ import com.online.store.entity.RoleType;
 
 import java.util.List;
 
+/**
+ * Service interface for Role.class
+ *
+ * @author Mark Salumaa
+ */
+
 public interface RoleService {
     List<Role> findAll();
 
