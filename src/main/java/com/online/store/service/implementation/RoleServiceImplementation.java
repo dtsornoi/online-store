@@ -1,6 +1,7 @@
 package com.online.store.service.implementation;
 
 import com.online.store.entity.Role;
+import com.online.store.entity.RoleType;
 import com.online.store.repository.RoleRepository;
 import com.online.store.service.RoleService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -26,6 +27,11 @@ public class RoleServiceImplementation implements RoleService {
         return roleRepository.findById(id).orElseThrow(()-> new RuntimeException("Role Not Found"));
     }
 
+    @Override
+    public Role findByName(RoleType role) {
+        return roleRepository.findByName(role);
+    }
+    
     @Override
     public void save(Role role) {
         roleRepository.saveAndFlush(role);
