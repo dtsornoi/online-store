@@ -49,22 +49,22 @@ public class AuthorRestController {
     }
 
     /**
-     * POST:<code>/create</code>
+     * POST:<code>/</code>
      * @param author from UI to be persisted to DB
      * @return HttpStatus 201
      */
-    @PostMapping("/create")
+    @PostMapping("/")
     public ResponseEntity<HttpStatus> createCustomer(@RequestBody Author author){
         authorService.save(author);
         return new ResponseEntity<>(HttpStatus.CREATED);
     }
 
     /**
-     * PUT:<code>/create</code>
+     * PUT:<code>/</code>
      * @param author from UI to be updated in DB
      * @return HttpStatus 200
      */
-    @PutMapping("/update")
+    @PutMapping("/")
     public ResponseEntity<HttpStatus> updateCustomer(@RequestBody Author author){
        authorService.update(author);
         return new ResponseEntity<>(HttpStatus.OK);
