@@ -1,7 +1,8 @@
-package com.online.store.service;
+package com.online.store.service.implementation;
 
 import com.online.store.entity.Category;
 import com.online.store.repository.CategoryRepository;
+import com.online.store.service.CategoryService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -14,7 +15,7 @@ import java.util.Optional;
  * @author Dmitri Tsornoi
  */
 @Service
-public class CategoryServiceImplementation implements CategoryService{
+public class CategoryServiceImplementation implements CategoryService {
 
     private CategoryRepository categoryRepository;
 

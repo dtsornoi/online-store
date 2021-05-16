@@ -1,13 +1,14 @@
-package com.online.store.service;
+package com.online.store.service.implementation;
 
 import com.online.store.entity.Role;
 import com.online.store.repository.RoleRepository;
+import com.online.store.service.RoleService;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import java.util.List;
 import java.util.Optional;
 
-public class RoleServiceImplementation implements RoleService{
+public class RoleServiceImplementation implements RoleService {
 
     private RoleRepository roleRepository;
 
