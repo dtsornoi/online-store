@@ -50,7 +50,7 @@ public class CategoryRestController {
     }
 
     /**
-     * GET:<code>/create</code>
+     * POST:<code>/create</code>
      *
      * @param category from UI to be persisted to DB
      * @return HttpStatus 201

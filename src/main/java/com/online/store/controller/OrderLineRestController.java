@@ -49,7 +49,7 @@ public class OrderLineRestController {
     }
 
     /**
-     * GET:<code>/create</code>
+     * POST:<code>/create</code>
      *
      * @param orderLine from UI to be persisted to DB
      * @return HttpStatus 201
@@ -61,7 +61,7 @@ public class OrderLineRestController {
     }
 
     /**
-     * GET:<code>/update</code>
+     * PUT:<code>/update</code>
      *
      * @param orderLine from UI to be updated to DB
      * @return HttpStatus 200
@@ -73,7 +73,7 @@ public class OrderLineRestController {
     }
 
     /**
-     * GET:<code>/delete/id</code>
+     * POST:<code>/delete/id</code>
      *
      * @param id of type Long for deleting OrderLine by Id in DB
      * @return HttpStatus 200
@@ -85,7 +85,7 @@ public class OrderLineRestController {
     }
 
     /**
-     * GET:<code>/restore/id</code>
+     * POST:<code>/restore/id</code>
      *
      * @param id of type Long for restoring OrderLine by Id in DB
      * @return HttpStatus 200
