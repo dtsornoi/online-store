@@ -8,6 +8,11 @@ import org.springframework.stereotype.Service;
 import java.util.List;
 import java.util.Optional;
 
+/**
+ * Service interface implementation for Category.class
+ *
+ * @author Dmitri Tsornoi
+ */
 @Service
 public class CategoryServiceImplementation implements CategoryService{
 
@@ -20,16 +25,16 @@ public class CategoryServiceImplementation implements CategoryService{
 
     @Override
     public Category save(Category category) {
-        return null;
+        return categoryRepository.save(category);
     }
 
     @Override
     public List<Category> findAll() {
-        return null;
+        return categoryRepository.findAll();
     }
 
     @Override
-    public Optional<Category> findOne() {
-        return Optional.empty();
+    public Optional<Category> findOne(Long id) {
+        return categoryRepository.findById(id);
     }
 }
