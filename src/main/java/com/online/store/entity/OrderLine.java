@@ -26,6 +26,8 @@ public class OrderLine {
 
     private Long quantityOfProducts;
 
+    private boolean isActive;
+
     @ManyToOne
     private Product product;
 }
