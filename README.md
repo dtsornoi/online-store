@@ -26,8 +26,9 @@ Backend techonolgies used:
 - Spring Boot REST
 - Spring Boot JPA (Hibernate)
 - SQL
-- Lombok
-
+- Lombok  
+  
+ **Backend main port is: 8080**
 ## Front-End  
    
 The frontend part of project is located in src/main/frontend and Angular was used to build it,  
@@ -36,3 +37,5 @@ so do not forget to run in the angular root folder:
 npm install
 ```  
 For styling **Bootsrap and custom css** is aplied.  
+  
+**Frontend main port is: 4200**
