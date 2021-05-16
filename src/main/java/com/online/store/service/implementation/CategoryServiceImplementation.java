@@ -7,7 +7,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
-import java.util.Optional;
 
 /**
  * Service interface implementation for Category.class
@@ -25,17 +24,19 @@ public class CategoryServiceImplementation implements CategoryService {
     }
 
     @Override
-    public Category save(Category category) {
-        return categoryRepository.save(category);
-    }
-
-    @Override
     public List<Category> findAll() {
         return categoryRepository.findAll();
     }
 
     @Override
-    public Optional<Category> findOne(Long id) {
-        return categoryRepository.findById(id);
+    public Category findOne(Long id) {
+        return categoryRepository.findById(id).orElseThrow(() -> new RuntimeException("Category not found"));
     }
+
+    @Override
+    public void save(Category category) {
+        categoryRepository.save(category);
+    }
+
+
 }

@@ -3,7 +3,6 @@ package com.online.store.service;
 import com.online.store.entity.Category;
 
 import java.util.List;
-import java.util.Optional;
 
 /**
  * Service Interface for Category.class
@@ -11,9 +10,10 @@ import java.util.Optional;
  * @author Dmitri Tsornoi
  */
 public interface CategoryService {
-    Category save(Category category);
 
     List<Category> findAll();
 
-    Optional<Category> findOne(Long id);
+    Category findOne(Long id);
+
+    void save(Category category);
 }
