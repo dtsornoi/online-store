@@ -54,6 +54,16 @@ public class OrdersRestController {
         }
     }
 
+    @GetMapping("/{id}")
+    public ResponseEntity<Orders> getOrdersById(@PathVariable("id") long id) {
+        Optional<Orders> orderData = ordersService.findOne(id);
+        if (orderData.isPresent()) {
+            return new ResponseEntity<>(orderData.get(), HttpStatus.OK);
+        } else {
+            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+        }
+    }
+
     @DeleteMapping("/{id}")
     public ResponseEntity<HttpStatus> deleteOrder(@PathVariable("id") long id){
         try {
