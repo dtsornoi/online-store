@@ -5,15 +5,23 @@ import com.online.store.entity.OrderLine;
 import java.util.List;
 import java.util.Optional;
 
+/**
+ * Service Interface for OrderLine.class
+ *
+ * @author Dmitri Tsornoi
+ */
+
 public interface OrderLineService {
 
-    List<OrderLine> findLine();
+    List<OrderLine> findAll();
 
-    Optional<OrderLine> findOne(Long id);
+    OrderLine findOne(Long id);
 
-    OrderLine save(OrderLine orderLine);
+    void save(OrderLine orderLine);
 
-    OrderLine update(Long id, OrderLine orderLine);
+    void update(OrderLine orderLine);
 
     void delete(Long id);
+
+    void restore(Long id);
 }
