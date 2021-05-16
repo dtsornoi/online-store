@@ -27,4 +27,6 @@ public class Customer {
 
     @OneToOne
     private UserAccount userAccount;
+
+    private boolean isActive;
 }
