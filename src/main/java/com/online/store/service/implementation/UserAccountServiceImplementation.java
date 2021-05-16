@@ -6,8 +6,11 @@ import com.online.store.service.UserAccountService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import java.util.Optional;
-
+/**
+ * Service Implementation for UserAccount.class
+ *
+ * @author Dmitri Tsornoi
+ */
 @Service
 public class UserAccountServiceImplementation implements UserAccountService {
 
@@ -19,12 +22,12 @@ public class UserAccountServiceImplementation implements UserAccountService {
     }
 
     @Override
-    public Optional<UserAccount> findOne(Long id) {
-        return Optional.empty();
+    public UserAccount findOne(Long id) {
+        return userAccountRepository.findById(id).orElseThrow(() -> new RuntimeException("UserAccount not found"));
     }
 
     @Override
-    public UserAccount save(UserAccount userAccount) {
-        return null;
+    public void save(UserAccount userAccount) {
+        userAccountRepository.save(userAccount);
     }
 }

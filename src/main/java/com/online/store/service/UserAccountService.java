@@ -4,9 +4,14 @@ import com.online.store.entity.UserAccount;
 
 import java.util.Optional;
 
+/**
+ * Service Interface for UserAccount.class
+ *
+ * @author Dmitri Tsornoi
+ */
 public interface UserAccountService {
-    Optional<UserAccount> findOne(Long id);
+    UserAccount findOne(Long id);
 
-    UserAccount save(UserAccount userAccount);
+    void save(UserAccount userAccount);
 
 }
