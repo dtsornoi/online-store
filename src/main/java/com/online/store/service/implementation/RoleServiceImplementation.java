@@ -23,17 +23,35 @@ public class RoleServiceImplementation implements RoleService {
     }
 
     @Override
-    public Optional<Role> findOne(Long id) {
-        return Optional.empty();
+    public Role findOne(Long id) {
+        return roleRepository.findById(id).orElseThrow(()-> new RuntimeException("Role Not Found"));
     }
 
     @Override
-    public Role save(Role role) {
-        return null;
+    public void save(Role role) {
+        roleRepository.saveAndFlush(role);
+    }
+
+    @Override
+    public void update(Role role) {
+        Role oldRole = findOne(role.getId());
+        oldRole.setName(role.getName());
+
+        save(role);
     }
 
     @Override
     public void delete(Long id) {
+        Role role = findOne(id);
+        role.setActive(false);
+        save(role);
 
+    }
+
+    @Override
+    public void restore(Long id) {
+        Role role = findOne(id);
+        role.setActive(true);
+        save(role);
     }
 }
