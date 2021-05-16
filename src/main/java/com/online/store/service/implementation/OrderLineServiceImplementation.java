@@ -34,7 +34,7 @@ public class OrderLineServiceImplementation implements OrderLineService {
 
     @Override
     public void save(OrderLine orderLine) {
-        orderLineRepository.save(orderLine);
+        orderLineRepository.saveAndFlush(orderLine);
     }
 
     @Override

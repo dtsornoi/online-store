@@ -35,7 +35,7 @@ public class ProductServiceImplementation implements ProductService {
 
     @Override
     public void save(Product product) {
-        productRepository.save(product);
+        productRepository.saveAndFlush(product);
     }
 
     @Override

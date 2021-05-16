@@ -34,7 +34,7 @@ public class OrdersServiceImplementation implements OrdersService {
 
     @Override
     public void save(Orders order) {
-        ordersRepository.save(order);
+        ordersRepository.saveAndFlush(order);
     }
 
     @Override
