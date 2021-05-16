@@ -8,7 +8,6 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
-import java.util.Optional;
 
 /**
  * Order controller
@@ -33,44 +32,34 @@ public class OrdersRestController {
         return new ResponseEntity<>(orders, HttpStatus.OK);
     }
 
-    @PostMapping("/")
-    public ResponseEntity<Orders> createOrder(@RequestBody Orders orders){
-        Orders responseOrders = ordersService.save(orders);
-        return new ResponseEntity<>(responseOrders, HttpStatus.CREATED);
-    }
-
-    @PutMapping("/{id}")
-    public ResponseEntity<Orders> updateOrder(@PathVariable("id") long id, @RequestBody Orders orders){
-        Optional<Orders> oldOrder = ordersService.findOne(id);
-        if (oldOrder.isPresent()) {
-            Orders oldOrdersItem = oldOrder.get();
-            oldOrdersItem.setCustomer(orders.getCustomer());
-            oldOrdersItem.setDeliveryAddress(orders.getDeliveryAddress());
-            Orders responseOrder = ordersService.save(oldOrdersItem);
-
-            return new ResponseEntity<>(responseOrder,HttpStatus.OK);
-        }else{
-            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
-        }
-    }
-
     @GetMapping("/{id}")
     public ResponseEntity<Orders> getOrdersById(@PathVariable("id") long id) {
-        Optional<Orders> orderData = ordersService.findOne(id);
-        if (orderData.isPresent()) {
-            return new ResponseEntity<>(orderData.get(), HttpStatus.OK);
-        } else {
-            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
-        }
+        Orders order = ordersService.findOne(id);
+        return new ResponseEntity<>(order, HttpStatus.OK);
     }
 
-    @DeleteMapping("/{id}")
-    public ResponseEntity<HttpStatus> deleteOrder(@PathVariable("id") long id){
-        try {
-            ordersService.delete(id);
-            return new ResponseEntity<>(HttpStatus.OK);
-        } catch (Exception e) {
-            return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
-        }
+    @PostMapping("/create")
+    public ResponseEntity<HttpStatus> createOrder(@RequestBody Orders orders){
+        ordersService.save(orders);
+        return new ResponseEntity<>(HttpStatus.CREATED);
     }
+
+    @PutMapping("/update")
+    public ResponseEntity<HttpStatus> updateOrder(@RequestBody Orders orders){
+        ordersService.update(orders);
+        return new ResponseEntity<>(HttpStatus.OK);
+    }
+
+    @PostMapping("/delete/{id}")
+    public ResponseEntity<HttpStatus> deleteOrder(@PathVariable("id") long id){
+        ordersService.delete(id);
+        return new ResponseEntity<>(HttpStatus.OK);
+    }
+
+    @PostMapping("/restore/{id}")
+    public ResponseEntity<HttpStatus> deleteOrder(@PathVariable("id") long id){
+        ordersService.restore(id);
+        return new ResponseEntity<>(HttpStatus.OK);
+    }
+
 }
