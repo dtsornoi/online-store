@@ -2,8 +2,7 @@
 
 ## Description  
 
-As part of our project, we created an application that allows you to add products to the store via the administration panel.  
-The system is to enable user registration and logging, as well as placing an order.  
+As part of our project, we created an application that allows you to add products to the store via the administration panel. The system is to enable user registration and logging, as well as placing an order.  
 
 **Main system functions**  
 - Login Panel
