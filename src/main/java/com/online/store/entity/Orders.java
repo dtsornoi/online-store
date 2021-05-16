@@ -31,11 +31,14 @@ public class Orders {
 
     private Date dateOfOrder;
 
+    private String status;
+
+    private boolean isActive;
+
     @OneToMany
     private List<OrderLine> orderLines;
 
     @ManyToOne
     private Customer customer;
 
-    private String status;
 }
