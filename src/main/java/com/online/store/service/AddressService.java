@@ -13,11 +13,11 @@ import java.util.Optional;
 public interface AddressService {
     List<Address> findAll();
 
-    Optional<Address> findOne();
+    Optional<Address> findOne(Long id);
 
-    Address save(Address customer);
+    Address save(Address address);
 
-    Address update(Long id, Address customer);
+    Address update(Long id, Address address);
 
-    Address delete(Long id);
+    Address delete(Long id, Address address);
 }
