@@ -49,22 +49,22 @@ public class RoleRestController {
     }
 
     /**
-     * POST:<code>/create</code>
+     * POST:<code>/</code>
      * @param role from UI to updated in DB
      * @return HttpStatus 201
      */
-    @PostMapping("/create")
+    @PostMapping("/")
     public ResponseEntity<HttpStatus> createRole(@RequestBody Role role){
         roleService.save(role);
         return new ResponseEntity<>(HttpStatus.CREATED);
     }
 
     /**
-     * PUT:<code>/update</code>
+     * PUT:<code>/</code>
      * @param role from UI to be persisted to DB
      * @return HttpStatus 200
      */
-    @PutMapping("/update")
+    @PutMapping("/")
     public ResponseEntity<HttpStatus> updateRole(@RequestBody Role role){
         roleService.update(role);
         return new ResponseEntity<>(HttpStatus.OK);
@@ -75,9 +75,9 @@ public class RoleRestController {
      * @param id of type Long for searching Role which to delete by id
      * @return HttpStatus 200
      */
-    @PostMapping("/delete/{id}")
-    public ResponseEntity<HttpStatus> deleteRole(@PathVariable("id") Long id){
-        roleService.delete(id);
+    @PostMapping("/delete/")
+    public ResponseEntity<HttpStatus> deleteRole(@RequestBody Role role){
+        roleService.delete(role.getId());
         return new ResponseEntity<>(HttpStatus.OK);
     }
 
@@ -86,9 +86,9 @@ public class RoleRestController {
      * @param id of type Long for searching Role which to restore by ID
      * @return HttpStatus 200
      */
-    @PostMapping("/restore/{id}")
-    public ResponseEntity<HttpStatus> restoreRole(@PathVariable("id") Long id){
-        roleService.restore(id);
+    @PostMapping("/restore/")
+    public ResponseEntity<HttpStatus> restoreRole(@RequestBody Role role){
+        roleService.restore(role.getId());
         return new ResponseEntity<>(HttpStatus.OK);
     }
 }

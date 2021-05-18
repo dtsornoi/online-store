@@ -7,6 +7,9 @@ import { NavigationComponent } from './components/navigation/navigation.componen
 import { AddNewProductComponent } from './components/add-new-product/add-new-product.component';
 import { AddNewCategoryComponent } from './components/add-new-category/add-new-category.component';
 import { HomeComponent } from './components/home/home.component';
+import {FormsModule} from '@angular/forms';
+import {HttpClientModule} from '@angular/common/http';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 
 @NgModule({
   declarations: [
@@ -18,7 +21,10 @@ import { HomeComponent } from './components/home/home.component';
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    HttpClientModule,
+    FormsModule,
+    NgbModule
   ],
   providers: [],
   bootstrap: [AppComponent]
