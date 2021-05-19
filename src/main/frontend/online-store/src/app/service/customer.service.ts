@@ -1,41 +1,45 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
-import { Customer } from '../model/customer.module';
+
+const URL = 'http://localhost:8080/api/customer'
+
+/**
+ * Service for Customer retrieveing and persisting in Backend
+ * 
+ * @author Mark Salumaa
+ */
 
 @Injectable({
   providedIn: 'root'
 })
 export class CustomerService {
-  private customerServiceUrl = 'http://localhost:8080/api/customer/';
-  private deleteCustomerServiceUrl = 'http://localhost:8080/api/customer/delete/';
-  private restoreCustomerServiceURL = 'http://localhost:8080/api/customer/restore/';
-
+ 
   constructor(private http: HttpClient) {
   }
 
-  getAll(): Observable<Customer[]> {
-    return this.http.get<Customer[]>(this.customerServiceUrl);
+  getAll(): Observable<any> {
+    return this.http.get(`${URL}/`);
   }
 
-  get(id: number): Observable<Customer>{
-    return this.http.get(`${this.customerServiceUrl}/${id}`)
+  get(id): Observable<any>{
+    return this.http.get(`${URL}/${id}`);
   }
 
-  create(data: Customer): Observable<Customer>{
-    return this.http.post(this.customerServiceUrl, data);
+  create(customer): Observable<any>{
+    return this.http.post(`${URL}/`, customer);
   }
 
-  update(data: Customer): Observable<Customer>{
-    return this.http.put(this.customerServiceUrl, data);
+  update(customer): Observable<any>{
+    return this.http.put(`${URL}/`, customer);
   }
 
-  delete(id: number, data: Customer): Observable<Customer>{
-    return this.http.post(`${this.deleteCustomerServiceUrl}/${id}`, data);
+  delete(customer): Observable<any>{
+    return this.http.post(`${URL}/delete`, customer);
   }
 
-  restore(id: number, data: Customer): Observable<Customer>{
-    return this.http.post(`${this.restoreCustomerServiceURL}/${id}`, data);
+  restore(customer): Observable<any>{
+    return this.http.post(`${URL}/restore`, customer);
   }
 
 }

@@ -1,4 +1,8 @@
-import { EnumType } from "typescript";
+/**
+ * Model for backend Role POJO
+ * 
+ * @author Mark Salumaa 
+ */
 
 export class Role {
     id?: number;

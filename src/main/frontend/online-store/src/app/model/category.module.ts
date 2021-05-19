@@ -1,4 +1,8 @@
-import { EnumType } from "typescript";
+/**
+ * Model for backend Category POJO
+ * 
+ * @author Mark Salumaa 
+ */
 
 export class Category {
     id?: number;
