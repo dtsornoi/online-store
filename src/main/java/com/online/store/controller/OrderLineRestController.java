@@ -17,6 +17,7 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/api/order-line")
+@CrossOrigin(origins = "*")
 public class OrderLineRestController {
     private OrderLineService orderLineService;
 

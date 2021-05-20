@@ -18,6 +18,7 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/api/author")
+@CrossOrigin(origins = "*")
 public class AuthorRestController {
 
     private final AuthorService authorService;
