@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 
-import { AppRoutingModule } from './app-routing.module';
+import { AppRoutingModule, routingComponents } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { NavigationComponent } from './components/navigation/navigation.component';
 import { AddNewProductComponent } from './components/add-new-product/add-new-product.component';
@@ -10,6 +10,8 @@ import { HomeComponent } from './components/home/home.component';
 import {FormsModule} from '@angular/forms';
 import {HttpClientModule} from '@angular/common/http';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { CustomerComponent } from './components/customer/customer.component';
+import { ProductComponent } from './components/product/product.component';
 
 @NgModule({
   declarations: [
@@ -17,7 +19,8 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
     NavigationComponent,
     AddNewProductComponent,
     AddNewCategoryComponent,
-    HomeComponent
+    HomeComponent,
+    routingComponents
   ],
   imports: [
     BrowserModule,
