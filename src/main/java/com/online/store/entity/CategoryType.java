@@ -7,5 +7,5 @@ package com.online.store.entity;
  */
 
 public enum CategoryType {
-    CLOTHES, ELECTRONICS
+    CLOTHING, ELECTRONICS, FOODS, FURNITURE
 }
