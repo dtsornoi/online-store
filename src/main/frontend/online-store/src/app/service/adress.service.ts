@@ -18,7 +18,7 @@ export class AdressService {
   constructor(private http: HttpClient) { }
 
   getAllAddresses(): Observable<any>{
-    return this.http.get(`${URL}`);
+    return this.http.get(`${URL}/`);
   }
 
   getAddressById(id): Observable<any>{
