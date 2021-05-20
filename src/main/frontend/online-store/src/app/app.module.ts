@@ -12,6 +12,9 @@ import {HttpClientModule} from '@angular/common/http';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { CustomerComponent } from './components/customer/customer.component';
 import { ProductComponent } from './components/product/product.component';
+import { LoginComponent } from './components/login/login.component';
+import { RegisterComponent } from './components/register/register.component';
+import { CartComponent } from './components/cart/cart.component';
 
 @NgModule({
   declarations: [
@@ -21,7 +24,10 @@ import { ProductComponent } from './components/product/product.component';
     AddNewCategoryComponent,
     HomeComponent,
     CustomerComponent,
-    ProductComponent
+    ProductComponent,
+    LoginComponent,
+    RegisterComponent,
+    CartComponent
   ],
   imports: [
     BrowserModule,
