@@ -12,6 +12,9 @@
   <div>
     <h1 class="text-center">Check out our recent products: </h1>
   </div>
+  <div *ngIf="latestProducts.length === 0" class="text-center">
+    <i>There are no products yet.</i>
+  </div>
   <div class="d-flex justify-content-center mobile_flex">
     <div *ngFor="let product of latestProducts" class="m-3">
       <div class="card" style="width: 18rem">
@@ -40,4 +43,3 @@
       Quisque ultricies maximus facilisis.</p>
   </div>
 </section>
-<app-footer></app-footer>

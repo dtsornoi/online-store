@@ -18,10 +18,14 @@ export class HomeComponent implements OnInit {
     this.productService.getAll().subscribe(
       data => {
         this.products = data;
+        if (this.products.length >= 3){
+          this.latestProducts.push(this.products.pop());
+          this.latestProducts.push(this.products.pop());
+          this.latestProducts.push(this.products.pop());
+        }else if(this.products.length < 3 && this.products.length != 0){
+          this.latestProducts.push(this.products.pop());
+        }
 
-        this.latestProducts.push(this.products.pop());
-        this.latestProducts.push(this.products.pop());
-        this.latestProducts.push(this.products.pop());
       }
     );
   }
