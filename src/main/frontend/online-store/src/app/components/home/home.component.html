@@ -8,6 +8,36 @@
     </div>
   </div>
 </section>
-<section *ngFor="let product of products">
-  <div>{{product.title}}</div>
+<section class="mt-2 mb-2">
+  <div>
+    <h1 class="text-center">Check out our recent products: </h1>
+  </div>
+  <div class="d-flex justify-content-center mobile_flex">
+    <div *ngFor="let product of latestProducts" class="m-3">
+      <div class="card" style="width: 18rem">
+        <img src="https://images.samsung.com/is/image/samsung/ee-uhd-tu8000-ue75tu8072uxxh-front-black-269712261?$720_576_PNG$"
+             alt="image" crossorigin="card-img-top">
+        <div class="card-body">
+          <h5 class="card-title">{{product.title}}</h5>
+          <p class="card-text">{{product.description}}</p>
+          <p class="card-text">${{product.price}}</p>
+        </div>
+      </div>
+    </div>
+  </div>
 </section>
+<section class="mt-lg-5 mb-lg-5">
+  <div class="container">
+    <h1 class="text-center">About Us</h1>
+    <p class="text-center">Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+      Aliquam luctus nibh vel vulputate suscipit. In finibus dolor vitae est aliquet semper.
+      Pellentesque nec orci eu dolor dictum elementum ullamcorper sit amet metus.
+      Phasellus venenatis, felis sed posuere scelerisque, urna nulla vehicula tellus, nec porttitor nisi libero at lorem.
+      Nunc blandit leo augue, vel dignissim erat malesuada in. Donec auctor turpis quis fringilla consequat.
+      Morbi at dui vel ligula vestibulum tincidunt. Sed venenatis sagittis est, sed viverra neque fringilla sed.
+      Vestibulum gravida lacus vel justo volutpat tempus.
+      In aliquet, odio quis porttitor convallis, massa tortor luctus sapien, vel finibus tortor tellus sit amet mauris.
+      Quisque ultricies maximus facilisis.</p>
+  </div>
+</section>
+<app-footer></app-footer>

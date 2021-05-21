@@ -10,6 +10,7 @@ import {Products} from '../../model/products.module';
 export class HomeComponent implements OnInit {
 
   products: Products[] = [];
+  latestProducts: Products[] = [];
 
   constructor(private productService: ProductService) { }
 
@@ -17,6 +18,10 @@ export class HomeComponent implements OnInit {
     this.productService.getAll().subscribe(
       data => {
         this.products = data;
+
+        this.latestProducts.push(this.products.pop());
+        this.latestProducts.push(this.products.pop());
+        this.latestProducts.push(this.products.pop());
       }
     );
   }

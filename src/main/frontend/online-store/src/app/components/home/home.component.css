@@ -1,0 +1,8 @@
+@media (max-width: 700px) {
+  .mobile_flex{
+    flex-direction: column !important;
+    align-content: center !important;
+    justify-content: center !important;
+    margin: 2rem auto 2rem auto !important;
+  }
+}
