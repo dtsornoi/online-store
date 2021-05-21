@@ -1,1 +1,12 @@
-<p>product works!</p>
+<section *ngFor="let product of products">
+
+    <div class="card" style="width: 18rem;">
+        <img class="card-img-top" src="https://images.samsung.com/is/image/samsung/ee-uhd-tu8000-ue82tu8072uxxh-front-black-269712290?$720_576_PNG$" alt="Card image cap">
+        <div class="card-body">
+          <h5 class="card-title">{{product.title}}</h5>
+          <p class="card-text">{{product.description}}</p>
+          <a href="#" class="btn btn-primary">Add to cart</a>
+        </div>
+    </div>
+
+  </section>
