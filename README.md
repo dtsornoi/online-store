@@ -11,7 +11,7 @@ As part of our project, we created an application that allows you to add product
   - Category tree overview
   - Adding products
   - List of products + edition
- - User:
+- User:
   - Registration
   - List of products
   - Product table with pagination
