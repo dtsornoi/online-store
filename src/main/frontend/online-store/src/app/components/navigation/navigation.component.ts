@@ -13,3 +13,5 @@ export class NavigationComponent implements OnInit {
   }
 
 }
+
+export class NgbdNavCustomStyle{}
