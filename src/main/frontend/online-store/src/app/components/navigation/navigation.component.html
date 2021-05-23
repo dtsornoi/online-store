@@ -1,19 +1,23 @@
-<nav class="navbar navbar-expand navbar-dark bg-dark">
-  <a routerLink="/" class="navbar-brand">Online Store App</a>
-  <div ngbNav class="navbar">
-     <div class="d-flex">
-        <a class="nav-link" routerLink="product">Product</a>
-        <li ngbDropdown class="nav-item">
-          <a href (click)="false" class="nav-link" ngbDropdownToggle>User</a>
-          <div ngbDropdownMenu>
-            <button ngbDropdownItem routerLink="customer">Customer's List</button>
-            <button ngbDropdownItem>Orders</button>
-            <button ngbDropdownItem>Profile</button>
-            <div class="dropdown-divider"></div>
-            <button ngbDropdownItem>Cart</button>
-          </div>
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark mb-3">
+  <a class="navbar-brand" routerLink="/">Online Store App</a>
+  <button class="navbar-toggler" type="button" (click)="isMenuCollapsed = !isMenuCollapsed">
+  &#9776;
+  </button>
+  <div [ngbCollapse]="isMenuCollapsed" class="collapse navbar-collapse">
+     <ul class="navbar-nav">
+        <li class="nav-item active">
+           <a class="nav-link" routerLink="product" (click)="isMenuCollapsed = true">Product</a>
         </li>
-     </div>
+        <li ngbDropdown class="nav-item">
+           <a href (click)="false" class="nav-link" ngbDropdownToggle>User</a>
+           <div ngbDropdownMenu>
+              <button ngbDropdownItem routerLink="customer">Customer's List</button>
+              <button ngbDropdownItem>Orders</button>
+              <button ngbDropdownItem>Profile</button>
+              <div class="dropdown-divider"></div>
+              <button ngbDropdownItem>Cart</button>
+           </div>
+        </li>
+     </ul>
   </div>
 </nav>
-

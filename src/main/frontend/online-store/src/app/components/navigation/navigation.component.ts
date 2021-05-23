@@ -12,6 +12,8 @@ export class NavigationComponent implements OnInit {
   ngOnInit(): void {
   }
 
+  public isMenuCollapsed = true;
+
 }
 
-export class NgbdNavCustomStyle{}
+
