@@ -1,15 +1,15 @@
 /**
  * Model for backend Address POJO
- * 
- * @author Vladimir 
+ *
+ * @author Vladimir
  */
 
-export class Adress {
+export class Address {
     id?: number;
     city?: string;
     code?: string;
     country?: string;
-    is_active?: boolean;
+    isActive?: boolean;
     street?: string;
     zip?: string;
 }

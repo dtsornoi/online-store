@@ -1,0 +1,15 @@
+@media (max-width: 700px) {
+  .d-flex{
+    flex-direction: column !important;
+  }
+}
+
+.card {
+  width: 20rem;
+  height: 27rem;
+}
+
+section {
+  min-height: 100vh;
+}
+
