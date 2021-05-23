@@ -1,12 +1,12 @@
 /**
  * Model for backend Author POJO
- * 
- * @author Vladimir 
+ *
+ * @author Vladimir
  */
 
 export class Author {
     id?: number;
-    first_name?: string;
-    is_active?: boolean;
-    last_name?: string;
+    firstName?: string;
+    isActive?: boolean;
+    lastName?: string;
 }

@@ -1,3 +1,23 @@
-<section *ngFor="let customer of customers">
-    <div>{{customer.id}}</div>
+<section class="container">
+   <div>
+     <table class="table m-3">
+       <thead>
+         <tr>
+            <th scope="col">Id</th>
+            <th scope="col">Fist Name</th>
+            <th scope="col">Last Name</th>
+            <th scope="col">Address</th>
+         </tr>
+       </thead>
+       <tbody *ngFor="let customer of customers">
+        <tr>
+          <th scope="row">{{customer.id}}</th>
+          <td>{{customer.author.firstName}}</td>
+          <td>{{customer.author.lastName}}</td>
+          <td>{{customer.userAccount.address.city}},
+            {{customer.userAccount.address.country}}</td>
+        </tr>
+       </tbody>
+     </table>
+   </div>
 </section>
