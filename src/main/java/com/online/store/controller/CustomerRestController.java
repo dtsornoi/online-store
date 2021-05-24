@@ -20,7 +20,7 @@ import java.util.List;
 @CrossOrigin(origins = "*")
 public class CustomerRestController {
 
-    private CustomerService customerService;
+    private final CustomerService customerService;
 
     @Autowired
     public CustomerRestController(CustomerService customerService) {
@@ -69,9 +69,9 @@ public class CustomerRestController {
      * @return HttpStatus 200
      */
     @PutMapping("/")
-    public ResponseEntity<HttpStatus> updateCustomer(@RequestBody Customer customer) {
-        customerService.update(customer);
-        return new ResponseEntity<>(HttpStatus.OK);
+    public ResponseEntity<Customer> updateCustomer(@RequestBody Customer customer) {
+        Customer upcomingCustomer = customerService.update(customer);
+        return new ResponseEntity<>(upcomingCustomer ,HttpStatus.OK);
     }
 
     /**
