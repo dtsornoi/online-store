@@ -10,7 +10,7 @@
          </tr>
        </thead>
        <tbody *ngFor="let customer of customers">
-        <tr>
+        <tr *ngIf="customer.active">
           <th scope="row">{{customer.id}}</th>
           <td>{{customer.author.firstName}}</td>
           <td>{{customer.author.lastName}}</td>
