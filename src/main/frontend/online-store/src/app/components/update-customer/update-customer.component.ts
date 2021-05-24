@@ -10,10 +10,16 @@ import { CustomerService } from 'src/app/service/customer.service';
 })
 export class UpdateCustomerComponent implements OnInit {
 
-
   id: number;
-  customer: Customer = new Customer();
-  constructor( private customerService: CustomerService,
+  customer: Customer = {
+    author: {},
+    userAccount: {
+      address: {}
+    }
+  };
+
+  constructor(
+    private customerService: CustomerService,
     private route: ActivatedRoute,
     private router: Router) {}
 
@@ -28,8 +34,11 @@ export class UpdateCustomerComponent implements OnInit {
       this.customerService.update(this.customer).subscribe(data => {
           this.goToCustomersList();
       },
-      error => console.log(error));
+      error => {
+        console.log(error);
+      });
     }
+
     goToCustomersList(){
       this.router.navigate(['/customer']);
     }

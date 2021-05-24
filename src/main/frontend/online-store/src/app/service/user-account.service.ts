@@ -4,6 +4,11 @@ import {Observable} from "rxjs";
 
 const URL = 'http://localhost:8080/api/user-account/'
 
+/**
+ * Service class for UserAccount
+ *
+ * @author Dmitri Tsornoi
+ */
 @Injectable({
   providedIn: 'root'
 })
