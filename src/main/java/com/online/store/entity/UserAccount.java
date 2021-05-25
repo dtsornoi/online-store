@@ -1,6 +1,5 @@
 package com.online.store.entity;
 
-import javassist.bytecode.ByteArray;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -31,6 +30,9 @@ public class UserAccount {
     private String firstName;
 
     private String lastName;
+
+    @OneToOne
+    private Address address;
 
     @ManyToMany(fetch = FetchType.EAGER)
     @JoinTable(name = "user_account_roles",

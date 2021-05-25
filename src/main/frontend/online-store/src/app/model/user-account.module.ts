@@ -17,4 +17,5 @@ export class UserAccount {
     roles?: Role[];
     avatar?: Byte;
     isActive?: boolean;
+    address?: Address;
 }
