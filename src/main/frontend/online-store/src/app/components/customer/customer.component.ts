@@ -28,5 +28,10 @@ export class CustomerComponent implements OnInit {
     this.router.navigate(['update-customer', id]);
 }
 
+changeCustomerStatus(id: number, isActive: boolean){
+  isActive === true ? this.service.deleteUserAccount(id).subscribe() : this.service.restoreUserAccount(id).subscribe();
+  window.location.reload();
+}
+
 
 }

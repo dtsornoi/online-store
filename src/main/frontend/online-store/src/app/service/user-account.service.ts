@@ -27,11 +27,11 @@ export class UserAccountService {
     return this.http.put(`${URL}/`, userAccount);
   }
 
-  deleteUserAccount(userAccount): Observable<any> {
-    return this.http.post(`${URL}/delete`, userAccount);
+  deleteUserAccount(id): Observable<any> {
+    return this.http.post(`${URL}/delete/${id}`,null);
   }
 
-  restoreUserAccount(userAccount): Observable<any> {
-    return this.http.post(`${URL}/restore`, userAccount);
+  restoreUserAccount(id): Observable<any> {
+    return this.http.post(`${URL}/restore/${id}`,null);
   }
 }
