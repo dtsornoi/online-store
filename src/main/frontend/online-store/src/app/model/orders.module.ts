@@ -1,10 +1,10 @@
-import { Customer } from "./customer.module";
 import { OrderLine } from "./order-line.module";
+import {UserAccount} from "./user-account.module";
 
 /**
  * Model for backend Orders POJO
- * 
- * @author Mark Salumaa 
+ *
+ * @author Mark Salumaa
  */
 
 
@@ -17,5 +17,5 @@ export class Orders {
     status?: string;
     isActive?: boolean;
     orderLines?: OrderLine[];
-    customer?: Customer;
+    customer?: UserAccount;
 }

@@ -16,7 +16,7 @@ import java.util.List;
 @Service
 public class ProductServiceImplementation implements ProductService {
 
-    private ProductRepository productRepository;
+    private final ProductRepository productRepository;
 
     @Autowired
     public ProductServiceImplementation(ProductRepository productRepository) {
@@ -41,7 +41,7 @@ public class ProductServiceImplementation implements ProductService {
     @Override
     public void update(Product product) {
         Product oldProduct = findOne(product.getId());
-        oldProduct.setAuthor(product.getAuthor());
+        oldProduct.setUserAccount(product.getUserAccount());
         oldProduct.setCategory(product.getCategory());
         oldProduct.setDescription(product.getDescription());
         oldProduct.setThumbnail(product.getThumbnail());

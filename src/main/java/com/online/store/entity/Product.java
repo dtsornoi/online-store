@@ -37,5 +37,5 @@ public class Product {
     private Category category;
 
     @ManyToOne
-    private Author author;
+    private UserAccount userAccount;
 }
