@@ -16,6 +16,7 @@ import { LoginComponent } from './components/login/login.component';
 import { RegisterComponent } from './components/register/register.component';
 import { CartComponent } from './components/cart/cart.component';
 import { FooterComponent } from './components/footer/footer.component';
+import { UpdateCustomerComponent } from './components/update-customer/update-customer.component';
 
 @NgModule({
   declarations: [
@@ -29,7 +30,8 @@ import { FooterComponent } from './components/footer/footer.component';
     LoginComponent,
     RegisterComponent,
     CartComponent,
-    FooterComponent
+    FooterComponent,
+    UpdateCustomerComponent
   ],
   imports: [
     BrowserModule,

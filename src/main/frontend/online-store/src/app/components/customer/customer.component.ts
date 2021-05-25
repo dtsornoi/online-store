@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { UserAccount } from 'src/app/model/user-account.module';
 import {UserAccountService} from "../../service/user-account.service";
 
 @Component({
@@ -7,7 +8,7 @@ import {UserAccountService} from "../../service/user-account.service";
   styleUrls: ['./customer.component.css']
 })
 export class CustomerComponent implements OnInit {
-  customers: UserAccountService[] = [];
+  customers: UserAccount[] = [];
 
   constructor(private service: UserAccountService) { }
 

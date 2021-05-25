@@ -42,7 +42,7 @@ public class OrdersServiceImplementation implements OrdersService {
         Orders oldOrder = findOne(orders.getId());
         oldOrder.setDateOfOrder(orders.getDateOfOrder());
         oldOrder.setOrderLines(orders.getOrderLines());
-        oldOrder.setCustomer(orders.getCustomer());
+        oldOrder.setUserAccount(orders.getUserAccount());
         oldOrder.setStatus(orders.getStatus());
         oldOrder.setDeliveryAddress(orders.getDeliveryAddress());
         oldOrder.setTotalCost(orders.getTotalCost());
