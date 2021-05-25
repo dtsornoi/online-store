@@ -31,7 +31,7 @@ public class UserAccount {
 
     private String lastName;
 
-    @OneToOne
+    @OneToOne(cascade = CascadeType.ALL)
     private Address address;
 
     @ManyToMany(fetch = FetchType.EAGER)

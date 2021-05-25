@@ -34,4 +34,5 @@ public class Address {
     private String code;
 
     private boolean isActive;
+
 }
