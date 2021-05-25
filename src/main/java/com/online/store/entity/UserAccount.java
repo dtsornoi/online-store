@@ -28,8 +28,9 @@ public class UserAccount {
 
     private String password;
 
-    @OneToOne
-    private Address address;
+    private String firstName;
+
+    private String lastName;
 
     @ManyToMany(fetch = FetchType.EAGER)
     @JoinTable(name = "user_account_roles",
@@ -38,4 +39,6 @@ public class UserAccount {
     private List<Role> roles;
 
     private Byte[] avatar;
+
+    private boolean isActive;
 }

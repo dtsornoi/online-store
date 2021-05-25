@@ -23,7 +23,7 @@ public class Customer {
     private Long id;
 
     @OneToOne
-    private Author author;
+    private Address address;
 
     @OneToOne
     private UserAccount userAccount;

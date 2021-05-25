@@ -20,7 +20,7 @@ import java.util.List;
 @CrossOrigin(origins = "*")
 public class CustomerRestController {
 
-    private CustomerService customerService;
+    private final CustomerService customerService;
 
     @Autowired
     public CustomerRestController(CustomerService customerService) {

@@ -1,4 +1,4 @@
-import { Author } from "./author.module";
+import { Address } from "./address.module";
 import { UserAccount } from "./user-account.module";
 
 /**
@@ -9,7 +9,7 @@ import { UserAccount } from "./user-account.module";
 
 export class Customer {
     id?: number;
-    author?: Author;
+    address?: Address;
     userAccount?: UserAccount;
     isActive?: boolean;
 }
