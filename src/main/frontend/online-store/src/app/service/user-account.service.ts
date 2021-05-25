@@ -11,11 +11,27 @@ export class UserAccountService {
 
   constructor(private http: HttpClient) { }
 
-  getUserAccountById(id): Observable<any>{
+  getUserAccountById(id): Observable<any> {
     return this.http.get(`${URL}/${id}`);
   }
 
-  saveUserAccount(userAccount): Observable<any>{
-    return this.http.post(`${URL}`, userAccount);
+  saveUserAccount(userAccount): Observable<any> {
+    return this.http.post(URL, userAccount);
+  }
+
+  getAllUserAccounts(): Observable<any>{
+    return this.http.get(URL);
+  }
+
+  updateUserAccount(userAccount): Observable<any> {
+    return this.http.put(URL, userAccount);
+  }
+
+  deleteUserAccount(userAccount): Observable<any> {
+    return this.http.post(`${URL}/delete`, userAccount);
+  }
+
+  restoreUserAccount(userAccount): Observable<any> {
+    return this.http.post(`${URL}/restore`, userAccount);
   }
 }

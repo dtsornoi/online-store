@@ -1,10 +1,9 @@
-import { Author } from "./author.module";
 import { Category } from "./category.module";
 
 /**
  * Model for backend Products POJO
- * 
- * @author Mark Salumaa 
+ *
+ * @author Mark Salumaa
  */
 
 export class Products {
@@ -15,5 +14,4 @@ export class Products {
     price?: number;
     isActive?: number;
     category?: Category;
-    author?: Author;
 }

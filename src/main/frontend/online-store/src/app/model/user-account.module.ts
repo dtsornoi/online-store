@@ -1,5 +1,5 @@
 import { Byte } from "@angular/compiler/src/util";
-import { Address } from "./adress.module";
+import { Address } from "./address.module";
 import { Role } from "./role.module";
 
 /**
@@ -12,7 +12,10 @@ export class UserAccount {
     id?: number;
     login?: string;
     password?: string;
-    address?: Address;
+    firstName?: string;
+    lastName?: string;
     roles?: Role[];
     avatar?: Byte;
+    isActive?: boolean;
+    address?: Address;
 }

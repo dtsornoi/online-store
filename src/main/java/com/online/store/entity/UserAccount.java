@@ -1,6 +1,5 @@
 package com.online.store.entity;
 
-import javassist.bytecode.ByteArray;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -28,6 +27,10 @@ public class UserAccount {
 
     private String password;
 
+    private String firstName;
+
+    private String lastName;
+
     @OneToOne
     private Address address;
 
@@ -38,4 +41,6 @@ public class UserAccount {
     private List<Role> roles;
 
     private Byte[] avatar;
+
+    private boolean isActive;
 }
