@@ -16,15 +16,15 @@ export class UserAccountService {
   }
 
   saveUserAccount(userAccount): Observable<any> {
-    return this.http.post(URL, userAccount);
+    return this.http.post(`${URL}/`, userAccount);
   }
 
   getAllUserAccounts(): Observable<any>{
-    return this.http.get(URL);
+    return this.http.get(`${URL}/`);
   }
 
   updateUserAccount(userAccount): Observable<any> {
-    return this.http.put(URL, userAccount);
+    return this.http.put(`${URL}/`, userAccount);
   }
 
   deleteUserAccount(userAccount): Observable<any> {

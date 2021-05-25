@@ -39,6 +39,6 @@ public class Orders {
     private List<OrderLine> orderLines;
 
     @ManyToOne
-    private Customer customer;
+    private UserAccount userAccount;
 
 }

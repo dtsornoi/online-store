@@ -4,18 +4,22 @@
        <thead>
          <tr>
             <th scope="col">Id</th>
-            <th scope="col">Fist Name</th>
+            <th scope="col">First Name</th>
             <th scope="col">Last Name</th>
             <th scope="col">Address</th>
+            <th scope="col">Actions</th>
          </tr>
        </thead>
        <tbody *ngFor="let customer of customers">
         <tr *ngIf="customer.active">
           <th scope="row">{{customer.id}}</th>
-          <td>{{customer.author.firstName}}</td>
-          <td>{{customer.author.lastName}}</td>
-          <td>{{customer.userAccount.address.city}},
-            {{customer.userAccount.address.country}}</td>
+          <td>{{customer.firstName}}</td>
+          <td>{{customer.lastName}}</td>
+          <td>{{customer.address.city}},
+            {{customer.address.country}}</td>
+            <td>
+              <button (click) = "updateCustomer(customer.id)" class="btn btn-success">Update</button>
+            </td>
         </tr>
        </tbody>
      </table>
