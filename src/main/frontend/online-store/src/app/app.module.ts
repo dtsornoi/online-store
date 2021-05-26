@@ -3,7 +3,6 @@ import { BrowserModule } from '@angular/platform-browser';
 
 import { AppRoutingModule} from './app-routing.module';
 import { AppComponent } from './app.component';
-import { NavigationComponent } from './components/navigation/navigation.component';
 import { AddNewProductComponent } from './components/add-new-product/add-new-product.component';
 import { AddNewCategoryComponent } from './components/add-new-category/add-new-category.component';
 import { HomeComponent } from './components/home/home.component';
@@ -19,7 +18,7 @@ import { FooterComponent } from './components/footer/footer.component';
 import { UpdateCustomerComponent } from './components/update-customer/update-customer.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { FlexLayoutModule } from '@angular/flex-layout';
-import { MainNavComponent } from './main-nav/main-nav.component';
+import { MainNavComponent } from './components/main-nav/main-nav.component';
 import { LayoutModule } from '@angular/cdk/layout';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatButtonModule } from '@angular/material/button';
@@ -32,7 +31,6 @@ import { MatMenuModule} from '@angular/material/menu';
 @NgModule({
   declarations: [
     AppComponent,
-    NavigationComponent,
     AddNewProductComponent,
     AddNewCategoryComponent,
     HomeComponent,
