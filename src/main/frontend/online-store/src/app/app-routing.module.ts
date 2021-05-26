@@ -4,12 +4,14 @@ import { CustomerComponent } from './components/customer/customer.component';
 import { ProductComponent } from './components/product/product.component';
 import {HomeComponent} from './components/home/home.component';
 import { UpdateCustomerComponent } from './components/update-customer/update-customer.component';
+import { DeleteCustomerComponent } from './components/delete-customer/delete-customer.component';
 
 const routes: Routes = [
   { path: '', component: HomeComponent},
   { path: 'customer', component: CustomerComponent},
   { path: 'product', component: ProductComponent},
-  { path: 'update-customer/:id', component: UpdateCustomerComponent}
+  { path: 'update-customer/:id', component: UpdateCustomerComponent},
+  { path: 'delete-customer/:id', component: DeleteCustomerComponent}
 ];
 
 @NgModule({

@@ -1,0 +1,32 @@
+<section class="col-md-6 offset-md-3 mt-5">
+    <h3> Delete Customer </h3>
+    <form>
+
+        <div class="form-group">
+            <label> First Name </label>
+            <input type="text" class="form-control" id="firstNamee"
+            [(ngModel)] = "customer.firstName" name="firstName">
+        </div>
+
+        <div class="form-group">
+            <label> Last Name </label>
+            <input type="text" class="form-control" id="lastName"
+            [(ngModel)] = "customer.lastName" name="lastName">
+        </div>
+
+        <div class="form-group">
+            <label> City </label>
+            <input type="text" class="form-control" id="city"
+            [(ngModel)] = "customer.address.city" name="city">
+        </div>
+
+        <div class="form-group">
+            <label> Country </label>
+            <input type="text" class="form-control" id="country"
+            [(ngModel)] = "customer.address.country" name="country">
+        </div>
+
+        <button (click)="delete(customer.id)" class="btn btn-success mb-5" type="submit">Submit</button>
+
+    </form>
+</section>

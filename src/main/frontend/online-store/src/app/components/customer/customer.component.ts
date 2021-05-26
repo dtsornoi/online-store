@@ -14,18 +14,26 @@ export class CustomerComponent implements OnInit {
   constructor(private service: UserAccountService,
     private router: Router) { }
 
-  ngOnInit(): void {
+
+    ngOnInit(): void{
+      this.getAllUserAccounts();
+    }
+
+ private getAllUserAccounts() {
     this.service.getAllUserAccounts().subscribe(
       data => {
         this.customers = data;
         console.log(data);
-      }
-    );
+      });
   }
 
 
   updateCustomer(id: number){
     this.router.navigate(['update-customer', id]);
+  }
+
+  deleteCustomer(id: number, isActive: boolean){
+    this.router.navigate(['delete-customer', id]);
   }
 
 changeCustomerStatus(id: number, isActive: boolean){

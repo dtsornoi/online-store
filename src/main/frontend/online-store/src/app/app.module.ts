@@ -17,6 +17,7 @@ import { RegisterComponent } from './components/register/register.component';
 import { CartComponent } from './components/cart/cart.component';
 import { FooterComponent } from './components/footer/footer.component';
 import { UpdateCustomerComponent } from './components/update-customer/update-customer.component';
+import { DeleteCustomerComponent } from './components/delete-customer/delete-customer.component';
 
 @NgModule({
   declarations: [
@@ -31,7 +32,8 @@ import { UpdateCustomerComponent } from './components/update-customer/update-cus
     RegisterComponent,
     CartComponent,
     FooterComponent,
-    UpdateCustomerComponent
+    UpdateCustomerComponent,
+    DeleteCustomerComponent
   ],
   imports: [
     BrowserModule,
