@@ -18,7 +18,7 @@ public interface UserAccountService {
 
     void update(UserAccount userAccount);
 
-    void delete(UserAccount userAccount);
+    void delete(Long id);
 
-    void restore(UserAccount userAccount);
+    void restore(Long id);
 }

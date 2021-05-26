@@ -1,5 +1,6 @@
 package com.online.store.service.implementation;
 
+import com.online.store.entity.Address;
 import com.online.store.entity.UserAccount;
 import com.online.store.repository.UserAccountRepository;
 import com.online.store.service.UserAccountService;
@@ -44,13 +45,15 @@ public class UserAccountServiceImplementation implements UserAccountService {
     }
 
     @Override
-    public void delete(UserAccount userAccount) {
+    public void delete(Long id) {
+        UserAccount userAccount = findOne(id);
         userAccount.setActive(false);
         save(userAccount);
     }
 
     @Override
-    public void restore(UserAccount userAccount) {
+    public void restore(Long id) {
+        UserAccount userAccount = findOne(id);
         userAccount.setActive(true);
         save(userAccount);
     }

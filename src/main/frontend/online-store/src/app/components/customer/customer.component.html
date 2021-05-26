@@ -7,18 +7,21 @@
             <th scope="col">First Name</th>
             <th scope="col">Last Name</th>
             <th scope="col">Address</th>
+            <th scope="col">Active</th>
             <th scope="col">Actions</th>
          </tr>
        </thead>
        <tbody *ngFor="let customer of customers">
-        <tr *ngIf="customer.active">
+        <tr>
           <th scope="row">{{customer.id}}</th>
           <td>{{customer.firstName}}</td>
           <td>{{customer.lastName}}</td>
           <td>{{customer.address.city}},
             {{customer.address.country}}</td>
+            <td>{{customer.active}}</td>
             <td>
               <button (click) = "updateCustomer(customer.id)" class="btn btn-success">Update</button>
+              <button (click) = "changeCustomerStatus(customer.id, customer.active)" class="btn btn-warning">{{ customer.active ? 'Deactivate': 'Activate' }}</button>
             </td>
         </tr>
        </tbody>

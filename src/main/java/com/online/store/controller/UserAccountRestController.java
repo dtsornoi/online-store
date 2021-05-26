@@ -74,23 +74,23 @@ public class UserAccountRestController {
 
     /**
      * POST: <code>/delete</code>
-     * @param userAccount to be set inActive (deleted)
+     * @param id to be set inActive (deleted)
      * @return http status 200
      */
-    @PostMapping("/delete")
-    public ResponseEntity<HttpStatus> deleteUserAccount(@RequestBody UserAccount userAccount){
-        userAccountService.delete(userAccount);
+    @PostMapping("/delete/{id}")
+    public ResponseEntity<HttpStatus> deleteUserAccount(@PathVariable("id") Long id){
+        userAccountService.delete(id);
         return new ResponseEntity<>(HttpStatus.OK);
     }
 
     /**
      * POST:<code>/restore</code>
-     * @param userAccount to be restored
+     * @param id to be restored
      * @return http status 200
      */
-    @PostMapping("/restore")
-    public ResponseEntity<HttpStatus> restoreUserAccount(@RequestBody UserAccount userAccount){
-        userAccountService.restore(userAccount);
+    @PostMapping("/restore/{id}")
+    public ResponseEntity<HttpStatus> restoreUserAccount(@PathVariable("id") Long id){
+        userAccountService.restore(id);
         return new ResponseEntity<>(HttpStatus.OK);
     }
 }
