@@ -22,7 +22,6 @@
             <td>
               <button (click) = "updateCustomer(customer.id)" class="btn btn-success mr-3">Update</button>
               <button (click) = "changeCustomerStatus(customer.id, customer.active)" class="btn btn-warning mr-3">{{ customer.active ? 'Deactivate': 'Activate' }}</button>
-              <button (click) = "deleteCustomer(customer.id)" class="btn btn-danger">Delete</button>
             </td>
         </tr>
        </tbody>
