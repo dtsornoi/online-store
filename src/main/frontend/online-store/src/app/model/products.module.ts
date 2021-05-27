@@ -12,6 +12,6 @@ export class Products {
     description?: string;
     thumbnail?: string;
     price?: number;
-    isActive?: number;
+    isActive?: boolean;
     category?: Category;
 }

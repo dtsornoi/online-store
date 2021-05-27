@@ -2,11 +2,11 @@
   <h1 class="text-center m-3">List of all our Products</h1>
   <div class="d-flex justify-content-center flex-wrap">
     <div *ngFor="let product of products" class="m-2">
-      <mat-card class="card_width">
+      <mat-card class="card_width text-center">
         <mat-card-header>
           <mat-card-title>{{product.title}}</mat-card-title>
         </mat-card-header>
-        <img mat-card-image src="https://images.samsung.com/is/image/samsung/ee-uhd-tu8000-ue82tu8072uxxh-front-black-269712290?$720_576_PNG$"
+        <img mat-card-lg-image src="{{product.thumbnail}}"
              alt="{{product.title}}">
         <mat-card-content>
           <p>{{product.description}}</p>

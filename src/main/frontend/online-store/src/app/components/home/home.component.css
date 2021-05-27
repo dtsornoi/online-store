@@ -9,12 +9,5 @@ main {
 
 
 .card_main {
-  width: 400px;
-}
-
-@media (max-width: 375px){
-
-  .card_main {
-    width: 300px;
-  }
+  width: 300px;
 }
