@@ -1,18 +1,25 @@
 <section class="container mb-3">
   <h1 class="text-center m-3">List of all our Products</h1>
-  <div class="d-flex flex-wrap">
-    <div *ngFor="let product of products">
-      <div class="card m-3">
-        <img class="card-img-top"
-             src="https://images.samsung.com/is/image/samsung/ee-uhd-tu8000-ue82tu8072uxxh-front-black-269712290?$720_576_PNG$"
-             alt="Card image cap">
-        <div class="card-body text-center">
-          <h5 class="card-title">{{product.title}}</h5>
-          <p class="card-text">{{product.description}}</p>
-          <p class="card-text font-weight-bold">Price: {{product.price}} EUR</p>
-          <a href="#" class="btn btn-primary">Add to cart</a>
-        </div>
-      </div>
+  <div class="d-flex justify-content-center flex-wrap">
+    <div *ngFor="let product of products" class="m-2">
+      <mat-card class="card_width text-center">
+        <mat-card-header>
+          <mat-card-title>{{product.title}}</mat-card-title>
+        </mat-card-header>
+        <img mat-card-lg-image src="{{product.thumbnail}}"
+             alt="{{product.title}}">
+        <mat-card-content>
+          <p>{{product.description}}</p>
+          <p>Price: {{product.price}} EUR</p>
+          <i>Category: {{product.category.name.charAt(0) + product.category.name.slice(1).toLowerCase()}}</i>
+        </mat-card-content>
+        <mat-card-actions>
+          <button mat-raised-button color="primary">Add to cart</button>
+        </mat-card-actions>
+      </mat-card>
+    </div>
+    <div *ngIf="products.length === 0">
+      <p>There are no products available, all sold out!</p>
     </div>
   </div>
 </section>

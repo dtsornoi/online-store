@@ -5,9 +5,8 @@
   }
 }
 
-.card {
-  width: 20rem;
-  height: 30rem;
+.card_width {
+  width: 300px;
 }
 
 section {

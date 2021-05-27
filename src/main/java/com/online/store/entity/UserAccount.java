@@ -40,7 +40,7 @@ public class UserAccount {
             inverseJoinColumns = @JoinColumn(name = "role_id"))
     private List<Role> roles;
 
-    private Byte[] avatar;
+    private String avatar;
 
     private boolean isActive;
 }

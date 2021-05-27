@@ -11,7 +11,9 @@ import { UserAccountService } from 'src/app/service/user-account.service';
 export class UpdateCustomerComponent implements OnInit {
 
   id: number;
-  customer: UserAccount = new UserAccount();
+  customer: UserAccount = {
+    address: {}
+  };
   constructor( private service: UserAccountService,
     private route: ActivatedRoute,
     private router: Router) {}

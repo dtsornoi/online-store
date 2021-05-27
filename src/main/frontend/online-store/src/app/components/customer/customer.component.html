@@ -20,8 +20,8 @@
             {{customer.address.country}}</td>
             <td>{{customer.active}}</td>
             <td>
-              <button (click) = "updateCustomer(customer.id)" class="btn btn-success mr-3">Update</button>
-              <button (click) = "changeCustomerStatus(customer.id, customer.active)" class="btn btn-warning mr-3">{{ customer.active ? 'Deactivate': 'Activate' }}</button>
+              <button mat-raised-button color="primary" (click) = "updateCustomer(customer.id)" class="mr-3">Update</button>
+              <button mat-raised-button color="accent" (click) = "changeCustomerStatus(customer.id, customer.active)" class="mr-3">{{ customer.active ? 'Deactivate': 'Activate' }}</button>
             </td>
         </tr>
        </tbody>

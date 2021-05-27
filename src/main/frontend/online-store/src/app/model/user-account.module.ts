@@ -18,4 +18,5 @@ export class UserAccount {
     avatar?: Byte;
     isActive?: boolean;
     address?: Address;
+    active?: boolean;
 }
