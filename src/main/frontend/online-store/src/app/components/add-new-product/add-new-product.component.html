@@ -1,1 +1,40 @@
-<p>add-new-product works!</p>
+<section class="col-md-6 offset-md-3 mt-5">
+  <h3>Add new Product</h3>
+  <form ngForm (ngSubmit)="f.form.valid && onSubmit()" #f=ngForm>
+
+    <div class="form-group">
+      <label> Title </label>
+      <input type="text" class="form-control" id="title"
+             [(ngModel)] = "product.title" name="title">
+    </div>
+
+    <div class="form-group">
+      <label> Description </label>
+      <input type="text" class="form-control" id="description"
+             [(ngModel)] = "product.description" name="description">
+    </div>
+
+    <div class="form-group">
+      <label> Price </label>
+      <input type="text" class="form-control" id="price"
+             [(ngModel)] = "product.price" name="price">
+    </div>
+
+    <div class="form-group">
+      <label> Image URL </label>
+      <input type="text" [(ngModel)]="product.thumbnail" class="form-control" id="thumbnail"
+             name="thumbnail">
+    </div>
+
+    <div class="form-group">
+      <label>Select Category:</label>
+      <div *ngFor="let category of categories">
+        <input type="radio" name="radioButton" value="{{category}}" (change)="selectedCategory(category)">
+        {{category.name.charAt(0).toUpperCase() + category.name.slice(1).toLowerCase()}}
+      </div>
+    </div>
+
+    <button mat-raised-button color="primary">Add new Product</button>
+
+  </form>
+</section>

@@ -28,7 +28,6 @@ import { MatListModule } from '@angular/material/list';
 import { MatMenuModule} from '@angular/material/menu';
 import {MatCardModule} from "@angular/material/card";
 
-
 @NgModule({
   declarations: [
     AppComponent,
