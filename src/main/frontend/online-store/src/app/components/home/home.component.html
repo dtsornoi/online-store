@@ -18,15 +18,17 @@
     </div>
     <div class="d-flex justify-content-center flex-wrap">
       <div *ngFor="let product of latestProducts" class="m-3">
-        <div class="card" style="width: 18rem">
-          <img src="https://images.samsung.com/is/image/samsung/ee-uhd-tu8000-ue75tu8072uxxh-front-black-269712261?$720_576_PNG$"
-               alt="image" crossorigin="card-img-top">
-          <div class="card-body text-center">
-            <h5 class="card-title">{{product.title}}</h5>
-            <p class="card-text">{{product.description}}</p>
-            <p class="card-text font-weight-bold">Price: {{product.price}} EUR</p>
-          </div>
-        </div>
+        <mat-card class="card_main">
+          <mat-card-header>
+            <mat-card-title>{{product.title}}</mat-card-title>
+          </mat-card-header>
+          <img mat-card-image src="https://images.samsung.com/is/image/samsung/ee-uhd-tu8000-ue82tu8072uxxh-front-black-269712290?$720_576_PNG$"
+               alt="product image">
+          <mat-card-content>
+            <p>{{product.description}}</p>
+            <p><strong>Price: {{product.price}} EUR</strong></p>
+          </mat-card-content>
+        </mat-card>
       </div>
     </div>
   </section>
