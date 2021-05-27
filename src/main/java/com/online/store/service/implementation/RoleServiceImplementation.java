@@ -27,7 +27,7 @@ public class RoleServiceImplementation implements RoleService {
 
     @Override
     public List<Role> findAll() {
-        return null;
+        return roleRepository.findAll();
     }
 
     @Override
@@ -50,21 +50,6 @@ public class RoleServiceImplementation implements RoleService {
         Role oldRole = findOne(role.getId());
         oldRole.setName(role.getName());
 
-        save(role);
-    }
-
-    @Override
-    public void delete(Long id) {
-        Role role = findOne(id);
-        role.setActive(false);
-        save(role);
-
-    }
-
-    @Override
-    public void restore(Long id) {
-        Role role = findOne(id);
-        role.setActive(true);
         save(role);
     }
 }

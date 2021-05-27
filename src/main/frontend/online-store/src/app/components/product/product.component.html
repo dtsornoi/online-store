@@ -18,5 +18,8 @@
         </mat-card-actions>
       </mat-card>
     </div>
+    <div *ngIf="products.length === 0">
+      <p>There are no products available, all sold out!</p>
+    </div>
   </div>
 </section>

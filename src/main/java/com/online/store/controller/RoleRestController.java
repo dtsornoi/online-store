@@ -70,26 +70,4 @@ public class RoleRestController {
         roleService.update(role);
         return new ResponseEntity<>(HttpStatus.OK);
     }
-
-    /**
-     * POST:<code>/delete/id</code>
-     * @param id of type Long for searching Role which to delete by id
-     * @return HttpStatus 200
-     */
-    @PostMapping("/delete/")
-    public ResponseEntity<HttpStatus> deleteRole(@RequestBody Role role){
-        roleService.delete(role.getId());
-        return new ResponseEntity<>(HttpStatus.OK);
-    }
-
-    /**
-     * POST:<code>/restore/id</code>
-     * @param id of type Long for searching Role which to restore by ID
-     * @return HttpStatus 200
-     */
-    @PostMapping("/restore/")
-    public ResponseEntity<HttpStatus> restoreRole(@RequestBody Role role){
-        roleService.restore(role.getId());
-        return new ResponseEntity<>(HttpStatus.OK);
-    }
 }

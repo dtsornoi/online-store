@@ -1,1 +1,68 @@
-<p>register works!</p>
+<section class="col-md-6 offset-md-3 mt-5">
+  <h3>Register</h3>
+  <form ngForm (ngSubmit)="f.form.valid && onSubmit()" #f=ngForm>
+
+    <div class="form-group">
+      <label> Login Name </label>
+      <input type="text" class="form-control" id="login_name"
+             [(ngModel)] = "userAccount.login" name="login_name">
+    </div>
+
+    <div class="form-group">
+      <label> Password </label>
+      <input type="password" class="form-control" id="password"
+             [(ngModel)] = "userAccount.password" name="password">
+    </div>
+
+    <div class="form-group">
+      <label> First Name </label>
+      <input type="text" class="form-control" id="fName"
+             [(ngModel)] = "userAccount.firstName" name="fName">
+    </div>
+
+    <div class="form-group">
+      <label> Last Name </label>
+      <input type="text" class="form-control" id="lName"
+             [(ngModel)] = "userAccount.lastName" name="lName">
+    </div>
+
+    <div class="form-group">
+      <label> Avatar Link </label>
+      <input type="text" class="form-control" id="avatar"
+             [(ngModel)] = "userAccount.avatar" name="avatar">
+    </div>
+
+    <div class="form-group">
+      <label> Country </label>
+      <input type="text" class="form-control" id="country"
+             [(ngModel)] = "userAccount.address.country" name="country">
+    </div>
+
+    <div class="form-group">
+      <label> City </label>
+      <input type="text" class="form-control" id="city"
+             [(ngModel)] = "userAccount.address.city" name="city">
+    </div>
+
+    <div class="form-group">
+      <label> Zip </label>
+      <input type="text" class="form-control" id="zip"
+             [(ngModel)] = "userAccount.address.zip" name="zip">
+    </div>
+
+    <div class="form-group">
+      <label> Street </label>
+      <input type="text" class="form-control" id="street"
+             [(ngModel)] = "userAccount.address.street" name="street">
+    </div>
+
+    <div class="form-group">
+      <label> Code </label>
+      <input type="text" class="form-control" id="code"
+             [(ngModel)] = "userAccount.address.code" name="code">
+    </div>
+
+    <button mat-raised-button color="primary">Register</button>
+
+  </form>
+</section>
