@@ -1,11 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import {UserAccount} from "../../model/user-account.module";
-import {Address} from "../../model/address.module";
 import {Role} from "../../model/role.module";
 import {RolesService} from "../../service/roles.service";
 import {UserAccountService} from "../../service/user-account.service";
 import {Router} from "@angular/router";
-import {buildLocalizeReplacement} from "@angular/localize/src/tools/src/source_file_utils";
 
 @Component({
   selector: 'app-register',
