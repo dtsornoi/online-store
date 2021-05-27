@@ -48,7 +48,7 @@ export class AddNewProductComponent implements OnInit {
         this.product.userAccount = user;
       }
     });
-    
+
     this.product.isActive = true;
     this.product.category = this.category;
     this.service.create(this.product).subscribe(
