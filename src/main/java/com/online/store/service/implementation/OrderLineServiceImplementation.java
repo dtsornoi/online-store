@@ -58,4 +58,18 @@ public class OrderLineServiceImplementation implements OrderLineService {
         orderLine.setActive(true);
         save(orderLine);
     }
+
+    @Override
+    public void quantityPlus(Long id) {
+        OrderLine orderLine = findOne(id);
+        orderLine.setQuantityOfProducts(orderLine.getQuantityOfProducts()+1);
+        save(orderLine);
+    }
+
+    @Override
+    public void quantityMinus(Long id) {
+        OrderLine orderLine = findOne(id);
+        orderLine.setQuantityOfProducts(orderLine.getQuantityOfProducts()-1);
+        save(orderLine);
+    }
 }

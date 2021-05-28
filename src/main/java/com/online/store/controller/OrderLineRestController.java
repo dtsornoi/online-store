@@ -97,4 +97,29 @@ public class OrderLineRestController {
         return new ResponseEntity<>(HttpStatus.OK);
     }
 
+    /**
+     * POST:<code>/plus/id</code>
+     *
+     * @param id of type Long for adding qty OrderLine by Id in DB
+     * @return HttpStatus 200
+     */
+    @PostMapping("/plus/{id}")
+    public ResponseEntity<HttpStatus> quantityPlus(@PathVariable("id") long id) {
+        orderLineService.quantityPlus(id);
+        return new ResponseEntity<>(HttpStatus.OK);
+    }
+
+    /**
+     * POST:<code>/minus/id</code>
+     *
+     * @param id of type Long for remove qty OrderLine by Id in DB
+     * @return HttpStatus 200
+     */
+    @PostMapping("/minus/{id}")
+    public ResponseEntity<HttpStatus> quantityMinus(@PathVariable("id") long id) {
+        orderLineService.quantityMinus(id);
+        return new ResponseEntity<>(HttpStatus.OK);
+    }
+
+
 }
