@@ -9,14 +9,17 @@ import { OrderLineService } from 'src/app/service/order-line.service';
   styleUrls: ['./cart.component.css']
 })
 export class CartComponent implements OnInit {
+  order: OrderLine = {};
   orderLines: OrderLine[] = [];
   totalPrice: number;
+
 
   constructor(private service: OrderLineService,
     private router: Router) { }
 
   ngOnInit(): void {
     this.getAllOrderLines();
+  
   }
 
   private getAllOrderLines() {
@@ -40,4 +43,10 @@ export class CartComponent implements OnInit {
     this.service.quantityMinus(id).subscribe(error => console.log(error));
     window.location.reload();
   }
+
+  deleteItem(id: number){
+      this.service.delete(id).subscribe(error => console.log(error));
+      window.location.reload();   
+  }
+
 }

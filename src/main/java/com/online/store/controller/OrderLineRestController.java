@@ -44,7 +44,7 @@ public class OrderLineRestController {
      * @return OrderLine with with specified Id and HttpStatus.OK
      */
     @GetMapping("/{id}")
-    public ResponseEntity<OrderLine> getOrderLineById(@PathVariable("id") long id) {
+    public ResponseEntity<OrderLine> getOrderLineById(@PathVariable("id") Long id) {
         OrderLine orderLine = orderLineService.findOne(id);
         return new ResponseEntity<>(orderLine, HttpStatus.OK);
     }
@@ -57,6 +57,7 @@ public class OrderLineRestController {
      */
     @PostMapping("/")
     public ResponseEntity<HttpStatus> createOrderLine(@RequestBody OrderLine orderLine) {
+        orderLine.setActive(true);
         orderLineService.save(orderLine);
         return new ResponseEntity<>(HttpStatus.CREATED);
     }
@@ -80,7 +81,7 @@ public class OrderLineRestController {
      * @return HttpStatus 200
      */
     @PostMapping("/delete/{id}")
-    public ResponseEntity<HttpStatus> deleteOrderLine(@PathVariable("id") long id) {
+    public ResponseEntity<HttpStatus> deleteOrderLine(@PathVariable("id") Long id) {
         orderLineService.delete(id);
         return new ResponseEntity<>(HttpStatus.OK);
     }
@@ -91,9 +92,9 @@ public class OrderLineRestController {
      * @param id of type Long for restoring OrderLine by Id in DB
      * @return HttpStatus 200
      */
-    @PostMapping("/restore/{id}")
-    public ResponseEntity<HttpStatus> restoreOrderLine(@PathVariable("id") long id) {
-        orderLineService.restore(id);
+    @PostMapping("/restore")
+    public ResponseEntity<HttpStatus> restoreOrderLine(@RequestBody OrderLine orderLine) {
+        orderLineService.restore(orderLine);
         return new ResponseEntity<>(HttpStatus.OK);
     }
 
@@ -104,7 +105,7 @@ public class OrderLineRestController {
      * @return HttpStatus 200
      */
     @PostMapping("/plus/{id}")
-    public ResponseEntity<HttpStatus> quantityPlus(@PathVariable("id") long id) {
+    public ResponseEntity<HttpStatus> quantityPlus(@PathVariable("id") Long id) {
         orderLineService.quantityPlus(id);
         return new ResponseEntity<>(HttpStatus.OK);
     }
@@ -116,7 +117,7 @@ public class OrderLineRestController {
      * @return HttpStatus 200
      */
     @PostMapping("/minus/{id}")
-    public ResponseEntity<HttpStatus> quantityMinus(@PathVariable("id") long id) {
+    public ResponseEntity<HttpStatus> quantityMinus(@PathVariable("id") Long id) {
         orderLineService.quantityMinus(id);
         return new ResponseEntity<>(HttpStatus.OK);
     }
