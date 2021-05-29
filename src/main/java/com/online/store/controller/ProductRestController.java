@@ -92,7 +92,7 @@ public class ProductRestController {
      * @return HttpStatus 200
      */
     @PostMapping("/delete/{id}")
-    public ResponseEntity<HttpStatus> deleteProduct(@PathVariable("id") long id) {
+    public ResponseEntity<HttpStatus> deleteProduct(@PathVariable("id") Long id) {
         productService.delete(id);
         return new ResponseEntity<>(HttpStatus.OK);
     }
@@ -104,7 +104,7 @@ public class ProductRestController {
      * @return HttpStatus 200
      */
     @PostMapping("/restore/{id}")
-    public ResponseEntity<HttpStatus> restoreProduct(@PathVariable("id") long id) {
+    public ResponseEntity<HttpStatus> restoreProduct(@PathVariable("id") Long id) {
         productService.restore(id);
         return new ResponseEntity<>(HttpStatus.OK);
     }

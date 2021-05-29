@@ -49,13 +49,13 @@ public class UserAccountServiceImplementation implements UserAccountService {
     public void delete(Long id) {
         UserAccount userAccount = findOne(id);
         userAccount.setActive(false);
-        save(userAccount);
+        userAccountRepository.saveAndFlush(userAccount);
     }
 
     @Override
     public void restore(Long id) {
         UserAccount userAccount = findOne(id);
         userAccount.setActive(true);
-        save(userAccount);
+        userAccountRepository.saveAndFlush(userAccount);
     }
 }
