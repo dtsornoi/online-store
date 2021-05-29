@@ -35,22 +35,26 @@ export class ProductDescriptionComponent implements OnInit {
     this.productService.get(this.productId).subscribe(
       data => {
         this.selectedProduct = data;
-        for (let number = 1; number <=this.selectedProduct.quantity; number++){
-          this.quantity.push(number);
+
+        let i = 1;
+        while (i <= this.selectedProduct.quantity){
+          this.quantity.push(i);
+          i++;
         }
       }
     );
 
-    if (this.selectedQuantity == this.selectedProduct.quantity){
-      this.productService.delete(this.productId).subscribe(
-        data => window.location.reload()
-      );
-    }
+
+
   }
 
   addToCart(productId: number){
     this.orderLines.isActive = true;
     this.orderLines.quantityOfProducts = this.selectedQuantity;
+
+    let remainedQuantity = this.selectedProduct.quantity - this.selectedQuantity;
+    this.selectedProduct.quantity = remainedQuantity;
+    this.productService.update(this.selectedProduct).subscribe(error => console.log(error));
     this.orderLines.product.id = productId;
     this.orderLineService.create(this.orderLines).subscribe(error => console.log(error));
   }

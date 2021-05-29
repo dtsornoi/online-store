@@ -8,13 +8,10 @@
     <p>{{selectedProduct.description}}</p>
     <p><strong>Price: {{selectedProduct.price}} EUR</strong></p>
     <p>Quantity: {{selectedProduct.quantity}}</p>
-    <mat-form-field appearance="fill">
-      <mat-label>Select</mat-label>
-      <mat-select *ngFor="let number of quantity">
-        <mat-option [(ngModel)]="selectedQuantity" value="{{number}}">{{number}}</mat-option>
-      </mat-select>
-    </mat-form-field>
-    <i class="mb-lg-3">{{selectedProduct.category.name}}</i>
+    <select class="mb-lg-3 custom-select" name="selection">
+      <option ngDefaultControl *ngFor="let number of quantity" [(ngModel)]="selectedQuantity" value="{{number}}">{{number}}</option>
+    </select>
+    <i class="mb-lg-3 ">{{selectedProduct.category.name}}</i>
     <button mat-raised-button color="primary" (click)="addToCart(selectedProduct.id)">Add to Cart</button>
   </div>
 </section>
