@@ -25,11 +25,16 @@ public class ProductServiceImplementation implements ProductService {
     }
 
     @Override
-    public List<Product> findAll() {
+    public List<Product> findAllActive() {
         return productRepository.findAll()
                 .stream()
-                .filter(product -> product.isActive())
+                .filter(Product::isActive)
                 .collect(Collectors.toList());
+    }
+
+    @Override
+    public List<Product> findAll() {
+        return productRepository.findAll();
     }
 
     @Override

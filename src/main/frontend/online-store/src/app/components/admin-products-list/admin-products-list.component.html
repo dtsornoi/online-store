@@ -1,0 +1,28 @@
+<section class="container mt-5">
+  <div>
+    <table class="table m-3">
+      <thead>
+      <tr>
+        <th scope="col">Id</th>
+        <th scope="col">Title</th>
+        <th scope="col">Price</th>
+        <th scope="col">Quantity</th>
+        <th scope="col">isActive</th>
+        <th scope="col">Actions</th>
+      </tr>
+      </thead>
+      <tbody *ngFor="let product of products">
+      <tr>
+        <th scope="row">{{product.id}}</th>
+        <td>{{product.title}}</td>
+        <td>{{product.price}}</td>
+        <td>{{product.quantity}}</td>
+        <td>{{product.isActive}}</td>
+        <td>
+          <button mat-raised-button color="accent" (click) = "changeProductStatus(product.id, product.isActive)" class="mr-3">{{ product.isActive ? 'Deactivate': 'Activate' }}</button>
+        </td>
+      </tr>
+      </tbody>
+    </table>
+  </div>
+</section>

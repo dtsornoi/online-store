@@ -1,4 +1,4 @@
-<section class="container d-flex justify-content-around">
+<section class="container d-flex justify-content-around mt-5">
   <div class="d-flex flex-column">
     <h1>{{selectedProduct.title}}</h1>
     <img src="{{selectedProduct.thumbnail}}" alt="{{selectedProduct.title}}" class="img-fluid">
@@ -7,6 +7,13 @@
     <h1>Description: </h1>
     <p>{{selectedProduct.description}}</p>
     <p><strong>Price: {{selectedProduct.price}} EUR</strong></p>
+    <p>Quantity: {{selectedProduct.quantity}}</p>
+    <mat-form-field appearance="fill">
+      <mat-label>Select</mat-label>
+      <mat-select *ngFor="let number of quantity">
+        <mat-option [(ngModel)]="selectedQuantity" value="{{number}}">{{number}}</mat-option>
+      </mat-select>
+    </mat-form-field>
     <i class="mb-lg-3">{{selectedProduct.category.name}}</i>
     <button mat-raised-button color="primary" (click)="addToCart(selectedProduct.id)">Add to Cart</button>
   </div>

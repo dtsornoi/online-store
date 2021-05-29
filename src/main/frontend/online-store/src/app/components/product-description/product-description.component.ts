@@ -20,6 +20,8 @@ export class ProductDescriptionComponent implements OnInit {
   orderLines: OrderLine = {
     product: {}
   };
+  quantity: number[] = [];
+  selectedQuantity: number;
 
   constructor(
     private productService: ProductService,
@@ -33,13 +35,22 @@ export class ProductDescriptionComponent implements OnInit {
     this.productService.get(this.productId).subscribe(
       data => {
         this.selectedProduct = data;
+        for (let number = 1; number <=this.selectedProduct.quantity; number++){
+          this.quantity.push(number);
+        }
       }
-    )
+    );
+
+    if (this.selectedQuantity == this.selectedProduct.quantity){
+      this.productService.delete(this.productId).subscribe(
+        data => window.location.reload()
+      );
+    }
   }
 
   addToCart(productId: number){
     this.orderLines.isActive = true;
-    this.orderLines.quantityOfProducts = 1;
+    this.orderLines.quantityOfProducts = this.selectedQuantity;
     this.orderLines.product.id = productId;
     this.orderLineService.create(this.orderLines).subscribe(error => console.log(error));
   }

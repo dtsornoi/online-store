@@ -28,6 +28,9 @@ import { MatListModule } from '@angular/material/list';
 import { MatMenuModule} from '@angular/material/menu';
 import {MatCardModule} from "@angular/material/card";
 import { ProductDescriptionComponent } from './components/product-description/product-description.component';
+import {MatOptionModule} from '@angular/material/core';
+import { AdminProductsListComponent } from './components/admin-products-list/admin-products-list.component';
+import { MatFormFieldModule} from '@angular/material/form-field';
 
 @NgModule({
   declarations: [
@@ -43,25 +46,28 @@ import { ProductDescriptionComponent } from './components/product-description/pr
     FooterComponent,
     UpdateCustomerComponent,
     MainNavComponent,
-    ProductDescriptionComponent
+    ProductDescriptionComponent,
+    AdminProductsListComponent
   ],
-  imports: [
-    BrowserModule,
-    AppRoutingModule,
-    HttpClientModule,
-    FormsModule,
-    NgbModule,
-    BrowserAnimationsModule,
-    FlexLayoutModule,
-    LayoutModule,
-    MatToolbarModule,
-    MatButtonModule,
-    MatSidenavModule,
-    MatIconModule,
-    MatListModule,
-    MatMenuModule,
-    MatCardModule
-  ],
+    imports: [
+        BrowserModule,
+        AppRoutingModule,
+        HttpClientModule,
+        FormsModule,
+        NgbModule,
+        BrowserAnimationsModule,
+        FlexLayoutModule,
+        LayoutModule,
+        MatToolbarModule,
+        MatButtonModule,
+        MatSidenavModule,
+        MatIconModule,
+        MatListModule,
+        MatMenuModule,
+        MatCardModule,
+        MatOptionModule,
+        MatFormFieldModule
+    ],
   providers: [],
   bootstrap: [AppComponent]
 })
