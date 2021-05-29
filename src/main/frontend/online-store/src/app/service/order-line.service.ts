@@ -34,8 +34,8 @@ export class OrderLineService {
     return this.http.put(`${URL}/`, orderLine);
   }
 
-  delete(orderLine): Observable<any>{
-    return this.http.post(`${URL}/delete`, orderLine);
+  delete(id): Observable<any>{
+    return this.http.post(`${URL}/delete/${id}`, null);
   }
 
   restore(orderLine): Observable<any>{

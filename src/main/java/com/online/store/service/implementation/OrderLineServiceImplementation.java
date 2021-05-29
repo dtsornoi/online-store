@@ -6,6 +6,7 @@ import com.online.store.service.OrderLineService;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.stream.Collectors;
 
 /**
  * Service Implementation for OrderLine.class
@@ -24,7 +25,7 @@ public class OrderLineServiceImplementation implements OrderLineService {
 
     @Override
     public List<OrderLine> findAll() {
-        return orderLineRepository.findAll();
+        return orderLineRepository.findAll().stream().filter(orderLine -> orderLine.isActive()).collect(Collectors.toList());
     }
 
     @Override
@@ -53,10 +54,10 @@ public class OrderLineServiceImplementation implements OrderLineService {
     }
 
     @Override
-    public void restore(Long id) {
-        OrderLine orderLine = findOne(id);
-        orderLine.setActive(true);
-        save(orderLine);
+    public void restore(OrderLine orderLine) {
+        OrderLine upcomingOrderLine = findOne(orderLine.getId());
+        upcomingOrderLine.setActive(true);
+        orderLineRepository.saveAndFlush(orderLine);
     }
 
     @Override
