@@ -1,1 +1,40 @@
-<p>cart works!</p>
+<section class="container mt-5">
+    <div>
+      <table class="table m-3">
+        <thead>
+          <tr>
+             <th scope="col">Id</th>
+             <th scope="col">Title</th>
+             <th scope="col">Description</th>
+             <th scope="col">Price</th>
+             <th scope="col">Quantity</th>
+             <th scope="col">Actions</th>
+          </tr>
+        </thead>
+        <tbody *ngFor="let orderLine of orderLines">
+         <tr>
+           <th scope="row">{{orderLine.id}}</th>
+           <td>{{orderLine.product.title}}</td>
+           <td>{{orderLine.product.description}}</td>
+           <td>{{orderLine.product.price}}</td>
+           <td>{{orderLine.quantityOfProducts}}</td>
+             <td>
+              <button mat-raised-button color="primary" (click) = "quantityPlus(orderLine.id)" class="mr-3">+</button>
+              <button mat-raised-button color="primary" (click) = "quantityMinus(orderLine.id)" class="mr-3">-</button>
+             </td>
+         </tr>
+        </tbody>
+         <tfoot>
+          <tr>
+            <th scope="col">Total:</th>
+            <td></td>
+            <td></td>
+            <th scope="col">{{totalPrice | number : '1.2-2'}}</th>
+            <td></td>
+            <td></td>
+          </tr>
+         </tfoot>
+      </table>
+    </div>
+ </section>
+ 

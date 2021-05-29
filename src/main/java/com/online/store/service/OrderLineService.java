@@ -23,4 +23,8 @@ public interface OrderLineService {
     void delete(Long id);
 
     void restore(Long id);
+
+    void quantityPlus(Long id);
+
+    void quantityMinus(Long id);
 }
