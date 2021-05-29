@@ -36,6 +36,7 @@ public class UserAccountServiceImplementation implements UserAccountService {
 
     @Override
     public void save(UserAccount userAccount) {
+        userAccount.setActive(true);
         userAccountRepository.saveAndFlush(userAccount);
     }
 

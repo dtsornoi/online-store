@@ -9,12 +9,10 @@
         <img mat-card-lg-image src="{{product.thumbnail}}"
              alt="{{product.title}}">
         <mat-card-content>
-          <p>{{product.description}}</p>
           <p>Price: {{product.price}} EUR</p>
-          <i>Category: {{product.category.name.charAt(0) + product.category.name.slice(1).toLowerCase()}}</i>
         </mat-card-content>
         <mat-card-actions>
-          <button mat-raised-button color="primary" (click) = "addToCart(product.id)">Add to cart</button>
+          <button mat-raised-button color="primary" (click)="goToProductDescription(product.id)">View Product</button>
         </mat-card-actions>
       </mat-card>
     </div>
