@@ -17,5 +17,6 @@ export class Products {
     isActive?: boolean;
     category?: Category;
     userAccount?: UserAccount;
-    active?:boolean;
+    active?: boolean;
+
 }
