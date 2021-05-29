@@ -1,0 +1,19 @@
+img {
+  width: 400px;
+  height: 400px;
+}
+
+section {
+  min-height: 80vh;
+}
+
+p {
+  font-size: 1.4rem;
+  line-height: 1.5rem;
+  margin-bottom: 2rem;
+}
+
+h1 {
+  font-size: 2rem;
+  margin-bottom: 3rem;
+}
