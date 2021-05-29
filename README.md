@@ -15,7 +15,6 @@ As part of our project, we created an application that allows you to add product
   - Registration
   - List of products
   - Product table with pagination
-  - Weather forecast for the user's city  
   
 ## Team  
   
