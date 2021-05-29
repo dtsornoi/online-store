@@ -10,6 +10,8 @@ import java.util.List;
  * @author Dmitri Tsornoi
  */
 public interface ProductService {
+    List<Product> findAllActive();
+
     List<Product> findAll();
 
     Product findOne(Long id);

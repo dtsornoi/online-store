@@ -39,6 +39,17 @@ public class ProductRestController {
     }
 
     /**
+     * GET:<code>/active</code>
+     *
+     * @return List of all Active Products
+     */
+    @GetMapping("/active")
+    public ResponseEntity<List<Product>> getAllActiveProducts() {
+        List<Product> orders = productService.findAllActive();
+        return new ResponseEntity<>(orders, HttpStatus.OK);
+    }
+
+    /**
      * GET:<code>/id</code>
      *
      * @param id of type Long for searching Product by Id in DB

@@ -31,6 +31,8 @@ public class Product {
 
     private double price;
 
+    private Long quantity;
+
     private boolean isActive;
 
     @ManyToOne

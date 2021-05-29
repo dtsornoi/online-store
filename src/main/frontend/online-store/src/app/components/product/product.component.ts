@@ -1,8 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { OrderLine } from 'src/app/model/order-line.module';
 import { Products } from 'src/app/model/products.module';
-import { OrderLineService } from 'src/app/service/order-line.service';
 import { ProductService } from 'src/app/service/product.service';
+import {Router} from '@angular/router';
 
 @Component({
   selector: 'app-product',
@@ -11,25 +10,22 @@ import { ProductService } from 'src/app/service/product.service';
 })
 export class ProductComponent implements OnInit {
   products: Products[] = [];
-  orderLines: OrderLine = {
-    product: {}
-  };
 
-  constructor(private productService: ProductService,
-    private orderLineService: OrderLineService) { }
+
+  constructor(
+    private productService: ProductService,
+    private router: Router
+    ) { }
 
   ngOnInit(): void {
-    this.productService.getAll().subscribe(
+    this.productService.getAllActive().subscribe(
       data => {
         this.products = data;
       }
     );
   }
 
-  addToCart(productId: number){
-    this.orderLines.isActive = true;
-    this.orderLines.quantityOfProducts = 1;
-    this.orderLines.product.id = productId;
-    this.orderLineService.create(this.orderLines).subscribe(error => console.log(error));
+  goToProductDescription(id): void {
+    this.router.navigate([`product-description/${id}`]);
   }
 }

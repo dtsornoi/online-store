@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.stream.Collectors;
 
 /**
  * Service implementation for Product.class
@@ -24,6 +25,14 @@ public class ProductServiceImplementation implements ProductService {
     }
 
     @Override
+    public List<Product> findAllActive() {
+        return productRepository.findAll()
+                .stream()
+                .filter(Product::isActive)
+                .collect(Collectors.toList());
+    }
+
+    @Override
     public List<Product> findAll() {
         return productRepository.findAll();
     }
@@ -35,6 +44,7 @@ public class ProductServiceImplementation implements ProductService {
 
     @Override
     public void save(Product product) {
+        product.setActive(true);
         productRepository.saveAndFlush(product);
     }
 
@@ -48,20 +58,20 @@ public class ProductServiceImplementation implements ProductService {
         oldProduct.setTitle(product.getTitle());
         oldProduct.setPrice(product.getPrice());
 
-        save(oldProduct);
+        productRepository.saveAndFlush(oldProduct);
     }
 
     @Override
     public void delete(Long id) {
         Product product = findOne(id);
         product.setActive(false);
-        save(product);
+        productRepository.saveAndFlush(product);
     }
 
     @Override
     public void restore(Long id) {
         Product product = findOne(id);
         product.setActive(true);
-        save(product);
+        productRepository.saveAndFlush(product);
     }
 }

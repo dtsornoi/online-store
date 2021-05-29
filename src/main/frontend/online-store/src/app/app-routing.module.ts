@@ -7,6 +7,8 @@ import { UpdateCustomerComponent } from './components/update-customer/update-cus
 import {AddNewProductComponent} from "./components/add-new-product/add-new-product.component";
 import {RegisterComponent} from "./components/register/register.component";
 import { CartComponent } from './components/cart/cart.component';
+import {ProductDescriptionComponent} from './components/product-description/product-description.component';
+import {AdminProductsListComponent} from './components/admin-products-list/admin-products-list.component';
 
 
 const routes: Routes = [
@@ -16,7 +18,9 @@ const routes: Routes = [
   { path: 'update-customer/:id', component: UpdateCustomerComponent},
   { path: 'new-product', component: AddNewProductComponent},
   { path: 'register', component: RegisterComponent},
-  { path: 'cart', component: CartComponent}
+  { path: 'cart', component: CartComponent},
+  { path: 'product-description/:id', component: ProductDescriptionComponent},
+  { path: 'admin-products-list', component: AdminProductsListComponent}
 ];
 
 @NgModule({

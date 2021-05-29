@@ -10,6 +10,8 @@
       <a mat-list-item routerLink="product">Product</a>
       <a mat-list-item routerLink="customer">User</a>
       <a mat-list-item routerLink="new-product">Add new Product</a>
+      <a mat-list-item routerLink="admin-products-list">Admin Products</a>
+      <a mat-list-item routerLink="cart">Cart</a>
     </mat-nav-list>
   </mat-sidenav>
   <mat-sidenav-content>
@@ -24,12 +26,13 @@
       </button>
       <span routerLink="/">Online Store App</span>
       <span class="spacer"></span>
-      <a routerLink="cart">Cart</a>
       <a routerLink="product">Product</a>
       <button class="mobile-menu" mat-button [matMenuTriggerFor]="menu">User</button>
       <mat-menu #menu="matMenu">
       <button mat-menu-item routerLink="customer">Customer List</button>
+      <button mat-menu-item routerLink="admin-products-list">Admin Products</button>
         <button mat-menu-item routerLink="new-product">Add new Product</button>
+        <button mat-menu-item routerLink="cart">Cart</button>
       </mat-menu>
     </mat-toolbar>
     <ng-content></ng-content>

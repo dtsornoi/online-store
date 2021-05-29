@@ -12,7 +12,7 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication
-public class StoreApplication { //implements CommandLineRunner {
+public class StoreApplication implements CommandLineRunner {
 
     @Autowired
     private CategoryRepository categoryRepository;
@@ -24,7 +24,7 @@ public class StoreApplication { //implements CommandLineRunner {
         SpringApplication.run(StoreApplication.class, args);
     }
 
-/*    @Override
+    @Override
     public void run(String... args) throws Exception {
         Category foods = new Category();
         foods.setName(CategoryType.FOODS);
@@ -53,5 +53,5 @@ public class StoreApplication { //implements CommandLineRunner {
         roleRepository.deleteAll();
         roleRepository.save(admin);
         roleRepository.save(user);
-    }*/
+    }
 }

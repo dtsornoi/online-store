@@ -17,7 +17,7 @@ import java.util.List;
 @Service
 public class AddressServiceImplementation implements AddressService {
 
-    private AddressRepository addressRepository;
+    private final AddressRepository addressRepository;
 
     @Autowired
     public AddressServiceImplementation(AddressRepository addressRepository) {

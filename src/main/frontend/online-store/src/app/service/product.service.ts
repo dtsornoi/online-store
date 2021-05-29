@@ -6,7 +6,7 @@ const URL = 'http://localhost:8080/api/product'
 
 /**
  * Service for Product retrieveing and persisting in backend
- * 
+ *
  * @author Mark Salumaa
  */
 
@@ -23,6 +23,10 @@ export class ProductService {
     return this.http.get(`${URL}/`);
   }
 
+  getAllActive(): Observable<any>{
+    return this.http.get(`${URL}/active`);
+  }
+
   get(id): Observable<any>{
     return this.http.get(`${URL}/${id}`);
   }
@@ -35,12 +39,12 @@ export class ProductService {
     return this.http.put(`${URL}/`, customer);
   }
 
-  delete(customer): Observable<any>{
-    return this.http.post(`${URL}/delete`, customer);
+  delete(id): Observable<any>{
+    return this.http.post(`${URL}/delete/${id}`, null);
   }
 
-  restore(customer): Observable<any>{
-    return this.http.post(`${URL}/restore`, customer);
+  restore(id): Observable<any>{
+    return this.http.post(`${URL}/restore/${{id}}`, null);
   }
 
 

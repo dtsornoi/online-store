@@ -13,6 +13,7 @@ export class Products {
     description?: string;
     thumbnail?: string;
     price?: number;
+    quantity?: number;
     isActive?: boolean;
     category?: Category;
     userAccount?: UserAccount;

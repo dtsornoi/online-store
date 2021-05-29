@@ -18,14 +18,11 @@
     </div>
     <div class="d-flex justify-content-center flex-wrap">
       <div *ngFor="let product of latestProducts" class="m-3 text-center">
-        <mat-card class="card_main">
-          <mat-card-header>
-            <mat-card-title>{{product.title}}</mat-card-title>
-          </mat-card-header>
+        <mat-card class="card_main" (click)="goToProductDescription(product.id)">
+          <mat-card-title>{{product.title}}</mat-card-title>
           <img mat-card-lg-image src="{{product.thumbnail}}"
                alt="product image" id="image">
-          <mat-card-content>
-            <p>{{product.description}}</p>
+          <mat-card-content class="mt-2">
             <p><strong>Price: {{product.price}} EUR</strong></p>
           </mat-card-content>
         </mat-card>
