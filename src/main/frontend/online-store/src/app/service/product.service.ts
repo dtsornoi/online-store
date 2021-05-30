@@ -31,12 +31,12 @@ export class ProductService {
     return this.http.get(`${URL}/${id}`);
   }
 
-  create(customer): Observable<any>{
-    return this.http.post(`${URL}/`, customer);
+  create(product): Observable<any>{
+    return this.http.post(`${URL}/`, product);
   }
 
-  update(customer): Observable<any>{
-    return this.http.put(`${URL}/`, customer);
+  update(product): Observable<any>{
+    return this.http.put(`${URL}/`, product);
   }
 
   delete(id): Observable<any>{
