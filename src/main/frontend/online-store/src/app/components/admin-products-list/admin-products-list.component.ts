@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {ProductService} from '../../service/product.service';
 import {Products} from '../../model/products.module';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-admin-products-list',
@@ -13,7 +14,8 @@ export class AdminProductsListComponent implements OnInit {
   newQuantity: number;
 
   constructor(
-    private productService: ProductService
+    private productService: ProductService,
+    private router: Router
   ) { }
 
   ngOnInit(): void {
@@ -43,4 +45,9 @@ export class AdminProductsListComponent implements OnInit {
     isActive === true ? this.productService.delete(id).subscribe(error => console.log(error)) : this.productService.restore(id).subscribe(error => console.log(error));
     window.location.reload();
   }
+
+  updateProductList(id: number){
+    this.router.navigate(['update-products-list', id]);
+  }
+
 }
