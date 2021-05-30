@@ -9,7 +9,11 @@ section{
   border: none;
 }
 
-.trash-button{
-  border: none;
-  background: none;
+table td{
+  padding-right: 100px;
+}
+
+button{
+  border:none; 
+  background:none;
 }

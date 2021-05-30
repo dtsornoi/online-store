@@ -52,7 +52,7 @@ export class ProductDescriptionComponent implements OnInit {
     this.selectedProduct.quantity = remainingQuantity;
     this.productService.update(this.selectedProduct).subscribe();
     this.orderLines.product.id = productId;
-
+    
     this.orderLineService.create(this.orderLines).subscribe(
       data => {
         if(confirm("Do you want to move to cart?")){

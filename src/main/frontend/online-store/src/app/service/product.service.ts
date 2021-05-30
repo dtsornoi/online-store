@@ -44,7 +44,7 @@ export class ProductService {
   }
 
   restore(id): Observable<any>{
-    return this.http.post(`${URL}/restore/${{id}}`, null);
+    return this.http.post(`${URL}/restore/${id}`, null);
   }
 
 
