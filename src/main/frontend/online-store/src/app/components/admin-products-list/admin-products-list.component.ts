@@ -41,5 +41,6 @@ export class AdminProductsListComponent implements OnInit {
 
   changeProductStatus(id: number, isActive: boolean) {
     isActive === true ? this.productService.delete(id).subscribe(error => console.log(error)) : this.productService.restore(id).subscribe(error => console.log(error));
+    window.location.reload();
   }
 }
