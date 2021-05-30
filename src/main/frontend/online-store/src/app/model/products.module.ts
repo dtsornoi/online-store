@@ -18,5 +18,6 @@ export class Products {
     category?: Category;
     userAccount?: UserAccount;
     active?: boolean;
+    availableQuantity?: number;
 
 }

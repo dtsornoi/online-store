@@ -48,11 +48,19 @@ export class ProductDescriptionComponent implements OnInit {
   addToCart(productId: number){
     this.orderLines.isActive = true;
     this.orderLines.quantityOfProducts = this.selectedQuantity;
+    this.selectedProduct.availableQuantity = this.selectedProduct.quantity;
     let remainingQuantity = this.selectedProduct.quantity - this.selectedQuantity;
-    this.selectedProduct.quantity = remainingQuantity;
+
+    if (remainingQuantity === 0){
+      this.selectedProduct.isActive = false;
+      this.selectedProduct.quantity = 0;
+    }else {
+      this.selectedProduct.quantity = remainingQuantity;
+    }
+
     this.productService.update(this.selectedProduct).subscribe();
     this.orderLines.product.id = productId;
-    
+
     this.orderLineService.create(this.orderLines).subscribe(
       data => {
         if(confirm("Do you want to move to cart?")){

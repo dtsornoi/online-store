@@ -35,6 +35,8 @@ public class Product {
 
     private boolean isActive;
 
+    private Long availableQuantity;
+
     @ManyToOne
     private Category category;
 

@@ -53,6 +53,7 @@ public class ProductServiceImplementation implements ProductService {
         Product oldProduct = findOne(product.getId());
         oldProduct.setUserAccount(product.getUserAccount());
         oldProduct.setQuantity(product.getQuantity());
+        oldProduct.setAvailableQuantity(product.getAvailableQuantity());
         oldProduct.setCategory(product.getCategory());
         oldProduct.setDescription(product.getDescription());
         oldProduct.setThumbnail(product.getThumbnail());
