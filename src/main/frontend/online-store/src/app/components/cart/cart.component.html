@@ -17,11 +17,17 @@
            <td>{{orderLine.product.title}}</td>
            <td>{{orderLine.product.description}}</td>
            <td>{{orderLine.product.price}}</td>
-           <td><button mat-raised-button color="primary" (click) = "quantityPlus(orderLine.id)" class="mr-3">+</button>
-            <button mat-raised-button color="primary" (click) = "quantityMinus(orderLine.id)">-</button>
+           <td>
+             <select [(ngModel)]="orderLine.quantityOfProducts" class="mb-lg-3 custom-select" name="selection">
+               <option *ngFor="let number of numberArray(orderLine.product.availableQuantity, orderLine)"
+                       name="option"
+                       value="{{number}}">
+                 {{number}}
+               </option>
+             </select>
           </td>
              <td>
-              <button (click)="deleteItem(orderLine.id)"><div class="trash"></div></button>
+              <button (click)="deleteItem(orderLine)"><div class="trash"></div></button>
              </td>
          </tr>
         </tbody>
@@ -38,4 +44,3 @@
       </table>
     </div>
  </section>
- 

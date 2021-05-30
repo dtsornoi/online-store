@@ -19,7 +19,7 @@ export class HomeComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
-    this.productService.getAll().subscribe(
+    this.productService.getAllActive().subscribe(
       data => {
         this.products = data;
         if (this.products.length >= 3){
