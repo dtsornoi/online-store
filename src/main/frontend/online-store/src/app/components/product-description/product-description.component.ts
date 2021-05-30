@@ -36,13 +36,19 @@ export class ProductDescriptionComponent implements OnInit {
     this.productService.get(this.productId).subscribe(
       data => {
         this.selectedProduct = data;
-        let i = 1;
-        while (i <= this.selectedProduct.quantity){
-          this.quantity.push(i);
-          i++;
-        }
+
+        this.numberToQuantityArray(this.selectedProduct.quantity);
       }
     );
+
+  }
+
+  numberToQuantityArray(int: number) {
+    let i = 1;
+    while (i <= int){
+      this.quantity.push(i);
+      i++;
+    }
   }
 
   addToCart(productId: number){
@@ -50,18 +56,15 @@ export class ProductDescriptionComponent implements OnInit {
     this.orderLines.quantityOfProducts = this.selectedQuantity;
     this.selectedProduct.availableQuantity = this.selectedProduct.quantity;
     let remainingQuantity = this.selectedProduct.quantity - this.selectedQuantity;
-
-    if (remainingQuantity === 0){
-      this.selectedProduct.isActive = false;
-      this.selectedProduct.quantity = 0;
-    }else {
-      this.selectedProduct.quantity = remainingQuantity;
-    }
-
+    this.selectedProduct.quantity = remainingQuantity;
     this.productService.update(this.selectedProduct).subscribe();
     this.orderLines.product.id = productId;
 
-    this.orderLineService.create(this.orderLines).subscribe(
+    this.createOrderLine(this.orderLines);
+  }
+
+  createOrderLine(orderLine: OrderLine) {
+    this.orderLineService.create(orderLine).subscribe(
       data => {
         if(confirm("Do you want to move to cart?")){
           this.router.navigate(['cart']);
@@ -71,4 +74,5 @@ export class ProductDescriptionComponent implements OnInit {
       }
     );
   }
+
 }
