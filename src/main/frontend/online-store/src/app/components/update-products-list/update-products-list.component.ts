@@ -31,8 +31,18 @@ export class UpdateProductsListComponent implements OnInit {
       },
       error => console.log(error));
     }
+
     goToProductsList(){
       this.router.navigate(['/admin-products-list']);
+    }
+
+
+    cancel(){
+      if(confirm("Are you sure you want to cancel?")){
+        this.router.navigate(['/admin-products-list']);
+      }else {
+        window.location.reload();
+      }
     }
 
 }
