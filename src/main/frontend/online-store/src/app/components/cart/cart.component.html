@@ -17,11 +17,11 @@
            <td>{{orderLine.product.title}}</td>
            <td>{{orderLine.product.description}}</td>
            <td>{{orderLine.product.price}}</td>
-           <td>{{orderLine.quantityOfProducts}}</td>
+           <td><button mat-raised-button color="primary" (click) = "quantityPlus(orderLine.id)" class="mr-3">+</button>
+            <button mat-raised-button color="primary" (click) = "quantityMinus(orderLine.id)">-</button>
+          </td>
              <td>
-              <button mat-raised-button color="primary" (click) = "quantityPlus(orderLine.id)" class="mr-3">+</button>
-              <button mat-raised-button color="primary" (click) = "quantityMinus(orderLine.id)" class="mr-3">-</button>
-              <button style="border:none;background:none;" (click)="deleteItem(orderLine.id)" class="mt-3"><div class="trash"></div></button>
+              <button (click)="deleteItem(orderLine.id)"><div class="trash"></div></button>
              </td>
          </tr>
         </tbody>

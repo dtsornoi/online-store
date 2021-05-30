@@ -57,5 +57,6 @@ export class ProductDescriptionComponent implements OnInit {
     this.productService.update(this.selectedProduct).subscribe(error => console.log(error));
     this.orderLines.product.id = productId;
     this.orderLineService.create(this.orderLines).subscribe(error => console.log(error));
+    window.location.reload();
   }
 }
