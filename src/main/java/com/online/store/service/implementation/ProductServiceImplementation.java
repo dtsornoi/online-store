@@ -38,6 +38,11 @@ public class ProductServiceImplementation implements ProductService {
     }
 
     @Override
+    public List<Product> findByCategoryId(Long id) {
+        return productRepository.findByCategoryId(id);
+    }
+
+    @Override
     public Product findOne(Long id) {
         return productRepository.findById(id).orElseThrow(() -> new RuntimeException("Product not found"));
     }
