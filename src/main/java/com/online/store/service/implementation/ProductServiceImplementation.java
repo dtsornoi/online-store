@@ -61,7 +61,7 @@ public class ProductServiceImplementation implements ProductService {
         oldProduct.setAvailableQuantity(product.getAvailableQuantity());
         oldProduct.setCategory(product.getCategory());
         oldProduct.setDescription(product.getDescription());
-        oldProduct.setThumbnail(product.getThumbnail());
+        oldProduct.setImages(product.getImages());
         oldProduct.setTitle(product.getTitle());
         oldProduct.setPrice(product.getPrice());
 

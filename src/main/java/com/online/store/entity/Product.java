@@ -6,6 +6,7 @@ import lombok.NoArgsConstructor;
 import lombok.RequiredArgsConstructor;
 
 import javax.persistence.*;
+import java.util.List;
 
 /**
  * POJO class for Product Entity
@@ -27,8 +28,6 @@ public class Product {
 
     private String description;
 
-    private String thumbnail;
-
     private double price;
 
     private Long quantity;
@@ -42,4 +41,7 @@ public class Product {
 
     @ManyToOne
     private UserAccount userAccount;
+
+    @OneToMany
+    private List<Image> images;
 }
