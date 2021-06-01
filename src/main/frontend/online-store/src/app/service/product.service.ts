@@ -27,6 +27,10 @@ export class ProductService {
     return this.http.get(`${URL}/active`);
   }
 
+  filterByComponentId(id): Observable<any>{
+    return this.http.get(`${URL}/filter/${id}`);
+  }
+
   get(id): Observable<any>{
     return this.http.get(`${URL}/${id}`);
   }

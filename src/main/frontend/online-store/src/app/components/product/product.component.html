@@ -1,5 +1,14 @@
 <section class="container mb-3">
   <h1 class="text-center m-3">List of all our Products</h1>
+  <mat-form-field appearance="fill">
+    <mat-label>Filter by Category</mat-label>
+    <mat-select>
+      <mat-option (click)="applyFilter(-1)">NONE</mat-option>
+      <mat-option *ngFor="let filter of filters" [value]="filter.id" (click)="applyFilter(filter.id)">
+        {{filter.name}}
+      </mat-option>
+    </mat-select>
+  </mat-form-field>
   <div class="d-flex justify-content-center flex-wrap">
     <div *ngFor="let product of products" class="m-2">
       <mat-card class="card_width text-center" (click)="goToProductDescription(product.id)">

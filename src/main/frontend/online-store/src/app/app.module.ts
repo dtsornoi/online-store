@@ -27,6 +27,7 @@ import { MatIconModule } from '@angular/material/icon';
 import { MatListModule } from '@angular/material/list';
 import { MatMenuModule} from '@angular/material/menu';
 import {MatCardModule} from "@angular/material/card";
+import {MatSelectModule} from '@angular/material/select';
 import { ProductDescriptionComponent } from './components/product-description/product-description.component';
 import {MatOptionModule} from '@angular/material/core';
 import { AdminProductsListComponent } from './components/admin-products-list/admin-products-list.component';
@@ -67,6 +68,7 @@ import { UpdateProductsListComponent } from './components/update-products-list/u
         MatListModule,
         MatMenuModule,
         MatCardModule,
+        MatSelectModule,
         MatOptionModule,
         MatFormFieldModule
     ],

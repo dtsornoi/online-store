@@ -62,6 +62,18 @@ public class ProductRestController {
     }
 
     /**
+     * GET:<code>/filter/id</code>
+     *
+     * @param id of type Long for searching Product by Id in DB
+     * @return Order with with specified Id and HttpStatus.OK
+     */
+    @GetMapping("/filter/{id}")
+    public ResponseEntity<List<Product>> findByCategoryId(@PathVariable("id") long id) {
+        List<Product> products = productService.findByCategoryId(id);
+        return new ResponseEntity<>(products, HttpStatus.OK);
+    }
+
+    /**
      * POST:<code>/</code>
      *
      * @param product from UI to be persisted to DB

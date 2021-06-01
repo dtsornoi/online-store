@@ -14,6 +14,8 @@ public interface ProductService {
 
     List<Product> findAll();
 
+    List<Product> findByCategoryId(Long id);
+
     Product findOne(Long id);
 
     void save(Product product);
