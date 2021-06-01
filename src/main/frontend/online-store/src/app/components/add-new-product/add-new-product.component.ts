@@ -58,7 +58,7 @@ export class AddNewProductComponent implements OnInit {
     );
   }
 
-  selectedCategory(category: Category) {
-    this.category = category;
+  toUpperCase(str: string): string {
+    return str.charAt(0).toUpperCase() + str.slice(1).toLowerCase();
   }
 }
