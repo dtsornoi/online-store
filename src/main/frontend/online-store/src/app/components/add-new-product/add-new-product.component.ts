@@ -6,6 +6,7 @@ import {Category} from "../../model/category.module";
 import {CategoryService} from "../../service/category.service";
 import {UserAccountService} from "../../service/user-account.service";
 import {UserAccount} from "../../model/user-account.module";
+import { AbstractControl, FormArray, FormBuilder, FormGroup } from '@angular/forms';
 
 @Component({
   selector: 'app-add-new-product',
@@ -19,13 +20,35 @@ export class AddNewProductComponent implements OnInit {
   categories: Category[] = [];
   userId: number;
   userAccounts: UserAccount[] = [];
+  imageForm: FormGroup;
 
   constructor(
     private service: ProductService,
     private router: Router,
     private categoryService: CategoryService,
-    private userService: UserAccountService
-  ) { }
+    private userService: UserAccountService,
+    private formBuilder: FormBuilder
+  ) {
+    this.imageForm = this.formBuilder.group({
+      images: this.formBuilder.array([
+        this.formBuilder.control(null)
+      ])
+    })
+   }
+
+  addImage(): void {
+    (this.imageForm.get('images') as FormArray).push(
+      this.formBuilder.control(null)
+    );
+  } 
+
+  removeImage(index) {
+    (this.imageForm.get('images') as FormArray).removeAt(index);
+  }
+
+  getImagesFormControls(): AbstractControl[]{
+    return(<FormArray> this.imageForm.get('images')).controls
+  }
 
   ngOnInit(): void {
     this.categoryService.getAll().subscribe(

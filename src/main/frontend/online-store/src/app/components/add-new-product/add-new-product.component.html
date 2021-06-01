@@ -1,6 +1,6 @@
 <section class="col-md-6 offset-md-3 mt-5">
   <h2>Add new Product</h2>
-  <form ngForm (ngSubmit)="f.form.valid && onSubmit()" #f=ngForm>
+  <form [formGroup]="imageForm" ngForm (ngSubmit)="f.form.valid && onSubmit()" #f=ngForm>
 
     <div class="form-group">
       <label> Title </label>
@@ -26,12 +26,15 @@
              [(ngModel)] = "product.quantity" name="quantity">
     </div>
 
-    <div class="form-group">
-      <label> Image URL </label>
-      <input type="text" [(ngModel)]="product.thumbnail" class="form-control" id="thumbnail"
-             name="thumbnail">
+    <div class="form-group" *ngFor="let image of getImagesFormControls(); let i = index">
+      <label>Image URL</label>
+      <div class="container">
+        <input class="form-control" [formControl]="image" type="text" [(ngModel)]="product.thumbnail"
+        id="thumbnail" name="thumbnail">
+        <button (click)="removeImage(i)"><div class="trash"></div></button> 
+      </div>
     </div>
-
+    
     <div class="form-group">
       <label>Select Category:</label>
       <div *ngFor="let category of categories">
@@ -46,7 +49,8 @@
              name="thumbnail">
     </div>
 
-    <button mat-raised-button color="primary">Add</button>
+    <button mat-raised-button color="primary" class="mb-5 mr-5">Save product</button> 
+    <button mat-raised-button color="accent" (click)="addImage()">Add new image</button>
 
   </form>
 </section>

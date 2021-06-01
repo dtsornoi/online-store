@@ -6,7 +6,7 @@ import { AppComponent } from './app.component';
 import { AddNewProductComponent } from './components/add-new-product/add-new-product.component';
 import { AddNewCategoryComponent } from './components/add-new-category/add-new-category.component';
 import { HomeComponent } from './components/home/home.component';
-import {FormsModule} from '@angular/forms';
+import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {HttpClientModule} from '@angular/common/http';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { CustomerComponent } from './components/customer/customer.component';
@@ -57,6 +57,7 @@ import { UpdateProductsListComponent } from './components/update-products-list/u
         AppRoutingModule,
         HttpClientModule,
         FormsModule,
+        ReactiveFormsModule,
         NgbModule,
         BrowserAnimationsModule,
         FlexLayoutModule,

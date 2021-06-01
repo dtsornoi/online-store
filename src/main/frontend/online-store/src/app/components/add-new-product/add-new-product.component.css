@@ -2,3 +2,22 @@ section {
   min-height: 100vh;
 }
 
+.container {
+  margin-left: -13px;
+  display: flex;
+  flex-direction: row;
+  width: 112%;
+}
+
+.trash{
+  height: 30px;
+  width: 30px;
+  background-image: url("src\assets\images\trash.svg");
+  border: none;
+}
+
+button{
+  border:none; 
+  background:none;
+}
+
