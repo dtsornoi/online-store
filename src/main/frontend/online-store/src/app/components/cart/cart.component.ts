@@ -15,6 +15,7 @@ export class CartComponent implements OnInit {
   totalPrice: number;
   quantity: number[] = [];
   selectedQuantity: number;
+  counter = 0;
 
   constructor(
     private service: OrderLineService,
@@ -34,6 +35,7 @@ export class CartComponent implements OnInit {
         this.orderLines = data;
         for(var value of this.orderLines){
           this.totalPrice+= value.product.price * value.quantityOfProducts;
+          this.counter++;
         }
       });
   }

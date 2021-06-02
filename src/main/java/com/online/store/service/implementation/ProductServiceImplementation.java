@@ -48,22 +48,23 @@ public class ProductServiceImplementation implements ProductService {
     }
 
     @Override
-    public void save(Product product) {
+    public Product save(Product product) {
         product.setActive(true);
-        productRepository.saveAndFlush(product);
+        return productRepository.saveAndFlush(product);
     }
 
     @Override
     public void update(Product product) {
         Product oldProduct = findOne(product.getId());
         oldProduct.setUserAccount(product.getUserAccount());
+        oldProduct.setActive(product.isActive());
         oldProduct.setQuantity(product.getQuantity());
         oldProduct.setAvailableQuantity(product.getAvailableQuantity());
         oldProduct.setCategory(product.getCategory());
         oldProduct.setDescription(product.getDescription());
-        oldProduct.setImages(product.getImages());
         oldProduct.setTitle(product.getTitle());
         oldProduct.setPrice(product.getPrice());
+        oldProduct.setImage(product.getImage());
 
         productRepository.saveAndFlush(oldProduct);
     }

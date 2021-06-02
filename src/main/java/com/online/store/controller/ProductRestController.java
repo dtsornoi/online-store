@@ -80,9 +80,9 @@ public class ProductRestController {
      * @return HttpStatus 201
      */
     @PostMapping("/")
-    public ResponseEntity<HttpStatus> createProduct(@RequestBody Product product) {
-        productService.save(product);
-        return new ResponseEntity<>(HttpStatus.CREATED);
+    public ResponseEntity<Product> createProduct(@RequestBody Product product) {
+        Product upcomingProduct = productService.save(product);
+        return new ResponseEntity<>(upcomingProduct, HttpStatus.CREATED);
     }
 
     /**

@@ -58,4 +58,9 @@ public class UserAccountServiceImplementation implements UserAccountService {
         userAccount.setActive(true);
         userAccountRepository.saveAndFlush(userAccount);
     }
+
+    @Override
+    public Boolean existsByLogin(String loginName) {
+        return userAccountRepository.existsByLogin(loginName);
+    }
 }

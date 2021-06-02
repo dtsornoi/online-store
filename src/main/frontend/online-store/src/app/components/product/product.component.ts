@@ -18,7 +18,7 @@ export class ProductComponent implements OnInit {
     private productService: ProductService,
     private router: Router,
     private categoryService: CategoryService
-    ) { }
+  ) { }
 
   ngOnInit(): void {
     this.productService.getAllActive().subscribe(
@@ -31,6 +31,7 @@ export class ProductComponent implements OnInit {
         this.filters = data;
       }
     );
+
   }
 
   goToProductDescription(id): void {
@@ -39,6 +40,6 @@ export class ProductComponent implements OnInit {
 
   applyFilter(filter): void {
     filter > 0 ? this.productService.filterByComponentId(filter).subscribe(data => {this.products = data}) : this.productService.getAllActive().subscribe(data => {this.products = data});
-    
+
   }
 }

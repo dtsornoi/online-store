@@ -17,6 +17,10 @@ public class StoreUserDetails implements UserDetails {
 
     private final String username;
 
+    private final Long id;
+
+    private final String firstName;
+
     @JsonIgnore
     private final String password;
 
@@ -24,8 +28,11 @@ public class StoreUserDetails implements UserDetails {
 
     private final Collection<? extends GrantedAuthority> authorities;
 
+
     public StoreUserDetails(UserAccount userAccount) {
+        this.id = userAccount.getId();
         this.username = userAccount.getLogin();
+        this.firstName = userAccount.getFirstName();
         this.password = userAccount.getPassword();
         this.isActive = userAccount.isActive();
         this.authorities = userAccount.getRoles().stream()
@@ -38,6 +45,10 @@ public class StoreUserDetails implements UserDetails {
         return authorities;
     }
 
+    public Long getId() {
+        return id;
+    }
+
     @Override
     public String getPassword() {
         return password;
@@ -46,6 +57,10 @@ public class StoreUserDetails implements UserDetails {
     @Override
     public String getUsername() {
         return username;
+    }
+
+    public String getFirstName() {
+        return firstName;
     }
 
     @Override

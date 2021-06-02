@@ -3,7 +3,7 @@
       <table class="table m-3">
         <thead>
           <tr>
-             <th scope="col">Id</th>
+             <th scope="col">#</th>
              <th scope="col">Title</th>
              <th scope="col">Description</th>
              <th scope="col">Price</th>
@@ -13,7 +13,7 @@
         </thead>
         <tbody *ngFor="let orderLine of orderLines">
          <tr>
-           <th scope="row">{{orderLine.id}}</th>
+           <th scope="row">{{counter}}</th>
            <td>{{orderLine.product.title}}</td>
            <td>{{orderLine.product.description}}</td>
            <td>{{orderLine.product.price}}</td>

@@ -20,6 +20,12 @@
             [(ngModel)] = "profile.lastName" name="lastName">
         </div>
 
+      <div class="form-group">
+        <label> Email </label>
+        <input type="email" class="form-control" id="email" readonly
+               [(ngModel)] = "profile.login" name="email">
+      </div>
+
         <p>
             <ngb-alert [dismissible]="false" *ngIf="passwordMissmatch">
               <strong>Warning!</strong> Password Missmatch!

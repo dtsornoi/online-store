@@ -4,7 +4,6 @@ import {ActivatedRoute, Router} from '@angular/router';
 import {Products} from '../../model/products.module';
 import {OrderLineService} from '../../service/order-line.service';
 import {OrderLine} from '../../model/order-line.module';
-import {NgModel} from '@angular/forms';
 
 @Component({
   selector: 'app-product-description',

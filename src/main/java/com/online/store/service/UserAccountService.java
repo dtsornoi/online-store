@@ -21,4 +21,6 @@ public interface UserAccountService {
     void delete(Long id);
 
     void restore(Long id);
+
+    Boolean existsByLogin(String loginName);
 }
