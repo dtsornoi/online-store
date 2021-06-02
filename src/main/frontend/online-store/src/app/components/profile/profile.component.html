@@ -1,0 +1,74 @@
+<section class="col-md-6 offset-md-3 mt-5">
+    <h3> Update Profile </h3>
+    <form ngForm (ngSubmit)="f.form.valid && onSubmit()" #f=ngForm >
+
+        <p>
+            <ngb-alert type="success" [dismissible]="false" *ngIf="success">
+              <strong>OK!</strong> Profile Updated!
+            </ngb-alert>
+          </p>
+
+        <div class="form-group">
+            <label> First Name </label>
+            <input type="text" class="form-control" id="firstName"
+            [(ngModel)] = "profile.firstName" name="firstName">
+        </div>
+
+        <div class="form-group">
+            <label> Last Name </label>
+            <input type="text" class="form-control" id="lastName"
+            [(ngModel)] = "profile.lastName" name="lastName">
+        </div>
+
+        <p>
+            <ngb-alert [dismissible]="false" *ngIf="passwordMissmatch">
+              <strong>Warning!</strong> Password Missmatch!
+            </ngb-alert>
+          </p>
+
+        <div class="form-group">
+            <label> Password </label>
+            <input type="password" class="form-control" id="password"
+            [(ngModel)] = "password" name="password">
+        </div>
+
+        <div class="form-group">
+            <label> Confirm Password </label>
+            <input type="password" class="form-control" id="confirmPassword"
+            [(ngModel)] = "confirmPassword" name="confirmPassword">
+        </div>
+
+        <div class="form-group">
+            <label> Country </label>
+            <input type="text" class="form-control" id="address.country"
+            [(ngModel)] = "profile.address.country" name="address.country">
+        </div>
+
+        <div class="form-group">
+            <label> City </label>
+            <input type="text" class="form-control" id="address.city"
+            [(ngModel)] = "profile.address.city" name="address.city">
+        </div>
+
+        <div class="form-group">
+            <label> Code </label>
+            <input type="text" class="form-control" id="address.code"
+            [(ngModel)] = "profile.address.code" name="address.code">
+        </div>
+
+        <div class="form-group">
+            <label> Street </label>
+            <input type="text" class="form-control" id="address.street"
+            [(ngModel)] = "profile.address.street" name="address.street">
+        </div>
+
+        <div class="form-group">
+            <label> Zip </label>
+            <input type="text" class="form-control" id="address.zip"
+            [(ngModel)] = "profile.address.zip" name="address.zip">
+        </div>
+
+        <button mat-raised-button color="primary" class="mr-5 mb-5 mt-5" type="submit">Submit</button>
+
+    </form>
+</section>

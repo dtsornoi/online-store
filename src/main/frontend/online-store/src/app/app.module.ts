@@ -33,6 +33,7 @@ import {MatOptionModule} from '@angular/material/core';
 import { AdminProductsListComponent } from './components/admin-products-list/admin-products-list.component';
 import { MatFormFieldModule} from '@angular/material/form-field';
 import { UpdateProductsListComponent } from './components/update-products-list/update-products-list.component';
+import { ProfileComponent } from './components/profile/profile.component';
 
 @NgModule({
   declarations: [
@@ -50,7 +51,8 @@ import { UpdateProductsListComponent } from './components/update-products-list/u
     MainNavComponent,
     ProductDescriptionComponent,
     AdminProductsListComponent,
-    UpdateProductsListComponent
+    UpdateProductsListComponent,
+    ProfileComponent
   ],
     imports: [
         BrowserModule,
