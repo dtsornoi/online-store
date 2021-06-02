@@ -32,14 +32,16 @@
              name="thumbnail">
     </div>
 
-    <div class="form-group">
+    <div class="form-group d-flex flex-column w-25">
       <label>Select Category:</label>
-      <div *ngFor="let category of categories">
-        <input type="radio" name="radioButton" value="{{category}}" (change)="selectedCategory(category)">
-        {{category.name.charAt(0).toUpperCase() + category.name.slice(1).toLowerCase()}}
-      </div>
+      <select [(ngModel)]="category" class="mb-lg-3 custom-select">
+        <option
+          *ngFor="let category of categories"
+          value="{{category}}">
+          {{toUpperCase(category.name)}}
+        </option>
+      </select>
     </div>
-
     <div class="form-group">
       <label> Temporary field to connect user with Product (Add name) </label>
       <input type="number" [(ngModel)]="userId" class="userName" id="userName"
