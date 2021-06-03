@@ -8,6 +8,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import java.util.stream.Collectors;
 
 /**
  * Order controller
@@ -43,6 +44,18 @@ public class OrderLineRestController {
      * @param id of type Long for searching OrderLine by Id in DB
      * @return OrderLine with with specified Id and HttpStatus.OK
      */
+    @GetMapping("/user/{id}")
+    public ResponseEntity<List<OrderLine>>  getActiveOrderLinesByUserId(@PathVariable("id") Long id) {
+        List<OrderLine> orderLines = orderLineService.findByIsActiveTrueAndUserAccountId(id);
+        return new ResponseEntity<>(orderLines, HttpStatus.OK);
+    }
+
+    /**
+     * GET:<code>/id</code>
+     *
+     * @param id of type Long for searching OrderLine by Id in DB
+     * @return OrderLine with with specified Id and HttpStatus.OK
+     */
     @GetMapping("/{id}")
     public ResponseEntity<OrderLine> getOrderLineById(@PathVariable("id") Long id) {
         OrderLine orderLine = orderLineService.findOne(id);
@@ -57,7 +70,7 @@ public class OrderLineRestController {
      */
     @PostMapping("/")
     public ResponseEntity<HttpStatus> createOrderLine(@RequestBody OrderLine orderLine) {
-        orderLine.setActive(true);
+        orderLine.setIsActive(true);
         orderLineService.save(orderLine);
         return new ResponseEntity<>(HttpStatus.CREATED);
     }

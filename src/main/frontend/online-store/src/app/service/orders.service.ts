@@ -27,20 +27,20 @@ export class OrdersService {
     return this.http.get(`${URL}/${id}`);
   }
 
-  create(orderLine): Observable<any>{
-    return this.http.post(`${URL}/`, orderLine);
+  create(order): Observable<any>{
+    return this.http.post(`${URL}/`, order);
   }
 
-  update(orderLine): Observable<any>{
-    return this.http.put(`${URL}/`, orderLine);
+  update(order): Observable<any>{
+    return this.http.put(`${URL}/`, order);
   }
 
-  delete(orderLine): Observable<any>{
-    return this.http.post(`${URL}/delete`, orderLine);
+  delete(order): Observable<any>{
+    return this.http.post(`${URL}/delete`, order);
   }
 
-  restore(orderLine): Observable<any>{
-    return this.http.post(`${URL}/restore`, orderLine);
+  restore(order): Observable<any>{
+    return this.http.post(`${URL}/restore`, order);
   }
 
 }
