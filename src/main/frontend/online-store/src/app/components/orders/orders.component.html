@@ -9,7 +9,7 @@
              <th scope="col">Delivery Address</th>
           </tr>
         </thead>
-        <tbody *ngFor="let order of orders">
+        <tbody *ngFor="let order of orders.slice().reverse();">
          <tr>
            <th scope="row">{{order.id}}</th>
            <td>{{ order.dateOfOrder | date:'dd.MM.yyyy'}}</td>
