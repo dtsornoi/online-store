@@ -27,6 +27,10 @@ export class OrdersService {
     return this.http.get(`${URL}/${id}`);
   }
 
+  getbyUserId(id): Observable<any>{
+    return this.http.get(`${URL}/user/${id}`);
+  }
+
   create(order): Observable<any>{
     return this.http.post(`${URL}/`, order);
   }

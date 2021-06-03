@@ -80,12 +80,12 @@ export class CartComponent implements OnInit {
         this.ordersService.create(this.order).toPromise().then(
           orderServiceData => {
           console.log(orderServiceData);
+
+          this.cartLines.forEach(orderLine => {
+            this.orderLineService.delete(orderLine.id).toPromise().then();
+          });
+          this.router.navigate(['orders']);
         });
-        
-        this.cartLines.forEach(orderLine => {
-          this.orderLineService.delete(orderLine.id).toPromise().then();
-        });
-        window.location.reload();
     });
   }
 }

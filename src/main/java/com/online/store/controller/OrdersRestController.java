@@ -51,6 +51,18 @@ public class OrdersRestController {
     }
 
     /**
+     * GET:<code>/user/id</code>
+     *
+     * @param id of type Long for searching Order by Id in DB
+     * @return Order with with specified Id and HttpStatus.OK
+     */
+    @GetMapping("/user/{id}")
+    public ResponseEntity<List<Orders>> getOrdersByUserId(@PathVariable("id") long id) {
+        List<Orders> orders = ordersService.findByUserAccountId(id);
+        return new ResponseEntity<>(orders, HttpStatus.OK);
+    }
+
+    /**
      * POST:<code>/</code>
      *
      * @param orders from UI to be persisted to DB
