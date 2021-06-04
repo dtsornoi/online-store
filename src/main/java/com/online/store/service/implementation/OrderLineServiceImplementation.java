@@ -25,7 +25,7 @@ public class OrderLineServiceImplementation implements OrderLineService {
 
     @Override
     public List<OrderLine> findAll() {
-        return orderLineRepository.findAll().stream().filter(orderLine -> orderLine.isActive()).collect(Collectors.toList());
+        return orderLineRepository.findAll().stream().filter(orderLine -> orderLine.getIsActive()).collect(Collectors.toList());
     }
 
     @Override
@@ -49,14 +49,14 @@ public class OrderLineServiceImplementation implements OrderLineService {
     @Override
     public void delete(Long id) {
         OrderLine orderLine = findOne(id);
-        orderLine.setActive(false);
+        orderLine.setIsActive(false);
         save(orderLine);
     }
 
     @Override
     public void restore(OrderLine orderLine) {
         OrderLine upcomingOrderLine = findOne(orderLine.getId());
-        upcomingOrderLine.setActive(true);
+        upcomingOrderLine.setIsActive(true);
         orderLineRepository.saveAndFlush(orderLine);
     }
 
@@ -72,5 +72,10 @@ public class OrderLineServiceImplementation implements OrderLineService {
         OrderLine orderLine = findOne(id);
         orderLine.setQuantityOfProducts(orderLine.getQuantityOfProducts()-1);
         save(orderLine);
+    }
+
+    @Override
+    public List<OrderLine> findByIsActiveTrueAndUserAccountId(Long id) {
+        return orderLineRepository.findByIsActiveTrueAndUserAccountId(id);
     }
 }

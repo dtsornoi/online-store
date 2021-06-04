@@ -50,4 +50,8 @@ export class OrderLineService {
     return this.http.post(`${URL}/minus/${id}`,null);
   }
 
+  getActiveUserId(id): Observable<any>{
+    return this.http.get(`${URL}/user/${id}`);
+  }
+
 }

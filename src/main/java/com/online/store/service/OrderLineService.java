@@ -27,4 +27,6 @@ public interface OrderLineService {
     void quantityPlus(Long id);
 
     void quantityMinus(Long id);
+
+    List<OrderLine> findByIsActiveTrueAndUserAccountId(Long id);
 }
