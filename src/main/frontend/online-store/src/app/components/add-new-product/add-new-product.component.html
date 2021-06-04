@@ -54,10 +54,10 @@
 
     <div class="form-group d-flex flex-column w-25">
       <label>Select Category:</label>
-      <select [(ngModel)]="category" class="mb-lg-3 custom-select" name="category">
+      <select [(ngModel)]="categoryId" class="mb-lg-3 custom-select" name="category">
         <option
           *ngFor="let category of categories"
-          value="{{category}}">
+          value="{{category.id}}">
           {{toUpperCase(category.name)}}
         </option>
       </select>

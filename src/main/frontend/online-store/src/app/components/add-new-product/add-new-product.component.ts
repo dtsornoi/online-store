@@ -15,18 +15,16 @@ import {TokenStorageService} from '../../service/token-storage.service';
 })
 export class AddNewProductComponent implements OnInit {
 
-  product: Products = {
-    category: {}
-  };
-  category: Category = {};
+  product: Products = {};
+  categoryId: number;
   categories: Category[] = [];
+  userId: number;
   userAccounts: UserAccount[] = [];
-  currentUser: UserAccount = {};
   hasErrors: boolean = false;
   message = '';
 
   constructor(
-    private productService: ProductService,
+    private service: ProductService,
     private router: Router,
     private categoryService: CategoryService,
     private userService: UserAccountService,
@@ -34,51 +32,64 @@ export class AddNewProductComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
+    if (this.token.getToken()){
+      this.userId = this.token.getUser().userId;
+    }
+
     this.categoryService.getAll().subscribe(
       data => {
         this.categories = data;
-      },
-      error => {
-        this.message = error.error.message;
       }
     );
 
     this.userService.getAllUserAccounts().subscribe(
       data => {
         this.userAccounts = data;
-      },
-      error => {
-        this.message = error.error.message;
       }
-    );
-
-    this.currentUser = this.token.getUser();
+    )
 
   }
 
-
   onSubmit(): void {
-    this.userAccounts.forEach(user => {
-      if (user.id === this.currentUser.id){
-        this.product.userAccount = user;
-      }
-    });
+    this.findCurrentUserAccount();
+    this.findSelectedCategory();
+    this.createProduct();
+  }
 
+  private createProduct(): void {
     this.product.isActive = true;
-    this.product.category = this.category;
-    this.productService.create(this.product).subscribe(
+    this.service.create(this.product).subscribe(
       data => {
         this.hasErrors = false;
         this.router.navigate(['product']);
       },
       error => {
-        this.message = error.error.message;
         this.hasErrors = true;
+        console.log(error.error.message);
+        this.message = 'Oops! We have encountered an Error!';
       }
     );
+  }
+
+  private findCurrentUserAccount (): void {
+    this.userAccounts.forEach(user => {
+      if (user.id === this.userId){
+        this.product.userAccount = user;
+      }
+    });
+  }
+
+  private findSelectedCategory(): void {
+    console.log(this.categoryId)
+    this.categories.forEach(category => {
+      if (category.id === this.categoryId){
+        this.product.category = category;
+      }
+    });
   }
 
   toUpperCase(str: string): string {
     return str.charAt(0).toUpperCase() + str.slice(1).toLowerCase();
   }
+
 }
