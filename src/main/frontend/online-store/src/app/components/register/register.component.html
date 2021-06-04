@@ -1,17 +1,36 @@
-<section class="col-md-6 offset-md-3 mt-5">
+<section *ngIf="!isSuccessful" class="col-md-6 offset-md-3 mt-5">
   <h3>Register</h3>
   <form ngForm (ngSubmit)="f.form.valid && onSubmit()" #f=ngForm>
 
     <div class="form-group">
-      <label> Login Name </label>
-      <input type="text" class="form-control" id="login_name"
-             [(ngModel)] = "userAccount.login" name="login_name">
+      <label> Email </label>
+      <input type="email" class="form-control" id="email" required
+             #email="ngModel"
+             [(ngModel)] = "userAccount.login" name="email">
+      <i>Your email will be used as your login.</i>
+      <div *ngIf="f.submitted && email.invalid" class="alert alert-warning mt-2">
+        <p *ngIf="email.errors.required">This field is required.</p>
+      </div>
     </div>
 
     <div class="form-group">
       <label> Password </label>
-      <input type="password" class="form-control" id="password"
+      <input type="password" class="form-control"
+             id="password" required #password="ngModel"
+             minlength="4" maxlength="20"
              [(ngModel)] = "userAccount.password" name="password">
+      <div *ngIf="f.submitted && password.invalid" class="alert alert-warning mt-2">
+        <p *ngIf="password.errors.required">This field is required.</p>
+        <p *ngIf="password.errors.minlength">Password must be minimum 4 chars long</p>
+        <p *ngIf="password.errors.maxlength">Password must be maximum 20 chars long</p>
+      </div>
+    </div>
+
+    <div class="form-group">
+      <label> Confirm Password </label>
+      <input type="password" class="form-control" id="password-confirmation" required
+             [(ngModel)] = "passwordConfirmation" name="password-confirmation">
+      <div *ngIf="checkIfPasswordsMatch()" class="alert alert-warning mt-2">Passwords do not match</div>
     </div>
 
     <div class="form-group">
@@ -24,12 +43,6 @@
       <label> Last Name </label>
       <input type="text" class="form-control" id="lName"
              [(ngModel)] = "userAccount.lastName" name="lName">
-    </div>
-
-    <div class="form-group">
-      <label> Avatar Link </label>
-      <input type="text" class="form-control" id="avatar"
-             [(ngModel)] = "userAccount.avatar" name="avatar">
     </div>
 
     <div class="form-group">
@@ -64,5 +77,15 @@
 
     <button mat-raised-button color="primary">Register</button>
 
+    <div *ngIf="isSignUpFailed" class="alert alert-danger">
+      <p>{{errorMessage}}</p>
+    </div>
+
   </form>
 </section>
+<section class="col-md-6 offset-md-3 mt-5">
+  <div *ngIf="isSuccessful" class="alert alert-success">
+    <p>Registration was Successful</p>
+  </div>
+</section>
+

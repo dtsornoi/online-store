@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import {ProductService} from '../../service/product.service';
 import {Products} from '../../model/products.module';
 import {Router} from '@angular/router';
+import {TokenStorageService} from '../../service/token-storage.service';
+import {UserAccount} from '../../model/user-account.module';
 
 @Component({
   selector: 'app-home',
@@ -12,10 +14,13 @@ export class HomeComponent implements OnInit {
 
   products: Products[] = [];
   latestProducts: Products[] = [];
+  isLoggedIn: boolean = false;
+  currentUser: UserAccount = {};
 
   constructor(
     private productService: ProductService,
-    private router: Router
+    private router: Router,
+    private token: TokenStorageService
   ) { }
 
   ngOnInit(): void {
@@ -32,9 +37,22 @@ export class HomeComponent implements OnInit {
 
       }
     );
+
+    if (this.token.getToken()){
+      this.isLoggedIn = true;
+      this.currentUser = this.token.getUser();
+    }
+  }
+
+  toUpperCase(str: string): string {
+    return str.charAt(0).toUpperCase() + str.slice(1).toLowerCase();
   }
 
   goToProductDescription(id): void {
-    this.router.navigate([`product-description/${id}`]);
+    if (this.isLoggedIn){
+      this.router.navigate([`product-description/${id}`]);
+    }else {
+      alert('Must be logged in!');
+    }
   }
 }

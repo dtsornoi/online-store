@@ -6,6 +6,8 @@ import {Category} from "../../model/category.module";
 import {CategoryService} from "../../service/category.service";
 import {UserAccountService} from "../../service/user-account.service";
 import {UserAccount} from "../../model/user-account.module";
+import {TokenStorageService} from '../../service/token-storage.service';
+import {timeout} from 'rxjs/operators';
 
 @Component({
   selector: 'app-add-new-product',
@@ -15,19 +17,26 @@ import {UserAccount} from "../../model/user-account.module";
 export class AddNewProductComponent implements OnInit {
 
   product: Products = {};
-  category: Category = {};
+  categoryId: number;
   categories: Category[] = [];
   userId: number;
   userAccounts: UserAccount[] = [];
+  hasErrors: boolean = false;
+  message = '';
 
   constructor(
     private service: ProductService,
     private router: Router,
     private categoryService: CategoryService,
-    private userService: UserAccountService
+    private userService: UserAccountService,
+    private token: TokenStorageService
   ) { }
 
   ngOnInit(): void {
+    if (this.token.getToken()){
+      this.userId = this.token.getUser().userId;
+    }
+
     this.categoryService.getAll().subscribe(
       data => {
         this.categories = data;
@@ -43,22 +52,30 @@ export class AddNewProductComponent implements OnInit {
   }
 
   onSubmit(): void {
-    this.userAccounts.forEach(user => {
-      if (user.id === this.userId){
-        this.product.userAccount = user;
-      }
+    this.userService.getUserAccountById(this.token.getUser().id).subscribe(user =>{
+      this.product.userAccount = user;
+      this.categoryService.get(this.categoryId).subscribe(
+        category => {
+          this.product.category = category;
+          this.product.isActive = true;
+          this.service.create(this.product).subscribe(
+            data => {
+              this.hasErrors = false;
+              this.router.navigate(['product']);
+            },
+            error => {
+              this.hasErrors = true;
+              console.log(error.error.message);
+              this.message = 'Oops! We have encountered an Error!';
+            }
+          );
+        }
+      )
     });
-
-    this.product.isActive = true;
-    this.product.category = this.category;
-    this.service.create(this.product).subscribe(
-      data => {
-        this.router.navigate(['product']);
-      }
-    );
   }
 
   toUpperCase(str: string): string {
     return str.charAt(0).toUpperCase() + str.slice(1).toLowerCase();
   }
+
 }

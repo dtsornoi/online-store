@@ -5,50 +5,69 @@
     <div class="form-group">
       <label> Title </label>
       <input type="text" class="form-control" id="title"
+             required #title="ngModel"
              [(ngModel)] = "product.title" name="title">
+      <div *ngIf="f.submitted && title.invalid" class="alert alert-warning mt-2">
+        <p *ngIf="title.errors.required">This field is required.</p>
+        <p *ngIf="title.errors.minlength">Min length is 1</p>
+        <p *ngIf="title.errors.maxlength">Max length is 50</p>
+      </div>
     </div>
 
     <div class="form-group">
       <label> Description </label>
       <input type="text" class="form-control" id="description"
+             required #description="ngModel" minlength="1" maxlength="150"
              [(ngModel)] = "product.description" name="description">
+      <div *ngIf="f.submitted && description.invalid" class="alert alert-warning mt-2">
+        <p *ngIf="description.errors.required">This field is required.</p>
+        <p *ngIf="description.errors.minlength">Min length is 1</p>
+        <p *ngIf="description.errors.maxlength">Max length is 150</p>
+      </div>
     </div>
 
     <div class="form-group">
       <label> Price </label>
       <input type="text" class="form-control" id="price"
+             required #price="ngModel"
              [(ngModel)] = "product.price" name="price">
+      <div *ngIf="f.submitted && price.invalid" class="alert alert-warning mt-2">
+        <p *ngIf="price.errors.required">This field is required.</p>
+      </div>
     </div>
 
     <div class="form-group">
       <label> Quantity </label>
       <input type="text" class="form-control" id="quantity"
+             required #quantity="ngModel"
              [(ngModel)] = "product.quantity" name="quantity">
+      <div *ngIf="f.submitted && quantity.invalid" class="alert alert-warning mt-2">
+        <p *ngIf="quantity.errors.required">This field is required.</p>
+      </div>
     </div>
 
     <div class="form-group">
       <label> Image URL </label>
-      <input type="text" [(ngModel)]="product.thumbnail" class="form-control" id="thumbnail"
-             name="thumbnail">
+      <input type="text" [(ngModel)]="product.image" class="form-control" id="image"
+             name="image">
     </div>
 
     <div class="form-group d-flex flex-column w-25">
       <label>Select Category:</label>
-      <select [(ngModel)]="category" class="mb-lg-3 custom-select">
+      <select [(ngModel)]="categoryId" class="mb-lg-3 custom-select" name="category">
         <option
           *ngFor="let category of categories"
-          value="{{category}}">
+          value="{{category.id}}">
           {{toUpperCase(category.name)}}
         </option>
       </select>
     </div>
-    <div class="form-group">
-      <label> Temporary field to connect user with Product (Add name) </label>
-      <input type="number" [(ngModel)]="userId" class="userName" id="userName"
-             name="thumbnail">
-    </div>
 
     <button mat-raised-button color="primary">Add</button>
+
+    <div *ngIf="hasErrors" class="alert alert-danger mt-2">
+      <p>{{message}}</p>
+    </div>
 
   </form>
 </section>

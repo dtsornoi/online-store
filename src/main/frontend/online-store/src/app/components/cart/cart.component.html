@@ -3,7 +3,7 @@
       <table class="table m-3">
         <thead>
           <tr>
-             <th scope="col">Id</th>
+             <th scope="col">#</th>
              <th scope="col">Title</th>
              <th scope="col">Description</th>
              <th scope="col">Price</th>
@@ -13,10 +13,10 @@
         </thead>
         <tbody *ngFor="let cartLine of cartLines">
          <tr>
-           <th scope="row">{{cartLine.id}}</th>
-           <td>{{cartLine.product.title}}</td>
-           <td>{{cartLine.product.description}}</td>
-           <td>{{cartLine.product.price}}</td>
+           <th scope="row">{{counter}}</th>
+           <td>{{orderLine.product.title}}</td>
+           <td>{{orderLine.product.description}}</td>
+           <td>{{orderLine.product.price}}</td>
            <td>
              <select [(ngModel)]="cartLine.quantityOfProducts" class="mb-lg-3 custom-select" name="selection" [ngModelOptions]="{standalone: true}">
                <option *ngFor="let number of numberArray(cartLine.product.availableQuantity, cartLine)" value="{{number}}">
