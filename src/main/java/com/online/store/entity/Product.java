@@ -41,13 +41,15 @@ public class Product {
 
     private String image;
 
-    private boolean isActive;
+    private Boolean isActive;
 
     private Long availableQuantity;
 
-    @ManyToOne(cascade = CascadeType.ALL)
+    @ManyToOne
+    @NotNull
     private Category category;
 
     @ManyToOne
+    @NotNull
     private UserAccount userAccount;
 }

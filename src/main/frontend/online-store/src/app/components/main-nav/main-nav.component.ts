@@ -32,7 +32,7 @@ export class MainNavComponent implements OnInit{
     if (this.token.getToken()){
       this.isLoggedIn = true;
       this.currentUser = this.token.getUser();
-      this.roles = this.currentUser.roles
+      this.roles = this.currentUser.roles;
       console.log(this.roles)
     }
   }

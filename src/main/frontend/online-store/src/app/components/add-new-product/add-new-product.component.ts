@@ -7,6 +7,7 @@ import {CategoryService} from "../../service/category.service";
 import {UserAccountService} from "../../service/user-account.service";
 import {UserAccount} from "../../model/user-account.module";
 import {TokenStorageService} from '../../service/token-storage.service';
+import {timeout} from 'rxjs/operators';
 
 @Component({
   selector: 'app-add-new-product',
@@ -51,40 +52,25 @@ export class AddNewProductComponent implements OnInit {
   }
 
   onSubmit(): void {
-    this.findCurrentUserAccount();
-    this.findSelectedCategory();
-    this.createProduct();
-  }
-
-  private createProduct(): void {
-    this.product.isActive = true;
-    this.service.create(this.product).subscribe(
-      data => {
-        this.hasErrors = false;
-        this.router.navigate(['product']);
-      },
-      error => {
-        this.hasErrors = true;
-        console.log(error.error.message);
-        this.message = 'Oops! We have encountered an Error!';
-      }
-    );
-  }
-
-  private findCurrentUserAccount (): void {
-    this.userAccounts.forEach(user => {
-      if (user.id === this.userId){
-        this.product.userAccount = user;
-      }
-    });
-  }
-
-  private findSelectedCategory(): void {
-    console.log(this.categoryId)
-    this.categories.forEach(category => {
-      if (category.id === this.categoryId){
-        this.product.category = category;
-      }
+    this.userService.getUserAccountById(this.token.getUser().id).subscribe(user =>{
+      this.product.userAccount = user;
+      this.categoryService.get(this.categoryId).subscribe(
+        category => {
+          this.product.category = category;
+          this.product.isActive = true;
+          this.service.create(this.product).subscribe(
+            data => {
+              this.hasErrors = false;
+              this.router.navigate(['product']);
+            },
+            error => {
+              this.hasErrors = true;
+              console.log(error.error.message);
+              this.message = 'Oops! We have encountered an Error!';
+            }
+          );
+        }
+      )
     });
   }
 

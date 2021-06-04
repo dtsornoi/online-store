@@ -15,7 +15,9 @@ export class ProductDescriptionComponent implements OnInit {
   productId: string;
   selectedProduct: Products = {
     userAccount: {},
-    category: {}
+    category: {
+      name: ''
+    }
   };
   orderLines: OrderLine = {
     product: {}

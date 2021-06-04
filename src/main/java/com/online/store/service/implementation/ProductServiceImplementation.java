@@ -26,10 +26,7 @@ public class ProductServiceImplementation implements ProductService {
 
     @Override
     public List<Product> findAllActive() {
-        return productRepository.findAll()
-                .stream()
-                .filter(Product::isActive)
-                .collect(Collectors.toList());
+        return productRepository.findByIsActiveTrue();
     }
 
     @Override
@@ -49,7 +46,6 @@ public class ProductServiceImplementation implements ProductService {
 
     @Override
     public Product save(Product product) {
-        product.setActive(true);
         return productRepository.saveAndFlush(product);
     }
 
@@ -57,7 +53,7 @@ public class ProductServiceImplementation implements ProductService {
     public void update(Product product) {
         Product oldProduct = findOne(product.getId());
         oldProduct.setUserAccount(product.getUserAccount());
-        oldProduct.setActive(product.isActive());
+        oldProduct.setIsActive(product.getIsActive());
         oldProduct.setQuantity(product.getQuantity());
         oldProduct.setAvailableQuantity(product.getAvailableQuantity());
         oldProduct.setCategory(product.getCategory());
@@ -72,14 +68,14 @@ public class ProductServiceImplementation implements ProductService {
     @Override
     public void delete(Long id) {
         Product product = findOne(id);
-        product.setActive(false);
+        product.setIsActive(false);
         productRepository.saveAndFlush(product);
     }
 
     @Override
     public void restore(Long id) {
         Product product = findOne(id);
-        product.setActive(true);
+        product.setIsActive(true);
         productRepository.saveAndFlush(product);
     }
 }
