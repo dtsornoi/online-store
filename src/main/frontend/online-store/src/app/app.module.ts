@@ -34,6 +34,7 @@ import { AdminProductsListComponent } from './components/admin-products-list/adm
 import { MatFormFieldModule} from '@angular/material/form-field';
 import { UpdateProductsListComponent } from './components/update-products-list/update-products-list.component';
 import { ProfileComponent } from './components/profile/profile.component';
+import { OrdersComponent } from './components/orders/orders.component';
 
 @NgModule({
   declarations: [
@@ -52,7 +53,8 @@ import { ProfileComponent } from './components/profile/profile.component';
     ProductDescriptionComponent,
     AdminProductsListComponent,
     UpdateProductsListComponent,
-    ProfileComponent
+    ProfileComponent,
+    OrdersComponent
   ],
     imports: [
         BrowserModule,

@@ -17,5 +17,5 @@ export class Orders {
     status?: string;
     isActive?: boolean;
     orderLines?: OrderLine[];
-    customer?: UserAccount;
+    userAccount?: UserAccount;
 }

@@ -12,6 +12,7 @@
       <a *ngIf="hasRole('ROLE_ADMIN')" mat-list-item routerLink="new-product">Add new Product</a>
       <a *ngIf="hasRole('ROLE_ADMIN')" mat-list-item routerLink="admin-products-list">Admin Products</a>
       <a mat-list-item routerLink="cart">Cart</a>
+      <a mat-list-item routerLink="orders">Orders</a>
       <mat-divider></mat-divider>
       <a *ngIf="isLoggedIn" mat-list-item (click)="logout()">Logout</a>
     </mat-nav-list>
@@ -36,6 +37,7 @@
         <button *ngIf="hasRole('ROLE_ADMIN')" mat-menu-item routerLink="new-product">Add new Product</button>
         <button mat-menu-item routerLink="profile">Profile</button>
         <button mat-menu-item routerLink="cart">Cart</button>
+        <button mat-menu-item routerLink="orders">Orders</button>
         <mat-divider></mat-divider>
         <button mat-menu-item *ngIf="isLoggedIn" (click)="logout()" routerLink="/" class="pointer-event">Logout</button>
       </mat-menu>

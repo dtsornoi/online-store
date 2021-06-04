@@ -20,8 +20,10 @@ export class ProductDescriptionComponent implements OnInit {
     }
   };
   orderLines: OrderLine = {
-    product: {}
+    product: {},
+    userAccount: {}
   };
+  
   quantity: number[] = [];
   selectedQuantity: number;
 
@@ -60,7 +62,8 @@ export class ProductDescriptionComponent implements OnInit {
     this.selectedProduct.quantity = remainingQuantity;
     this.productService.update(this.selectedProduct).subscribe();
     this.orderLines.product.id = productId;
-
+    //todo SET CURRENT USER ACCOUNT.
+    this.orderLines.userAccount.id = 1;
     this.createOrderLine(this.orderLines);
   }
 

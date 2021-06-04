@@ -12,6 +12,7 @@ import {AdminProductsListComponent} from './components/admin-products-list/admin
 import { UpdateProductsListComponent } from './components/update-products-list/update-products-list.component';
 import { ProfileComponent } from './components/profile/profile.component';
 import {LoginComponent} from './components/login/login.component';
+import { OrdersComponent } from './components/orders/orders.component';
 
 
 const routes: Routes = [
@@ -27,6 +28,8 @@ const routes: Routes = [
   { path: 'update-products-list/:id', component: UpdateProductsListComponent},
   { path: 'profile', component: ProfileComponent},
   { path: 'login', component: LoginComponent}
+  { path: 'orders', component: OrdersComponent}
+
 ];
 
 @NgModule({
