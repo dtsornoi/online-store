@@ -27,7 +27,7 @@ const routes: Routes = [
   { path: 'admin-products-list', component: AdminProductsListComponent},
   { path: 'update-products-list/:id', component: UpdateProductsListComponent},
   { path: 'profile', component: ProfileComponent},
-  { path: 'login', component: LoginComponent}
+  { path: 'login', component: LoginComponent},
   { path: 'orders', component: OrdersComponent}
 
 ];
