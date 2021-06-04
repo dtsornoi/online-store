@@ -4,6 +4,7 @@ import {ActivatedRoute, Router} from '@angular/router';
 import {Products} from '../../model/products.module';
 import {OrderLineService} from '../../service/order-line.service';
 import {OrderLine} from '../../model/order-line.module';
+import {TokenStorageService} from '../../service/token-storage.service';
 
 @Component({
   selector: 'app-product-description',
@@ -23,7 +24,7 @@ export class ProductDescriptionComponent implements OnInit {
     product: {},
     userAccount: {}
   };
-  
+
   quantity: number[] = [];
   selectedQuantity: number;
 
@@ -31,7 +32,8 @@ export class ProductDescriptionComponent implements OnInit {
     private productService: ProductService,
     private route: ActivatedRoute,
     private orderLineService: OrderLineService,
-    private router: Router
+    private router: Router,
+    private token: TokenStorageService
   ) { }
 
   ngOnInit(): void {
@@ -62,8 +64,7 @@ export class ProductDescriptionComponent implements OnInit {
     this.selectedProduct.quantity = remainingQuantity;
     this.productService.update(this.selectedProduct).subscribe();
     this.orderLines.product.id = productId;
-    //todo SET CURRENT USER ACCOUNT.
-    this.orderLines.userAccount.id = 1;
+    this.orderLines.userAccount.id = this.token.getUser().id;
     this.createOrderLine(this.orderLines);
   }
 

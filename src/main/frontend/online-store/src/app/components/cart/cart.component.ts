@@ -6,6 +6,7 @@ import { OrderLineService } from 'src/app/service/order-line.service';
 import { OrdersService } from 'src/app/service/orders.service';
 import { UserAccountService } from 'src/app/service/user-account.service';
 import {ProductService} from '../../service/product.service';
+import {TokenStorageService} from '../../service/token-storage.service';
 
 @Component({
   selector: 'app-cart',
@@ -17,9 +18,8 @@ export class CartComponent implements OnInit {
   totalPrice: number;
   quantity: number[] = [];
   selectedQuantity: number;
-  counter = 0;
   order: Orders = {
-    orderLines: [],  
+    orderLines: [],
     userAccount: {
       address: {}
     }
@@ -30,22 +30,21 @@ export class CartComponent implements OnInit {
     private productService: ProductService,
     private userService: UserAccountService,
     private ordersService: OrdersService,
-    private orderLineService: OrderLineService
+    private orderLineService: OrderLineService,
+    private token: TokenStorageService
   ) { }
 
   ngOnInit(): void {
     this.getAllOrderLines();
-
   }
 
   private getAllOrderLines() {
-    this.totalPrice = 0;
-    this.orderLineService.getActiveUserId(1).subscribe(
+    this.totalPrice = 1;
+    this.orderLineService.getActiveUserId(this.token.getUser().id).subscribe(
       data => {
         this.cartLines = data;
         for(var value of this.cartLines){
           this.totalPrice+= value.product.price * value.quantityOfProducts;
-          this.counter++;
         }
       });
   }
@@ -67,7 +66,7 @@ export class CartComponent implements OnInit {
   }
 
   submitOrder(){
-    this.userService.getUserAccountById(1).toPromise().then(
+    this.userService.getUserAccountById(this.token.getUser().id).toPromise().then(
       data => {
         this.order.userAccount = data;
         this.order.dateOfOrder = new Date();

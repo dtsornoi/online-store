@@ -11,12 +11,12 @@
              <th scope="col">Actions</th>
           </tr>
         </thead>
-        <tbody *ngFor="let cartLine of cartLines">
+        <tbody *ngFor="let cartLine of cartLines; index as i" >
          <tr>
-           <th scope="row">{{counter}}</th>
-           <td>{{orderLine.product.title}}</td>
-           <td>{{orderLine.product.description}}</td>
-           <td>{{orderLine.product.price}}</td>
+           <th scope="row">{{i +1}}</th>
+           <td>{{cartLine.product.title}}</td>
+           <td>{{cartLine.product.description}}</td>
+           <td>{{cartLine.product.price}}</td>
            <td>
              <select [(ngModel)]="cartLine.quantityOfProducts" class="mb-lg-3 custom-select" name="selection" [ngModelOptions]="{standalone: true}">
                <option *ngFor="let number of numberArray(cartLine.product.availableQuantity, cartLine)" value="{{number}}">

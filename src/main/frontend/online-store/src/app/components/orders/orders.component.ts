@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Orders } from 'src/app/model/orders.module';
 import { OrdersService } from 'src/app/service/orders.service';
+import {TokenStorageService} from '../../service/token-storage.service';
 
 @Component({
   selector: 'app-orders',
@@ -9,13 +10,14 @@ import { OrdersService } from 'src/app/service/orders.service';
 })
 export class OrdersComponent implements OnInit {
   orders: Orders[] = [];
-  
+
   constructor(
-    private ordersService: OrdersService
+    private ordersService: OrdersService,
+    private token: TokenStorageService
     ){ }
 
   ngOnInit(): void {
-    this.ordersService.getbyUserId(1).subscribe(
+    this.ordersService.getbyUserId(this.token.getUser().id).subscribe(
       data =>{
         this.orders = data;
       }
