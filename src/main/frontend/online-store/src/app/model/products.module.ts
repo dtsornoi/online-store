@@ -12,14 +12,12 @@ export class Products {
     id?: number;
     title?: string;
     description?: string;
-    image?: string;
     price?: number;
     quantity?: number;
     isActive?: boolean;
     category?: Category;
     userAccount?: UserAccount;
     availableQuantity?: number;
-    mainImageId?: number;
     images?: Images[];
 
 }

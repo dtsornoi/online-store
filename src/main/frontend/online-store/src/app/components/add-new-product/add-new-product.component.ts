@@ -10,6 +10,7 @@ import {FormBuilder, FormGroup } from '@angular/forms';
 import {TokenStorageService} from '../../service/token-storage.service';
 import { Images } from '../../model/images';
 import { ImagesService } from '../../service/images.service';
+import {NgbModal, NgbModalConfig} from "@ng-bootstrap/ng-bootstrap";
 
 @Component({
   selector: 'app-add-new-product',
@@ -17,7 +18,7 @@ import { ImagesService } from '../../service/images.service';
   styleUrls: ['./add-new-product.component.css']
 })
 export class AddNewProductComponent implements OnInit {
-
+  imageArray: Images[] = [];
   image: Images = {};
   product: Products = {
     images: []
@@ -29,6 +30,7 @@ export class AddNewProductComponent implements OnInit {
   imageForm: FormGroup;
   hasErrors: boolean = false;
   message = '';
+  isSelected: boolean = false;
 
   constructor(
     private imageService: ImagesService,
@@ -37,13 +39,17 @@ export class AddNewProductComponent implements OnInit {
     private categoryService: CategoryService,
     private userService: UserAccountService,
     private token: TokenStorageService,
-    private formBuilder: FormBuilder
+    private formBuilder: FormBuilder,
+    config: NgbModalConfig, private modalService: NgbModal
   ) {
     this.imageForm = this.formBuilder.group({
       images: this.formBuilder.array([
         this.formBuilder.control(null)
       ])
     })
+
+    config.backdrop = 'static';
+    config.keyboard = false;
    }
   // TODO add validation for price (decimal) and quantity(number)
   ngOnInit(): void {
@@ -71,21 +77,12 @@ export class AddNewProductComponent implements OnInit {
         category => {
           this.product.category = category;
           this.product.isActive = true;
-          this.image.isActive = true;
-          this.imageService.create(this.image).subscribe(
-            newImage => {
-              this.product.images.push(newImage);
-              this.product.mainImageId = newImage.imageId;
-              this.service.create(this.product).subscribe(
-                data => {
-                  this.hasErrors = false;
-                  this.router.navigate(['product']);
-                },
-                error => {
-                  this.errorMessage('Oops! We have encountered an Error!' ,error);
-                }
-              );
-            }, error => {
+          this.service.create(this.product).subscribe(
+            data => {
+              this.hasErrors = false;
+              this.router.navigate(['product']);
+            },
+            error => {
               this.errorMessage('Oops! We have encountered an Error!' ,error);
             }
           );
@@ -107,4 +104,17 @@ export class AddNewProductComponent implements OnInit {
     return str.charAt(0).toUpperCase() + str.slice(1).toLowerCase();
   }
 
+  open(content) {
+    this.modalService.open(content);
+  }
+
+  addImage(image) {
+    if(this.isSelected){
+      this.image.isMain = true;
+    }
+    this.image.isActive = true;
+    this.product.images.push(image);
+    this.isSelected = false;
+    this.image = {};
+  }
 }
