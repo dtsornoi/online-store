@@ -69,12 +69,6 @@
              [(ngModel)] = "userAccount.address.street" name="street">
     </div>
 
-    <div class="form-group">
-      <label> Code </label>
-      <input type="text" class="form-control" id="code"
-             [(ngModel)] = "userAccount.address.code" name="code">
-    </div>
-
     <button mat-raised-button color="primary">Register</button>
 
     <div *ngIf="isSignUpFailed" class="alert alert-danger">

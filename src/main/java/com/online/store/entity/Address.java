@@ -31,8 +31,6 @@ public class Address {
 
     private String zip;
 
-    private String code;
-
     private boolean isActive;
 
 }

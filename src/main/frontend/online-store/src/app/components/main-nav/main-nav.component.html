@@ -14,6 +14,7 @@
       <a mat-list-item routerLink="cart">Cart</a>
       <a mat-list-item routerLink="orders">Orders</a>
       <mat-divider></mat-divider>
+      <a mat-list-item *ngIf="!isLoggedIn" routerLink="login">Login</a>
       <a *ngIf="isLoggedIn" mat-list-item (click)="logout()">Logout</a>
     </mat-nav-list>
   </mat-sidenav>
@@ -27,14 +28,16 @@
         *ngIf="isHandset$ | async">
         <mat-icon aria-label="Side nav toggle icon">menu</mat-icon>
       </button>
-      <span routerLink="/">Online Store App</span>
-      <span class="spacer"></span>
+      <span routerLink="/" >Online Store App</span>
       <a routerLink="product">Product</a>
+      <span class="spacer"></span>
+      <a mat-list-item *ngIf="!isLoggedIn" routerLink="login">Login</a>
       <button *ngIf="isLoggedIn" class="mobile-menu" mat-button [matMenuTriggerFor]="menu">{{toUpperCase(currentUser.firstName)}}</button>
       <mat-menu #menu="matMenu">
       <button *ngIf="hasRole('ROLE_ADMIN')" mat-menu-item routerLink="customer">Customer List</button>
       <button *ngIf="hasRole('ROLE_ADMIN')" mat-menu-item routerLink="admin-products-list">Admin Products</button>
         <button *ngIf="hasRole('ROLE_ADMIN')" mat-menu-item routerLink="new-product">Add new Product</button>
+        <mat-divider *ngIf="hasRole('ROLE_ADMIN')"></mat-divider>
         <button mat-menu-item routerLink="profile">Profile</button>
         <button mat-menu-item routerLink="cart">Cart</button>
         <button mat-menu-item routerLink="orders">Orders</button>

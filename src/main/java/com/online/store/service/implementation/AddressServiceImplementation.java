@@ -47,7 +47,6 @@ public class AddressServiceImplementation implements AddressService {
             oldAddress.setCity(address.getCity());
             oldAddress.setStreet(address.getStreet());
             oldAddress.setZip(address.getZip());
-            oldAddress.setCode(address.getCode());
 
            save(oldAddress);
 

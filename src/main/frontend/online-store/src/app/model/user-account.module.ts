@@ -15,7 +15,6 @@ export class UserAccount {
     firstName?: string;
     lastName?: string;
     roles?: Role[];
-    avatar?: Byte;
     isActive?: boolean;
     address?: Address;
     active?: boolean;
