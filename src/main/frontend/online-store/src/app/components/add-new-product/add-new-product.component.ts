@@ -6,8 +6,11 @@ import {Category} from "../../model/category.module";
 import {CategoryService} from "../../service/category.service";
 import {UserAccountService} from "../../service/user-account.service";
 import {UserAccount} from "../../model/user-account.module";
+import { AbstractControl, FormArray, FormBuilder, FormGroup } from '@angular/forms';
 import {TokenStorageService} from '../../service/token-storage.service';
 import {timeout} from 'rxjs/operators';
+import { Images } from 'src/app/model/images';
+import { ImagesService } from 'src/app/service/images.service';
 
 @Component({
   selector: 'app-add-new-product',
@@ -16,21 +19,48 @@ import {timeout} from 'rxjs/operators';
 })
 export class AddNewProductComponent implements OnInit {
 
-  product: Products = {};
+  image: Images = {};
+  product: Products = {
+    images: []
+  };
   categoryId: number;
   categories: Category[] = [];
   userId: number;
   userAccounts: UserAccount[] = [];
+  imageForm: FormGroup;
   hasErrors: boolean = false;
   message = '';
 
   constructor(
+    private imageService: ImagesService,
     private service: ProductService,
     private router: Router,
     private categoryService: CategoryService,
     private userService: UserAccountService,
-    private token: TokenStorageService
-  ) { }
+    private token: TokenStorageService,
+    private formBuilder: FormBuilder
+  ) {
+    this.imageForm = this.formBuilder.group({
+      images: this.formBuilder.array([
+        this.formBuilder.control(null)
+      ])
+    })
+   }
+
+ /*  addImage(): void {
+    (this.imageForm.get('images') as FormArray).push(
+      this.formBuilder.control(null)
+    );
+  }
+
+  removeImage(index) {
+    (this.imageForm.get('images') as FormArray).removeAt(index);
+  }
+
+  getImagesFormControls(): AbstractControl[]{
+    return(<FormArray> this.imageForm.get('images')).controls
+  } */
+
 
   ngOnInit(): void {
     if (this.token.getToken()){
@@ -58,15 +88,22 @@ export class AddNewProductComponent implements OnInit {
         category => {
           this.product.category = category;
           this.product.isActive = true;
-          this.service.create(this.product).subscribe(
-            data => {
-              this.hasErrors = false;
-              this.router.navigate(['product']);
-            },
-            error => {
-              this.hasErrors = true;
-              console.log(error.error.message);
-              this.message = 'Oops! We have encountered an Error!';
+          this.image.isActive = true;
+          this.imageService.create(this.image).subscribe(
+            newImage => {
+              this.product.images.push(newImage);
+              this.product.mainImageId = newImage.imageId;
+              this.service.create(this.product).subscribe(
+                data => {
+                  this.hasErrors = false;
+                  this.router.navigate(['product']);
+                },
+                error => {
+                  this.hasErrors = true;
+                  console.log(error.error.message);
+                  this.message = 'Oops! We have encountered an Error!';
+                }
+              );
             }
           );
         }

@@ -1,4 +1,5 @@
 import { Category } from "./category.module";
+import { Images } from "./images";
 import {UserAccount} from "./user-account.module";
 
 /**
@@ -18,5 +19,7 @@ export class Products {
     category?: Category;
     userAccount?: UserAccount;
     availableQuantity?: number;
+    mainImageId?: number;
+    images?: Images[];
 
 }
