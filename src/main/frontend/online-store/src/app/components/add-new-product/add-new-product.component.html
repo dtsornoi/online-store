@@ -1,6 +1,6 @@
 <section class="col-md-6 offset-md-3 mt-5">
   <h2>Add new Product</h2>
-  <form [formGroup]="imageForm" ngForm (ngSubmit)="f.form.valid && onSubmit()" #f=ngForm>
+  <form ngForm (ngSubmit)="f.form.valid && onSubmit()" #f=ngForm>
 
     <div class="form-group">
       <label> Title </label>
@@ -45,26 +45,27 @@
         <p *ngIf="quantity.errors.required">This field is required.</p>
       </div>
     </div>
-<!-- 
+<!--
     <div class="form-group" *ngFor="let image of getImagesFormControls(); let i = index">
       <label>Image URL</label>
       <div class="container">
         <input class="form-control" [formControl]="images" type="text" [(ngModel)]="product.image"
         id="image" name="image">
-        <button (click)="removeImage(i)"><div class="trash"></div></button> 
+        <button (click)="removeImage(i)"><div class="trash"></div></button>
       </div>
     </div> -->
 
     <div class="form-group">
-      <label> Image URL </label>
+      <label> Image Title </label>
       <input type="text" [(ngModel)]="image.imageTitle" class="form-control" id="imageTitle"
              name="imageTitle">
       <br>
+      <label>Image Url</label>
       <input type="text" [(ngModel)]="image.imageUrl" class="form-control" id="imageUrl"
-      name="imageUrl">    
-    </div> 
-    
-    
+      name="imageUrl">
+    </div>
+
+
 
   <div class="form-group d-flex flex-column w-25">
       <label>Select Category:</label>
@@ -77,8 +78,8 @@
       </select>
     </div>
 
-    <button mat-raised-button color="primary" class="mb-5 mr-5">Save product</button> 
-    <button mat-raised-button color="accent" (click)="addImage()">Add new image</button>
+    <button mat-raised-button color="primary" class="mb-5 mr-5">Save product</button>
+<!--    <button mat-raised-button color="accent" (click)="addImage()">Add new image</button>-->
 
     <div *ngIf="hasErrors" class="alert alert-danger mt-2">
       <p>{{message}}</p>

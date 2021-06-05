@@ -20,7 +20,9 @@ import { ImagesService } from 'src/app/service/images.service';
 export class AddNewProductComponent implements OnInit {
 
   image: Images = {};
-  product: Products = {};
+  product: Products = {
+    images: []
+  };
   categoryId: number;
   categories: Category[] = [];
   userId: number;
@@ -30,7 +32,7 @@ export class AddNewProductComponent implements OnInit {
   message = '';
 
   constructor(
-    private imageService: ImagesService, 
+    private imageService: ImagesService,
     private service: ProductService,
     private router: Router,
     private categoryService: CategoryService,
@@ -49,7 +51,7 @@ export class AddNewProductComponent implements OnInit {
     (this.imageForm.get('images') as FormArray).push(
       this.formBuilder.control(null)
     );
-  } 
+  }
 
   removeImage(index) {
     (this.imageForm.get('images') as FormArray).removeAt(index);
@@ -58,7 +60,7 @@ export class AddNewProductComponent implements OnInit {
   getImagesFormControls(): AbstractControl[]{
     return(<FormArray> this.imageForm.get('images')).controls
   } */
-  
+
 
   ngOnInit(): void {
     if (this.token.getToken()){
@@ -86,15 +88,22 @@ export class AddNewProductComponent implements OnInit {
         category => {
           this.product.category = category;
           this.product.isActive = true;
-          this.service.create(this.product).subscribe(
-            data => {
-              this.hasErrors = false;
-              this.router.navigate(['product']);
-            },
-            error => {
-              this.hasErrors = true;
-              console.log(error.error.message);
-              this.message = 'Oops! We have encountered an Error!';
+          this.image.isActive = true;
+          this.imageService.create(this.image).subscribe(
+            newImage => {
+              this.product.images.push(newImage);
+              this.product.mainImageId = newImage.imageId;
+              this.service.create(this.product).subscribe(
+                data => {
+                  this.hasErrors = false;
+                  this.router.navigate(['product']);
+                },
+                error => {
+                  this.hasErrors = true;
+                  console.log(error.error.message);
+                  this.message = 'Oops! We have encountered an Error!';
+                }
+              );
             }
           );
         }

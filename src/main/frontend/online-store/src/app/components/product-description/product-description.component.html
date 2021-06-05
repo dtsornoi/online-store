@@ -1,7 +1,7 @@
 <section class="container d-flex justify-content-around mt-5">
-  <div class="d-flex flex-column">
+  <div class="d-flex flex-column" *ngFor="let image of selectedProduct.images">
     <h1>{{selectedProduct.title}}</h1>
-    <img src="{{selectedProduct.image}}" alt="{{selectedProduct.title}}" class="img-fluid">
+    <img *ngIf="image.imageId == selectedProduct.mainImageId" src="{{image.imageUrl}}" alt="{{image.imageTitle}}" class="img-fluid">
   </div>
   <div class="d-flex flex-column">
     <h1>Description: </h1>
