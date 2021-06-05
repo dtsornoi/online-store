@@ -34,9 +34,17 @@
             <td></td>
             <th scope="col">{{orders.totalCost | number : '1.2-2'}}</th>
           </tr>
+          <tr>
+            <th></th>
+            <td></td>
+            <td></td>
+            <td></td>
+            <th scope="col">
+              <button mat-raised-button color="primary" (click) = "back()" class="mr-3">Back</button>
+            </th>
+          </tr>
          </tfoot>
       </table>
     </div>
-    <button mat-raised-button color="primary" (click) = "back()" class="mr-3">Back</button>
   </section>
  
