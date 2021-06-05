@@ -4,6 +4,7 @@ import { ProductService } from 'src/app/service/product.service';
 import {Router} from '@angular/router';
 import { Category } from 'src/app/model/category.module';
 import { CategoryService } from 'src/app/service/category.service';
+import {TokenStorageService} from '../../service/token-storage.service';
 
 @Component({
   selector: 'app-product',
@@ -13,14 +14,20 @@ import { CategoryService } from 'src/app/service/category.service';
 export class ProductComponent implements OnInit {
   products: Products[] = [];
   filters: Category[] = [];
+  isLoggedIn = false;
 
   constructor(
     private productService: ProductService,
     private router: Router,
-    private categoryService: CategoryService
+    private categoryService: CategoryService,
+    private token: TokenStorageService
   ) { }
 
   ngOnInit(): void {
+    if (this.token.getToken()){
+      this.isLoggedIn = true;
+    }
+
     this.productService.getAllActive().subscribe(
       data => {
         this.products = data;
@@ -35,7 +42,9 @@ export class ProductComponent implements OnInit {
   }
 
   goToProductDescription(id): void {
-    this.router.navigate([`product-description/${id}`]);
+    if (this.isLoggedIn){
+      this.router.navigate([`product-description/${id}`]);
+    }
   }
 
   applyFilter(filter): void {

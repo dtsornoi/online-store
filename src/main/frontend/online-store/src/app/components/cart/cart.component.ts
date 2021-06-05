@@ -39,7 +39,7 @@ export class CartComponent implements OnInit {
   }
 
   private getAllOrderLines() {
-    this.totalPrice = 1;
+    this.totalPrice = 0;
     this.orderLineService.getActiveUserId(this.token.getUser().id).subscribe(
       data => {
         this.cartLines = data;
