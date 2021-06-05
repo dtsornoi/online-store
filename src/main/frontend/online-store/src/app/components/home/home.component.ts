@@ -11,7 +11,7 @@ import {UserAccount} from '../../model/user-account.module';
   styleUrls: ['./home.component.css']
 })
 export class HomeComponent implements OnInit {
-
+  //TODO welcome message should be displayed once (Session storage)
   products: Products[] = [];
   latestProducts: Products[] = [];
   isLoggedIn: boolean = false;

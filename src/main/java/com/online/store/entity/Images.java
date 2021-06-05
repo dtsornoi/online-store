@@ -36,4 +36,6 @@ public class Images {
 
 
     private Boolean isActive;
+
+    //TODO private Boolean mainImage;
 }

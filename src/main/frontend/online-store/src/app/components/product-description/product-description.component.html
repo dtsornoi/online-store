@@ -22,6 +22,7 @@
       <i>Product is out of Stock</i>
     </div>
     <i class="mb-lg-3 ">{{selectedProduct.category.name}}</i>
+    <p *ngIf="selectedQuantity > 0">Total price: {{selectedQuantity * selectedProduct.price}}</p>
     <button *ngIf="selectedProduct.quantity > 0"
             mat-raised-button color="primary"
             (click)="addToCart(selectedProduct.id)">Add to Cart</button>

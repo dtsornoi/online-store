@@ -18,6 +18,7 @@ export class AdminProductsListComponent implements OnInit {
     private router: Router
   ) { }
 
+  //TODO replace buttons with icons
   ngOnInit(): void {
 
     this.productService.getAll().subscribe(

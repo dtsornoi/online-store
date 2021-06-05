@@ -2,6 +2,17 @@
   <h2>Add new Product</h2>
   <form ngForm (ngSubmit)="f.form.valid && onSubmit()" #f=ngForm>
 
+    <div class="form-group d-flex flex-column w-25">
+      <label>Select Category:</label>
+      <select [(ngModel)]="categoryId" class="mb-lg-3 custom-select" name="category">
+        <option
+          *ngFor="let category of categories"
+          value="{{category.id}}">
+          {{toUpperCase(category.name)}}
+        </option>
+      </select>
+    </div>
+
     <div class="form-group">
       <label> Title </label>
       <input type="text" class="form-control" id="title"
@@ -38,7 +49,7 @@
 
     <div class="form-group">
       <label> Quantity </label>
-      <input type="text" class="form-control" id="quantity"
+      <input type="number" class="form-control" id="quantity"
              required #quantity="ngModel"
              [(ngModel)] = "product.quantity" name="quantity">
       <div *ngIf="f.submitted && quantity.invalid" class="alert alert-warning mt-2">
@@ -63,19 +74,6 @@
       <label>Image Url</label>
       <input type="text" [(ngModel)]="image.imageUrl" class="form-control" id="imageUrl"
       name="imageUrl">
-    </div>
-
-
-
-  <div class="form-group d-flex flex-column w-25">
-      <label>Select Category:</label>
-      <select [(ngModel)]="categoryId" class="mb-lg-3 custom-select" name="category">
-        <option
-          *ngFor="let category of categories"
-          value="{{category.id}}">
-          {{toUpperCase(category.name)}}
-        </option>
-      </select>
     </div>
 
     <button mat-raised-button color="primary" class="mb-5 mr-5">Save product</button>
