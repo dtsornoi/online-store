@@ -11,7 +11,7 @@ import {TokenStorageService} from '../../service/token-storage.service';
 })
 export class OrdersComponent implements OnInit {
   orders: Orders[] = [];
-
+  totalPrice: number;
   constructor(
     private ordersService: OrdersService,
     private token: TokenStorageService,

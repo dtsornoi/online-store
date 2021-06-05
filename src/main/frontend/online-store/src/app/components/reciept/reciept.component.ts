@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { Orders } from 'src/app/model/orders.module';
 import { OrdersService } from 'src/app/service/orders.service';
 
@@ -17,7 +17,8 @@ export class RecieptComponent implements OnInit {
 
   constructor(
     private route: ActivatedRoute,
-    private ordersService: OrdersService
+    private ordersService: OrdersService,
+    private router: Router
   ) { }
 
   ngOnInit(): void {
@@ -30,4 +31,7 @@ export class RecieptComponent implements OnInit {
     );
   }
 
+  back(){
+    this.router.navigate(['orders']);
+  }
 }
