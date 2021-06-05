@@ -28,8 +28,8 @@
         *ngIf="isHandset$ | async">
         <mat-icon aria-label="Side nav toggle icon">menu</mat-icon>
       </button>
-      <span routerLink="/" >Online Store App</span>
-      <a routerLink="product">Product</a>
+      <span routerLink="/" >| Online Store App |</span>
+      <a routerLink="product" class="ml-3">Product</a>
       <span class="spacer"></span>
       <a mat-list-item *ngIf="!isLoggedIn" routerLink="login">Login</a>
       <button *ngIf="isLoggedIn" class="mobile-menu" mat-button [matMenuTriggerFor]="menu">{{toUpperCase(currentUser.firstName)}}</button>
