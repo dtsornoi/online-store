@@ -1,3 +1,22 @@
 section{
   min-height: 100vh;
 }
+
+.update{
+  height: 30px;
+  width: 30px;
+  background-image: url("src\assets\images\update.svg");
+  border: none;
+}
+
+.deactivate{
+  height: 30px;
+  width: 30px;
+  background-image: url("src\assets\images\deactivate.svg");
+  border: none;
+}
+
+button{
+  border:none; 
+  background:none;
+}
