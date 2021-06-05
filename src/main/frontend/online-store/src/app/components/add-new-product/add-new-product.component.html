@@ -45,15 +45,24 @@
         <p *ngIf="quantity.errors.required">This field is required.</p>
       </div>
     </div>
-
+<!-- 
     <div class="form-group" *ngFor="let image of getImagesFormControls(); let i = index">
       <label>Image URL</label>
       <div class="container">
-        <input class="form-control" [formControl]="image" type="text" [(ngModel)]="product.thumbnail"
-        id="thumbnail" name="thumbnail">
+        <input class="form-control" [formControl]="images" type="text" [(ngModel)]="product.image"
+        id="image" name="image">
         <button (click)="removeImage(i)"><div class="trash"></div></button> 
       </div>
-    </div>
+    </div> -->
+
+    <div class="form-group">
+      <label> Image URL </label>
+      <input type="text" [(ngModel)]="image.imageTitle" class="form-control" id="imageTitle"
+             name="imageTitle">
+      <br>
+      <input type="text" [(ngModel)]="image.imageUrl" class="form-control" id="imageUrl"
+      name="imageUrl">    
+    </div> 
     
     
 

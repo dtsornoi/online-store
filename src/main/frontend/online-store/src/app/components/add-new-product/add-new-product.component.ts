@@ -9,6 +9,8 @@ import {UserAccount} from "../../model/user-account.module";
 import { AbstractControl, FormArray, FormBuilder, FormGroup } from '@angular/forms';
 import {TokenStorageService} from '../../service/token-storage.service';
 import {timeout} from 'rxjs/operators';
+import { Images } from 'src/app/model/images';
+import { ImagesService } from 'src/app/service/images.service';
 
 @Component({
   selector: 'app-add-new-product',
@@ -17,6 +19,7 @@ import {timeout} from 'rxjs/operators';
 })
 export class AddNewProductComponent implements OnInit {
 
+  image: Images = {};
   product: Products = {};
   categoryId: number;
   categories: Category[] = [];
@@ -27,6 +30,7 @@ export class AddNewProductComponent implements OnInit {
   message = '';
 
   constructor(
+    private imageService: ImagesService, 
     private service: ProductService,
     private router: Router,
     private categoryService: CategoryService,
@@ -41,7 +45,7 @@ export class AddNewProductComponent implements OnInit {
     })
    }
 
-  addImage(): void {
+ /*  addImage(): void {
     (this.imageForm.get('images') as FormArray).push(
       this.formBuilder.control(null)
     );
@@ -53,7 +57,7 @@ export class AddNewProductComponent implements OnInit {
 
   getImagesFormControls(): AbstractControl[]{
     return(<FormArray> this.imageForm.get('images')).controls
-  }
+  } */
   
 
   ngOnInit(): void {

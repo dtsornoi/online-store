@@ -8,6 +8,7 @@ import javax.persistence.*;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
+import java.util.List;
 
 /**
  * POJO class for Product Entity
@@ -52,4 +53,10 @@ public class Product {
     @ManyToOne
     @NotNull
     private UserAccount userAccount;
+
+    @OneToMany
+    private List<Images> images;
+
+    private Long mainImageId;
+
 }
