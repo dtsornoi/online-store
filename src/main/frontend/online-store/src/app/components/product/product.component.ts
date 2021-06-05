@@ -6,6 +6,7 @@ import { Category } from 'src/app/model/category.module';
 import { CategoryService } from 'src/app/service/category.service';
 import {ImagesService} from '../../service/images.service';
 import {Images} from '../../model/images';
+import {TokenStorageService} from '../../service/token-storage.service';
 
 @Component({
   selector: 'app-product',
@@ -17,14 +18,23 @@ export class ProductComponent implements OnInit {
   filters: Category[] = [];
   // image: Images = {};
 
+  isLoggedIn = false;
+
+
   constructor(
     private productService: ProductService,
     private router: Router,
     private categoryService: CategoryService,
-    private imageService: ImagesService
+    private imageService: ImagesService,
+    private token: TokenStorageService
+
   ) { }
 
   ngOnInit(): void {
+    if (this.token.getToken()){
+      this.isLoggedIn = true;
+    }
+
     this.productService.getAllActive().subscribe(
       data => {
         this.products = data;
@@ -37,18 +47,10 @@ export class ProductComponent implements OnInit {
     );
   }
 
-  // findMainImage(product): Images {
-  //   this.imageService.getById(product.mainImageId).subscribe(
-  //     data => {
-  //       this.image = data;
-  //     }
-  //   );
-  //
-  //   return this.image;
-  // }
-
   goToProductDescription(id): void {
-    this.router.navigate([`product-description/${id}`]);
+    if (this.isLoggedIn){
+      this.router.navigate([`product-description/${id}`]);
+    }
   }
 
   applyFilter(filter): void {
