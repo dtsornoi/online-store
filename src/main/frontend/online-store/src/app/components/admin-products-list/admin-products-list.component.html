@@ -8,8 +8,8 @@
         <th scope="col">Price</th>
         <th scope="col">Quantity</th>
         <th scope="col">isActive</th>
-        <th scope="col">Deactivate/Activate</th>
-        <th scope="col">Update</th>
+        <th scope="col">Actions</th>
+
       </tr>
       </thead>
       <tbody *ngFor="let product of products">
@@ -20,10 +20,8 @@
         <td>{{product.quantity}}</td>
         <td>{{product.isActive}}</td>
         <td>
-          <button mat-raised-button color="accent" (click) = "changeProductStatus(product.id, product.isActive)" class="mr-3">{{ product.isActive ? 'Deactivate': 'Activate' }}</button>
-        </td>
-        <td>
-          <button mat-raised-button color="primary" (click) = "updateProductList(product.id)" class="mr-3">Update</button>
+          <button (click) = "updateProductList(product.id)" class="mr-3"><div class="update"></div></button>
+          <button (click) = "changeProductStatus(product.id, product.isActive)" class="mr-3"><div class="deactivate"></div></button>
         </td>
       </tr>
       </tbody>
