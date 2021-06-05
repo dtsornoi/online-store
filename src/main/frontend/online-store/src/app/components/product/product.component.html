@@ -13,7 +13,7 @@
     <div *ngFor="let product of products" class="m-2">
       <mat-card class="card_width text-center" (click)="goToProductDescription(product.id)">
         <mat-card-title>{{product.title}}</mat-card-title>
-        <img mat-card-lg-image src="{{product.thumbnail}}"
+        <img mat-card-lg-image src="{{product.image}}"
              alt="{{product.title}}">
         <mat-card-content>
           <p class="mt-3"><strong>Price: {{product.price}} EUR</strong></p>

@@ -3,9 +3,11 @@ package com.online.store.entity;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
-import lombok.RequiredArgsConstructor;
 
 import javax.persistence.*;
+import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Size;
 
 /**
  * POJO class for Product Entity
@@ -23,23 +25,31 @@ public class Product {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
 
+    @NotBlank
+    @Size(min = 1, max = 50)
     private String title;
 
+    @NotBlank
+    @Size(min = 1, max = 150)
     private String description;
 
-    private String thumbnail;
-
+    @NotNull
     private double price;
 
+    @NotNull
     private Long quantity;
 
-    private boolean isActive;
+    private String image;
+
+    private Boolean isActive;
 
     private Long availableQuantity;
 
     @ManyToOne
+    @NotNull
     private Category category;
 
     @ManyToOne
+    @NotNull
     private UserAccount userAccount;
 }

@@ -10,6 +10,9 @@ import { CartComponent } from './components/cart/cart.component';
 import {ProductDescriptionComponent} from './components/product-description/product-description.component';
 import {AdminProductsListComponent} from './components/admin-products-list/admin-products-list.component';
 import { UpdateProductsListComponent } from './components/update-products-list/update-products-list.component';
+import { ProfileComponent } from './components/profile/profile.component';
+import {LoginComponent} from './components/login/login.component';
+import { OrdersComponent } from './components/orders/orders.component';
 
 
 const routes: Routes = [
@@ -22,7 +25,11 @@ const routes: Routes = [
   { path: 'cart', component: CartComponent},
   { path: 'product-description/:id', component: ProductDescriptionComponent},
   { path: 'admin-products-list', component: AdminProductsListComponent},
-  { path: 'update-products-list/:id', component: UpdateProductsListComponent}
+  { path: 'update-products-list/:id', component: UpdateProductsListComponent},
+  { path: 'profile', component: ProfileComponent},
+  { path: 'login', component: LoginComponent},
+  { path: 'orders', component: OrdersComponent}
+
 ];
 
 @NgModule({

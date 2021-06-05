@@ -18,9 +18,9 @@
         <td>{{product.title}}</td>
         <td>{{product.price}}</td>
         <td>{{product.quantity}}</td>
-        <td>{{product.active}}</td>
+        <td>{{product.isActive}}</td>
         <td>
-          <button mat-raised-button color="accent" (click) = "changeProductStatus(product.id, product.active)" class="mr-3">{{ product.active ? 'Deactivate': 'Activate' }}</button>
+          <button mat-raised-button color="accent" (click) = "changeProductStatus(product.id, product.isActive)" class="mr-3">{{ product.isActive ? 'Deactivate': 'Activate' }}</button>
         </td>
         <td>
           <button mat-raised-button color="primary" (click) = "updateProductList(product.id)" class="mr-3">Update</button>

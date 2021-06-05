@@ -18,7 +18,7 @@ public interface ProductService {
 
     Product findOne(Long id);
 
-    void save(Product product);
+    Product save(Product product);
 
     void update(Product product);
 

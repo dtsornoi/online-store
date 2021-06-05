@@ -2,8 +2,9 @@
   <section class="jumbotron jumbotron-fluid text-center">
     <div class="container">
       <h1 class="display-4">Welcome to our store!</h1>
-      <p class="lead">Please register or login to see the full list of our products.</p>
-      <div class="container d-flex flex-row justify-content-center">
+      <p *ngIf="isLoggedIn" class="lead">We are happy to see you {{toUpperCase(currentUser.firstName)}}!</p>
+      <p *ngIf="!isLoggedIn" class="lead">Please register or login to see the full list of our products.</p>
+      <div *ngIf="!isLoggedIn" class="container d-flex flex-row justify-content-center">
         <a mat-raised-button color="primary" routerLink="login" class="mr-2 text-decoration-none">Login</a>
         <a mat-raised-button color="primary" routerLink="register" class="text-decoration-none">Register</a>
       </div>
@@ -20,7 +21,7 @@
       <div *ngFor="let product of latestProducts" class="m-3 text-center">
         <mat-card class="card_main" (click)="goToProductDescription(product.id)">
           <mat-card-title>{{product.title}}</mat-card-title>
-          <img mat-card-lg-image src="{{product.thumbnail}}"
+          <img mat-card-lg-image src="{{product.image}}"
                alt="product image" id="image">
           <mat-card-content class="mt-2">
             <p><strong>Price: {{product.price}} EUR</strong></p>

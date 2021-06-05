@@ -66,4 +66,9 @@ public class OrdersServiceImplementation implements OrdersService {
         orders.setActive(true);
         save(orders);
     }
+
+    @Override
+    public List<Orders> findByUserAccountId(Long id) {
+        return ordersRepository.findByUserAccountId(id);
+    }
 }

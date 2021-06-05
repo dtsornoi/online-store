@@ -22,4 +22,6 @@ public interface OrdersService {
     void delete(Long id);
 
     void restore(Long id);
+
+    List<Orders> findByUserAccountId(Long id);
 }

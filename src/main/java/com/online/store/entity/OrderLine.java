@@ -21,13 +21,16 @@ import javax.persistence.*;
 public class OrderLine {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
     private Long quantityOfProducts;
 
-    private boolean isActive;
+    private Boolean isActive;
 
     @ManyToOne
     private Product product;
+
+    @ManyToOne
+    private UserAccount userAccount;
 }

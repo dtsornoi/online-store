@@ -1,8 +1,12 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { OrderLine } from 'src/app/model/order-line.module'
+import { Orders } from 'src/app/model/orders.module';
 import { OrderLineService } from 'src/app/service/order-line.service';
+import { OrdersService } from 'src/app/service/orders.service';
+import { UserAccountService } from 'src/app/service/user-account.service';
 import {ProductService} from '../../service/product.service';
+import {TokenStorageService} from '../../service/token-storage.service';
 
 @Component({
   selector: 'app-cart',
@@ -10,29 +14,36 @@ import {ProductService} from '../../service/product.service';
   styleUrls: ['./cart.component.css']
 })
 export class CartComponent implements OnInit {
-  order: OrderLine = {};
-  orderLines: OrderLine[] = [];
+  cartLines: OrderLine[] = [];
   totalPrice: number;
   quantity: number[] = [];
   selectedQuantity: number;
+  order: Orders = {
+    orderLines: [],
+    userAccount: {
+      address: {}
+    }
+  };
 
   constructor(
-    private service: OrderLineService,
     private router: Router,
-    private productService: ProductService
+    private productService: ProductService,
+    private userService: UserAccountService,
+    private ordersService: OrdersService,
+    private orderLineService: OrderLineService,
+    private token: TokenStorageService
   ) { }
 
   ngOnInit(): void {
     this.getAllOrderLines();
-
   }
 
   private getAllOrderLines() {
-    this.totalPrice = 0;
-    this.service.getAll().subscribe(
+    this.totalPrice = 1;
+    this.orderLineService.getActiveUserId(this.token.getUser().id).subscribe(
       data => {
-        this.orderLines = data;
-        for(var value of this.orderLines){
+        this.cartLines = data;
+        for(var value of this.cartLines){
           this.totalPrice+= value.product.price * value.quantityOfProducts;
         }
       });
@@ -41,7 +52,7 @@ export class CartComponent implements OnInit {
   deleteItem(orderLine: OrderLine){
       orderLine.product.quantity = orderLine.product.availableQuantity;
       this.productService.update(orderLine.product).subscribe();
-      this.service.delete(orderLine.id).subscribe(error => console.log(error));
+      this.orderLineService.delete(orderLine.id).subscribe(error => console.log(error));
       window.location.reload();
   }
 
@@ -54,4 +65,27 @@ export class CartComponent implements OnInit {
     return numbers;
   }
 
+  submitOrder(){
+    this.userService.getUserAccountById(this.token.getUser().id).toPromise().then(
+      data => {
+        this.order.userAccount = data;
+        this.order.dateOfOrder = new Date();
+        this.order.deliveryAddress = this.order.userAccount.address.street + ' ' + this.order.userAccount.address.zip + ', ' + this.order.userAccount.address.country;
+        this.order.status = 'NEW';
+        this.order.totalCost = this.totalPrice;
+        this.order.orderLines = this.cartLines;
+        this.order.userName = this.order.userAccount.login;
+        console.log(this.order);
+
+        this.ordersService.create(this.order).toPromise().then(
+          orderServiceData => {
+          console.log(orderServiceData);
+
+          this.cartLines.forEach(orderLine => {
+            this.orderLineService.delete(orderLine.id).toPromise().then();
+          });
+          this.router.navigate(['orders']);
+        });
+    });
+  }
 }

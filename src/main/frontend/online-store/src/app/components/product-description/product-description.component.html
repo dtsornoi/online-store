@@ -1,14 +1,17 @@
 <section class="container d-flex justify-content-around mt-5">
   <div class="d-flex flex-column">
     <h1>{{selectedProduct.title}}</h1>
-    <img src="{{selectedProduct.thumbnail}}" alt="{{selectedProduct.title}}" class="img-fluid">
+    <img src="{{selectedProduct.image}}" alt="{{selectedProduct.title}}" class="img-fluid">
   </div>
   <div class="d-flex flex-column">
     <h1>Description: </h1>
     <p>{{selectedProduct.description}}</p>
     <p><strong>Price: {{selectedProduct.price}} EUR</strong></p>
     <p>Quantity: {{selectedProduct.quantity}}</p>
-    <select *ngIf="selectedProduct.quantity > 0" [(ngModel)]="selectedQuantity" #selectElement="ngModel" class="mb-lg-3 custom-select" name="selection">
+    <select *ngIf="selectedProduct.quantity > 0"
+            [(ngModel)]="selectedQuantity"
+            class="mb-lg-3 custom-select"
+            name="selection">
       <option *ngFor="let number of quantity"
               name="option"
               value="{{number}}">
@@ -19,6 +22,8 @@
       <i>Product is out of Stock</i>
     </div>
     <i class="mb-lg-3 ">{{selectedProduct.category.name}}</i>
-    <button *ngIf="selectedProduct.quantity > 0" mat-raised-button color="primary" (click)="addToCart(selectedProduct.id)">Add to Cart</button>
+    <button *ngIf="selectedProduct.quantity > 0"
+            mat-raised-button color="primary"
+            (click)="addToCart(selectedProduct.id)">Add to Cart</button>
   </div>
 </section>
