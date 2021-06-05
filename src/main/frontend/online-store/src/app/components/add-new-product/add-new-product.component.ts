@@ -99,16 +99,24 @@ export class AddNewProductComponent implements OnInit {
                   this.router.navigate(['product']);
                 },
                 error => {
-                  this.hasErrors = true;
-                  console.log(error.error.message);
-                  this.message = 'Oops! We have encountered an Error!';
+                  this.errorMessage('Oops! We have encountered an Error!' ,error);
                 }
               );
+            }, error => {
+              this.errorMessage('Oops! We have encountered an Error!' ,error);
             }
           );
+        }, error => {
+          this.errorMessage('Oops! We have encountered an Error!' ,error);
         }
       )
     });
+  }
+
+  private errorMessage(message, error){
+    this.hasErrors = true;
+    this.message = message;
+    console.log(error.error.message);
   }
 
   toUpperCase(str: string): string {
