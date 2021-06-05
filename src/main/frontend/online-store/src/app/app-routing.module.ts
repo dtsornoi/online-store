@@ -13,6 +13,7 @@ import { UpdateProductsListComponent } from './components/update-products-list/u
 import { ProfileComponent } from './components/profile/profile.component';
 import {LoginComponent} from './components/login/login.component';
 import { OrdersComponent } from './components/orders/orders.component';
+import { RecieptComponent } from './components/reciept/reciept.component';
 
 
 const routes: Routes = [
@@ -28,7 +29,8 @@ const routes: Routes = [
   { path: 'update-products-list/:id', component: UpdateProductsListComponent},
   { path: 'profile', component: ProfileComponent},
   { path: 'login', component: LoginComponent},
-  { path: 'orders', component: OrdersComponent}
+  { path: 'orders', component: OrdersComponent},
+  { path: 'reciept/:id', component: RecieptComponent}
 
 ];
 

@@ -35,6 +35,7 @@ import { MatFormFieldModule} from '@angular/material/form-field';
 import { UpdateProductsListComponent } from './components/update-products-list/update-products-list.component';
 import { ProfileComponent } from './components/profile/profile.component';
 import { OrdersComponent } from './components/orders/orders.component';
+import { RecieptComponent } from './components/reciept/reciept.component';
 
 @NgModule({
   declarations: [
@@ -54,7 +55,8 @@ import { OrdersComponent } from './components/orders/orders.component';
     AdminProductsListComponent,
     UpdateProductsListComponent,
     ProfileComponent,
-    OrdersComponent
+    OrdersComponent,
+    RecieptComponent
   ],
     imports: [
         BrowserModule,
