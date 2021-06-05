@@ -1,0 +1,23 @@
+<section class="container mt-5">
+    <div>
+      <table class="table m-3">
+        <thead>
+          <tr>
+             <th scope="col">Id</th>
+             <th scope="col">Description</th>
+             <th scope="col">Price</th>
+             <th scope="col">Quantity</th>
+          </tr>
+        </thead>
+        <tbody  *ngFor="let orderLine of orders.orderLines">
+         <tr>
+           <th scope="row">{{orderLine.id}}</th>
+           <td>{{orderLine.product.description}}</td>
+           <td>{{orderLine.product.price}}</td>
+           <td>{{orderLine.product.quantity}}</td>
+         </tr>
+        </tbody>
+      </table>
+    </div>
+ </section>
+ 

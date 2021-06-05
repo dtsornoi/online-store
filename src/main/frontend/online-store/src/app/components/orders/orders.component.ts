@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { Orders } from 'src/app/model/orders.module';
 import { OrdersService } from 'src/app/service/orders.service';
 import {TokenStorageService} from '../../service/token-storage.service';
@@ -13,7 +14,8 @@ export class OrdersComponent implements OnInit {
 
   constructor(
     private ordersService: OrdersService,
-    private token: TokenStorageService
+    private token: TokenStorageService,
+    private router: Router
     ){ }
 
   ngOnInit(): void {
@@ -22,6 +24,10 @@ export class OrdersComponent implements OnInit {
         this.orders = data;
       }
     );
+  }
+
+  showOrder(id: number){
+    this.router.navigate(['reciept', id]);
   }
 
 }
