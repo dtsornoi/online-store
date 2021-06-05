@@ -1,5 +1,12 @@
 <section class="container mt-5">
     <div>
+      <p>For: {{orders.userAccount.firstName + ' ' + orders.userAccount.lastName}}</p>
+      <p>Date of order: {{orders.dateOfOrder | date:'dd.MM.yyyy'}}</p>
+      <p>Delivery address: {{orders.deliveryAddress}}</p>
+      <p>Stauts: {{orders.status}} </p>
+      <br>
+      <br>
+      <br>
       <table class="table m-3">
         <thead>
           <tr>
@@ -7,17 +14,37 @@
              <th scope="col">Description</th>
              <th scope="col">Price</th>
              <th scope="col">Quantity</th>
+             <th scope="col">Total</th>
           </tr>
         </thead>
         <tbody  *ngFor="let orderLine of orders.orderLines">
          <tr>
            <th scope="row">{{orderLine.id}}</th>
            <td>{{orderLine.product.description}}</td>
-           <td>{{orderLine.product.price}}</td>
-           <td>{{orderLine.product.quantity}}</td>
+           <td>{{orderLine.product.price | number : '1.2-2'}}</td>
+           <td>{{orderLine.quantityOfProducts}}</td>
+           <td>{{orderLine.product.price * orderLine.quantityOfProducts | number : '1.2-2'}}</td>
          </tr>
         </tbody>
+        <tfoot>
+          <tr>
+            <th scope="col">Total:</th>
+            <td></td>
+            <td></td>
+            <td></td>
+            <th scope="col">{{orders.totalCost | number : '1.2-2'}}</th>
+          </tr>
+          <tr>
+            <th></th>
+            <td></td>
+            <td></td>
+            <td></td>
+            <th scope="col">
+              <button mat-raised-button color="primary" (click) = "back()" class="mr-3">Back</button>
+            </th>
+          </tr>
+         </tfoot>
       </table>
     </div>
- </section>
+  </section>
  
