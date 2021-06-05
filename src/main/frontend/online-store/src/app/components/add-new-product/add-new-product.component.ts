@@ -6,11 +6,10 @@ import {Category} from "../../model/category.module";
 import {CategoryService} from "../../service/category.service";
 import {UserAccountService} from "../../service/user-account.service";
 import {UserAccount} from "../../model/user-account.module";
-import { AbstractControl, FormArray, FormBuilder, FormGroup } from '@angular/forms';
+import {FormBuilder, FormGroup } from '@angular/forms';
 import {TokenStorageService} from '../../service/token-storage.service';
-import {timeout} from 'rxjs/operators';
-import { Images } from 'src/app/model/images';
-import { ImagesService } from 'src/app/service/images.service';
+import { Images } from '../../model/images';
+import { ImagesService } from '../../service/images.service';
 
 @Component({
   selector: 'app-add-new-product',
@@ -38,7 +37,7 @@ export class AddNewProductComponent implements OnInit {
     private categoryService: CategoryService,
     private userService: UserAccountService,
     private token: TokenStorageService,
-    private formBuilder: FormBuilder
+    private formBuilder: FormBuilder,
   ) {
     this.imageForm = this.formBuilder.group({
       images: this.formBuilder.array([
@@ -46,21 +45,6 @@ export class AddNewProductComponent implements OnInit {
       ])
     })
    }
-
- /*  addImage(): void {
-    (this.imageForm.get('images') as FormArray).push(
-      this.formBuilder.control(null)
-    );
-  }
-
-  removeImage(index) {
-    (this.imageForm.get('images') as FormArray).removeAt(index);
-  }
-
-  getImagesFormControls(): AbstractControl[]{
-    return(<FormArray> this.imageForm.get('images')).controls
-  } */
-
 
   ngOnInit(): void {
     if (this.token.getToken()){

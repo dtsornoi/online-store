@@ -5,7 +5,6 @@ import {Router} from '@angular/router';
 import { Category } from 'src/app/model/category.module';
 import { CategoryService } from 'src/app/service/category.service';
 import {ImagesService} from '../../service/images.service';
-import {Images} from '../../model/images';
 import {TokenStorageService} from '../../service/token-storage.service';
 
 @Component({
@@ -16,7 +15,6 @@ import {TokenStorageService} from '../../service/token-storage.service';
 export class ProductComponent implements OnInit {
   products: Products[] = [];
   filters: Category[] = [];
-  // image: Images = {};
 
   isLoggedIn = false;
 
