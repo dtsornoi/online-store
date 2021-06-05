@@ -7,6 +7,7 @@
              <th scope="col">Date</th>
              <th scope="col">Cost</th>
              <th scope="col">Delivery Address</th>
+             <th scope="col">Actions</th>
           </tr>
         </thead>
         <tbody *ngFor="let order of orders.slice().reverse();">
@@ -15,6 +16,9 @@
            <td>{{ order.dateOfOrder | date:'dd.MM.yyyy'}}</td>
            <td>{{order.totalCost | number : '1.2-2'}}</td>
            <td>{{order.deliveryAddress}}</td>
+           <td>
+            <button mat-raised-button color="primary" (click) = "showOrder(order.id)" class="mr-3">Show</button>
+           </td>
          </tr>
         </tbody>
       </table>
