@@ -37,7 +37,7 @@ export class AddNewProductComponent implements OnInit {
     private categoryService: CategoryService,
     private userService: UserAccountService,
     private token: TokenStorageService,
-    private formBuilder: FormBuilder,
+    private formBuilder: FormBuilder
   ) {
     this.imageForm = this.formBuilder.group({
       images: this.formBuilder.array([
@@ -62,7 +62,6 @@ export class AddNewProductComponent implements OnInit {
         this.userAccounts = data;
       }
     )
-
   }
 
   onSubmit(): void {
@@ -95,6 +94,7 @@ export class AddNewProductComponent implements OnInit {
         }
       )
     });
+
   }
 
   private errorMessage(message, error){
