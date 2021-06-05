@@ -51,8 +51,6 @@ export class HomeComponent implements OnInit {
   goToProductDescription(id): void {
     if (this.isLoggedIn){
       this.router.navigate([`product-description/${id}`]);
-    }else {
-      alert('Must be logged in!');
     }
   }
 }

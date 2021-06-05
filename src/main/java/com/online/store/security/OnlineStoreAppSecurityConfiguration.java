@@ -66,6 +66,9 @@ public class OnlineStoreAppSecurityConfiguration extends WebSecurityConfigurerAd
                 .sessionCreationPolicy(SessionCreationPolicy.STATELESS)
                 .and()
                 .authorizeRequests()
+                .antMatchers("/").permitAll()
+                .antMatchers("/api/**").permitAll()
+                .antMatchers("/static/**").permitAll()
                 .antMatchers(
                         "/**.html",
                         "/**.js",
@@ -73,9 +76,6 @@ public class OnlineStoreAppSecurityConfiguration extends WebSecurityConfigurerAd
                         "/**.svg",
                         "/**.ico"
                 ).permitAll()
-                .antMatchers("/").permitAll()
-                .antMatchers("/api/**").permitAll()
-                .antMatchers("/static/**").permitAll()
                 .anyRequest().authenticated();
 
         http
