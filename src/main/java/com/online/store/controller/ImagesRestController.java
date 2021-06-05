@@ -17,7 +17,6 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/api/images")
-@CrossOrigin(origins = "*")
 public class ImagesRestController {
 
     private ImagesService imagesService;

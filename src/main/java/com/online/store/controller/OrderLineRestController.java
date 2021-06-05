@@ -18,7 +18,6 @@ import java.util.stream.Collectors;
 
 @RestController
 @RequestMapping("/api/order-line")
-@CrossOrigin(origins = "*")
 public class OrderLineRestController {
     private OrderLineService orderLineService;
 
