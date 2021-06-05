@@ -24,7 +24,6 @@ export class ProductDescriptionComponent implements OnInit {
     product: {},
     userAccount: {}
   };
-  //TODO add posibility to see total price of selected quantity
   quantity: number[] = [];
   selectedQuantity: number;
 
