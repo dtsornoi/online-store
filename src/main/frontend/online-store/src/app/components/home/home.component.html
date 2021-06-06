@@ -18,10 +18,12 @@
     </div>
     <div class="d-flex justify-content-center flex-wrap">
       <div *ngFor="let product of latestProducts" class="m-3 text-center">
-        <mat-card *ngFor="let image of product.images" class="card_main" (click)="goToProductDescription(product.id)">
+        <mat-card  class="card_main" (click)="goToProductDescription(product.id)">
           <mat-card-title  >{{product.title}}</mat-card-title>
-          <img  *ngIf="image.imageId == product.mainImageId" mat-card-lg-image src="{{image.imageUrl}}"
-               alt="{{image.imageTitle}}" id="image">
+          <div *ngFor="let image of product.images">
+            <img *ngIf="image.mainImage"  mat-card-lg-image src="{{image.imageUrl}}"
+                 alt="{{image.imageTitle}}" id="image">
+          </div>
           <mat-card-content class="mt-2">
             <p><strong>Price: {{product.price}} EUR</strong></p>
           </mat-card-content>

@@ -2,6 +2,6 @@ export class Images {
     imageId?: number;
     imageTitle?: string;
     imageUrl?: string;
-    isMain?: boolean;
+    mainImage?: boolean;
     isActive?: boolean;
 }

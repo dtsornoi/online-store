@@ -1,9 +1,17 @@
-<section class="container d-flex justify-content-around mt-5">
-  <div class="d-flex flex-column" *ngFor="let image of selectedProduct.images">
+<section class="container d-flex flex-wrap justify-content-around mt-5">
+  <div class="d-flex flex-column" >
     <h1>{{selectedProduct.title}}</h1>
-    <img *ngIf="image.imageId == selectedProduct.mainImageId" src="{{image.imageUrl}}" alt="{{image.imageTitle}}" class="img-fluid">
+    <ngb-carousel>
+      <ng-template ngbSlide *ngFor="let image of selectedProduct.images">
+        <div>
+          <img src="{{image.imageUrl}}" alt="{{image.imageTitle}}">
+        </div>
+      </ng-template>
+    </ngb-carousel>
   </div>
-  <div class="d-flex flex-column">
+
+
+  <div class="d-flex flex-column mobile_custom">
     <h1>Description: </h1>
     <p>{{selectedProduct.description}}</p>
     <p><strong>Price: {{selectedProduct.price}} EUR</strong></p>

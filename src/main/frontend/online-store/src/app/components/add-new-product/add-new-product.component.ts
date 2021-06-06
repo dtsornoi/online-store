@@ -110,7 +110,9 @@ export class AddNewProductComponent implements OnInit {
 
   addImage(image) {
     if(this.isSelected){
-      this.image.isMain = true;
+      this.image.mainImage = true;
+    }else {
+      this.image.mainImage = false;
     }
     this.image.isActive = true;
     this.product.images.push(image);

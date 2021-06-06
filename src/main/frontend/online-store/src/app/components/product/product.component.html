@@ -11,10 +11,13 @@
   </mat-form-field>
   <div class="d-flex justify-content-center flex-wrap">
     <div *ngFor="let product of products" class="m-2">
-      <mat-card *ngFor="let image of product.images" class="card_width text-center" (click)="goToProductDescription(product.id)">
+      <mat-card class="card_width text-center" (click)="goToProductDescription(product.id)">
         <mat-card-title>{{product.title}}</mat-card-title>
-        <img *ngIf="image.isMain" mat-card-lg-image src="{{image.imageUrl}}"
-             alt="{{image.imageTitle}}">
+        <div *ngFor="let image of product.images">
+          <img *ngIf="image.mainImage" mat-card-lg-image src="{{image.imageUrl}}"
+               alt="{{image.imageTitle}}">
+        </div>
+
         <mat-card-content>
           <p class="mt-3"><strong>Price: {{product.price}} EUR</strong></p>
         </mat-card-content>

@@ -88,13 +88,14 @@
       </div>
     </ng-template>
     <div class="mb-3">
-      <button mat-raised-button color="accent" (click)="open(content)">Add Image</button>
+      <a mat-raised-button color="accent" (click)="open(content)">Add Image</a>
     </div>
-    <div class="d-flex m-2 justify-content-around w-25">
-      <i *ngFor="let img of product.images">{{img.imageTitle}}</i>
+    <div class="d-flex flex-column mb-2" *ngIf="product.images.length > 0">
+      <i class="mr-2">Added Images: </i>
+      <i class="mr-2" *ngFor="let img of product.images">{{img.imageUrl}}</i>
     </div>
     <div>
-      <button mat-raised-button color="primary" class="mb-5 mr-5">Save product</button>
+      <button type="submit" mat-raised-button color="primary" class="mb-5 mr-5">Save product</button>
     </div>
     <div *ngIf="hasErrors" class="alert alert-danger mt-2">
       <p>{{message}}</p>
