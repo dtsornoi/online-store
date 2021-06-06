@@ -45,7 +45,7 @@ export class AddNewProductComponent implements OnInit {
       ])
     })
    }
-  // TODO add validation for price (decimal) and quantity(number)
+
   ngOnInit(): void {
     if (this.token.getToken()){
       this.userId = this.token.getUser().userId;

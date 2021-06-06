@@ -14,7 +14,6 @@ export class CustomerComponent implements OnInit {
   constructor(private service: UserAccountService,
     private router: Router) { }
 
-    //TODO replace buttons with icons in html
     ngOnInit(): void{
       this.getAllUserAccounts();
     }
