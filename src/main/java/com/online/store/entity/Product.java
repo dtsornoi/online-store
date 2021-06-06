@@ -40,8 +40,6 @@ public class Product {
     @NotNull
     private Long quantity;
 
-    private String image;
-
     private Boolean isActive;
 
     private Long availableQuantity;
@@ -54,9 +52,6 @@ public class Product {
     @NotNull
     private UserAccount userAccount;
 
-    @OneToMany
+    @OneToMany(cascade = CascadeType.ALL)
     private List<Images> images;
-
-    private Long mainImageId;
-
 }

@@ -31,11 +31,9 @@ public class Images {
     @Size(min = 1, max = 50)
     private String imageTitle;
 
-
     private String imageUrl;
-
 
     private Boolean isActive;
 
-    //TODO private Boolean mainImage;
+    private Boolean mainImage;
 }
