@@ -1,7 +1,8 @@
 <main>
   <section class="jumbotron jumbotron-fluid text-center">
     <div class="container">
-      <h1 class="display-4">Welcome to our store!</h1>
+      <h1 *ngIf="!isLoggedIn" class="display-4">Welcome to our store!</h1>
+      <h1 *ngIf="isLoggedIn" class="display-4">We believe in our customers!</h1>
       <p *ngIf="isLoggedIn" class="lead">{{title}}</p>
       <p *ngIf="!isLoggedIn" class="lead">Please register or login to see the full list of our products.</p>
       <div *ngIf="!isLoggedIn" class="container d-flex flex-row justify-content-center">

@@ -44,7 +44,7 @@ export class HomeComponent implements OnInit {
       this.title = `We are happy to see you ${this.toUpperCase(this.currentUser.firstName)}!`;
     }
     if (sessionStorage.getItem('title')){
-      this.title = 'Hope you experience is satisfying.';
+      this.title = 'Hope your experience is satisfying.';
     }else{
       sessionStorage.setItem('title', this.title);
     }
