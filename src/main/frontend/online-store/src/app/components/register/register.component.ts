@@ -6,6 +6,9 @@ import {UserAccountService} from "../../service/user-account.service";
 import {Router} from "@angular/router";
 import {AuthService} from '../../service/auth.service';
 
+const ROLE_ADMIN = 1;
+const ROLE_USER = 2;
+
 @Component({
   selector: 'app-register',
   templateUrl: './register.component.html',
@@ -32,7 +35,7 @@ export class RegisterComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
-    this.roleService.getRoleById(1).subscribe(
+    this.roleService.getRoleById(ROLE_ADMIN).subscribe(
       data => {
         this.role = data;
       }

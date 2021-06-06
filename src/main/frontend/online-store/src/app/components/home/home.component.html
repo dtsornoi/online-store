@@ -2,7 +2,7 @@
   <section class="jumbotron jumbotron-fluid text-center">
     <div class="container">
       <h1 class="display-4">Welcome to our store!</h1>
-      <p *ngIf="isLoggedIn" class="lead">We are happy to see you {{toUpperCase(currentUser.firstName)}}!</p>
+      <p *ngIf="isLoggedIn" class="lead">{{title}}</p>
       <p *ngIf="!isLoggedIn" class="lead">Please register or login to see the full list of our products.</p>
       <div *ngIf="!isLoggedIn" class="container d-flex flex-row justify-content-center">
         <a mat-raised-button color="primary" routerLink="register" class="text-decoration-none">Register</a>
