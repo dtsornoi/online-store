@@ -2,21 +2,23 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 
-const URL = "http://localhost:8080/api/images"
+
 
 @Injectable({
   providedIn: 'root'
 })
 export class ImagesService {
 
+  private URL = "/api/images";
+
   constructor(private http: HttpClient) {
   }
 
   create(image): Observable<any>{
-    return this.http.post(URL + "/", image);
+    return this.http.post(this.URL + "/", image);
   }
 
   getById(id): Observable<any>{
-    return this.http.get(`${URL}/${id}`);
+    return this.http.get(`${this.URL}/${id}`);
   }
 }

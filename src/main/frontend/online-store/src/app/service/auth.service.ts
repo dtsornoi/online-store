@@ -12,7 +12,7 @@ const httpOptions = {
 })
 export class AuthService {
 
-  private AUTH_API = 'http://localhost:8080/api/auth/';
+  private AUTH_API = '/api/auth/';
 
   constructor(private http: HttpClient) { }
   login(credentials): Observable<any> {
