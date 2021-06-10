@@ -60,7 +60,7 @@ public class ProductServiceImplementation implements ProductService {
         oldProduct.setDescription(product.getDescription());
         oldProduct.setTitle(product.getTitle());
         oldProduct.setPrice(product.getPrice());
-        oldProduct.setImage(product.getImage());
+        oldProduct.setImages(product.getImages());
 
         productRepository.saveAndFlush(oldProduct);
     }

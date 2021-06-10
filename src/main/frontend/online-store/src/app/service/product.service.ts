@@ -2,7 +2,7 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 
-const URL = 'http://localhost:8080/api/product'
+
 
 /**
  * Service for Product retrieveing and persisting in backend
@@ -15,40 +15,41 @@ const URL = 'http://localhost:8080/api/product'
   providedIn: 'root'
 })
 export class ProductService {
+  private URL = '/api/product';
 
   constructor(private http: HttpClient) {
   }
 
   getAll(): Observable<any>{
-    return this.http.get(`${URL}/`);
+    return this.http.get(`${this.URL}/`);
   }
 
   getAllActive(): Observable<any>{
-    return this.http.get(`${URL}/active`);
+    return this.http.get(`${this.URL}/active`);
   }
 
   filterByComponentId(id): Observable<any>{
-    return this.http.get(`${URL}/filter/${id}`);
+    return this.http.get(`${this.URL}/filter/${id}`);
   }
 
   get(id): Observable<any>{
-    return this.http.get(`${URL}/${id}`);
+    return this.http.get(`${this.URL}/${id}`);
   }
 
   create(product): Observable<any>{
-    return this.http.post(`${URL}/`, product);
+    return this.http.post(`${this.URL}/`, product);
   }
 
   update(product): Observable<any>{
-    return this.http.put(`${URL}/`, product);
+    return this.http.put(`${this.URL}/`, product);
   }
 
   delete(id): Observable<any>{
-    return this.http.post(`${URL}/delete/${id}`, null);
+    return this.http.post(`${this.URL}/delete/${id}`, null);
   }
 
   restore(id): Observable<any>{
-    return this.http.post(`${URL}/restore/${id}`, null);
+    return this.http.post(`${this.URL}/restore/${id}`, null);
   }
 
 

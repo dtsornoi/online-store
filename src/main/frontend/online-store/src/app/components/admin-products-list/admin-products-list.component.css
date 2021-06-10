@@ -5,3 +5,22 @@ section {
 table td{
   padding-right: 80px;
 }
+
+.update{
+  height: 30px;
+  width: 30px;
+  background-image: url("src\assets\images\update.svg");
+  border: none;
+}
+
+.deactivate{
+  height: 30px;
+  width: 30px;
+  background-image: url("src\assets\images\deactivate.svg");
+  border: none;
+}
+
+button{
+  border:none; 
+  background:none;
+}

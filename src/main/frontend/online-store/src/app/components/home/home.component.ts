@@ -11,11 +11,11 @@ import {UserAccount} from '../../model/user-account.module';
   styleUrls: ['./home.component.css']
 })
 export class HomeComponent implements OnInit {
-  //TODO welcome message should be displayed once (Session storage)
   products: Products[] = [];
   latestProducts: Products[] = [];
   isLoggedIn: boolean = false;
   currentUser: UserAccount = {};
+  title = '';
 
   constructor(
     private productService: ProductService,
@@ -41,6 +41,12 @@ export class HomeComponent implements OnInit {
     if (this.token.getToken()){
       this.isLoggedIn = true;
       this.currentUser = this.token.getUser();
+      this.title = `We are happy to see you ${this.toUpperCase(this.currentUser.firstName)}!`;
+    }
+    if (sessionStorage.getItem('title')){
+      this.title = 'Hope your experience is satisfying.';
+    }else{
+      sessionStorage.setItem('title', this.title);
     }
   }
 

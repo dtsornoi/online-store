@@ -39,7 +39,7 @@
 
     <div class="form-group">
       <label> Price </label>
-      <input type="text" class="form-control" id="price"
+      <input numeric decimals="2" type="text" class="form-control" id="price"
              required #price="ngModel"
              [(ngModel)] = "product.price" name="price">
       <div *ngIf="f.submitted && price.invalid" class="alert alert-warning mt-2">
@@ -49,36 +49,54 @@
 
     <div class="form-group">
       <label> Quantity </label>
-      <input type="number" class="form-control" id="quantity"
+      <input type="text" class="form-control" id="quantity"
              required #quantity="ngModel"
+             numeric
              [(ngModel)] = "product.quantity" name="quantity">
       <div *ngIf="f.submitted && quantity.invalid" class="alert alert-warning mt-2">
         <p *ngIf="quantity.errors.required">This field is required.</p>
       </div>
     </div>
-<!--
-    <div class="form-group" *ngFor="let image of getImagesFormControls(); let i = index">
-      <label>Image URL</label>
-      <div class="container">
-        <input class="form-control" [formControl]="images" type="text" [(ngModel)]="product.image"
-        id="image" name="image">
-        <button (click)="removeImage(i)"><div class="trash"></div></button>
+
+
+
+    <ng-template #content let-c="close" let-d="dismiss">
+      <div class="modal-header">
+        <h4 class="modal-title" id="modal-title">Add Image</h4>
+        <button type="button" class="close" aria-label="Close" (click)="d('Cross click')">
+          <span aria-hidden="true">&times;</span>
+        </button>
       </div>
-    </div> -->
-
-    <div class="form-group">
-      <label> Image Title </label>
-      <input type="text" [(ngModel)]="image.imageTitle" class="form-control" id="imageTitle"
-             name="imageTitle">
-      <br>
-      <label>Image Url</label>
-      <input type="text" [(ngModel)]="image.imageUrl" class="form-control" id="imageUrl"
-      name="imageUrl">
+      <div class="modal-body">
+        <div class="form-group">
+          <label> Image Title </label>
+          <input type="text" [(ngModel)]="image.imageTitle" class="form-control" id="imageTitle"
+                 name="imageTitle">
+          <br>
+          <label>Image Url</label>
+          <input type="text" [(ngModel)]="image.imageUrl" class="form-control" id="imageUrl"
+                 name="imageUrl">
+        </div>
+        <div class="form-check mt-2">
+          <input type="checkbox" class="form-check-input" id="organiserCheckBox"
+                 (change)="isSelected = !isSelected">
+          <label for="organiserCheckBox" class="form-check-label">Set image as main</label>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button mat-raised-button color="accent" (click)="c(addImage(image))">Save</button>
+      </div>
+    </ng-template>
+    <div class="mb-3">
+      <a mat-raised-button color="accent" (click)="open(content)">Add Image</a>
     </div>
-
-    <button mat-raised-button color="primary" class="mb-5 mr-5">Save product</button>
-<!--    <button mat-raised-button color="accent" (click)="addImage()">Add new image</button>-->
-
+    <div class="d-flex flex-column mb-2" *ngIf="product.images.length > 0">
+      <i class="mr-2">Added Images: </i>
+      <i class="mr-2" *ngFor="let img of product.images">{{img.imageUrl}}</i>
+    </div>
+    <div>
+      <button type="submit" mat-raised-button color="primary" class="mb-5 mr-5">Save product</button>
+    </div>
     <div *ngIf="hasErrors" class="alert alert-danger mt-2">
       <p>{{message}}</p>
     </div>

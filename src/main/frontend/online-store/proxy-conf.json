@@ -1,0 +1,38 @@
+{
+  "/api/user-account/": {
+    "target": "http://localhost:8080",
+    "secure": false
+  },
+  "/api/role": {
+    "target": "http://localhost:8080",
+    "secure": false
+  },
+  "/api/product": {
+    "target": "http://localhost:8080",
+    "secure": false
+  },
+  "/api/orders": {
+    "target": "http://localhost:8080",
+    "secure": false
+  },
+  "/api/order-line": {
+    "target": "http://localhost:8080",
+    "secure": false
+  },
+  "/api/images": {
+    "target": "http://localhost:8080",
+    "secure": false
+  },
+  "/api/category": {
+    "target": "http://localhost:8080",
+    "secure": false
+  },
+  "/api/auth/": {
+    "target": "http://localhost:8080",
+    "secure": false
+  },
+  "/api/address": {
+    "target": "http://localhost:8080",
+    "secure": false
+  }
+}

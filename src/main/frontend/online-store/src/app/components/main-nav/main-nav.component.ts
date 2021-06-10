@@ -49,7 +49,10 @@ export class MainNavComponent implements OnInit{
 
   logout() {
     this.token.signOut();
-    window.location.reload();
+    sessionStorage.clear();
+    this.router.navigate(['/']).then(() => {
+      window.location.reload();
+    })
   }
 
 }

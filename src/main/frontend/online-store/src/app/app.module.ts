@@ -36,6 +36,7 @@ import { UpdateProductsListComponent } from './components/update-products-list/u
 import { ProfileComponent } from './components/profile/profile.component';
 import { OrdersComponent } from './components/orders/orders.component';
 import { RecieptComponent } from './components/reciept/reciept.component';
+import { NumericDirective } from './numeric.directive';
 
 @NgModule({
   declarations: [
@@ -56,7 +57,8 @@ import { RecieptComponent } from './components/reciept/reciept.component';
     UpdateProductsListComponent,
     ProfileComponent,
     OrdersComponent,
-    RecieptComponent
+    RecieptComponent,
+    NumericDirective
   ],
     imports: [
         BrowserModule,

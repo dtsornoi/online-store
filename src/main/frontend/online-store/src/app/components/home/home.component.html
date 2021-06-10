@@ -1,8 +1,9 @@
 <main>
   <section class="jumbotron jumbotron-fluid text-center">
     <div class="container">
-      <h1 class="display-4">Welcome to our store!</h1>
-      <p *ngIf="isLoggedIn" class="lead">We are happy to see you {{toUpperCase(currentUser.firstName)}}!</p>
+      <h1 *ngIf="!isLoggedIn" class="display-4">Welcome to our store!</h1>
+      <h1 *ngIf="isLoggedIn" class="display-4">We believe in our customers!</h1>
+      <p *ngIf="isLoggedIn" class="lead">{{title}}</p>
       <p *ngIf="!isLoggedIn" class="lead">Please register or login to see the full list of our products.</p>
       <div *ngIf="!isLoggedIn" class="container d-flex flex-row justify-content-center">
         <a mat-raised-button color="primary" routerLink="register" class="text-decoration-none">Register</a>
@@ -18,10 +19,12 @@
     </div>
     <div class="d-flex justify-content-center flex-wrap">
       <div *ngFor="let product of latestProducts" class="m-3 text-center">
-        <mat-card *ngFor="let image of product.images" class="card_main" (click)="goToProductDescription(product.id)">
+        <mat-card  class="card_main" (click)="goToProductDescription(product.id)">
           <mat-card-title  >{{product.title}}</mat-card-title>
-          <img  *ngIf="image.imageId == product.mainImageId" mat-card-lg-image src="{{image.imageUrl}}"
-               alt="{{image.imageTitle}}" id="image">
+          <div *ngFor="let image of product.images">
+            <img *ngIf="image.mainImage"  mat-card-lg-image src="{{image.imageUrl}}"
+                 alt="{{image.imageTitle}}" id="image">
+          </div>
           <mat-card-content class="mt-2">
             <p><strong>Price: {{product.price}} EUR</strong></p>
           </mat-card-content>
@@ -32,15 +35,17 @@
   <section class="mt-lg-5 mb-lg-5">
     <div class="container">
       <h1 class="text-center">About Us</h1>
-      <p class="text-center">Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-        Aliquam luctus nibh vel vulputate suscipit. In finibus dolor vitae est aliquet semper.
-        Pellentesque nec orci eu dolor dictum elementum ullamcorper sit amet metus.
-        Phasellus venenatis, felis sed posuere scelerisque, urna nulla vehicula tellus, nec porttitor nisi libero at lorem.
-        Nunc blandit leo augue, vel dignissim erat malesuada in. Donec auctor turpis quis fringilla consequat.
-        Morbi at dui vel ligula vestibulum tincidunt. Sed venenatis sagittis est, sed viverra neque fringilla sed.
-        Vestibulum gravida lacus vel justo volutpat tempus.
-        In aliquet, odio quis porttitor convallis, massa tortor luctus sapien, vel finibus tortor tellus sit amet mauris.
-        Quisque ultricies maximus facilisis.</p>
+      <p class="text-center">Welcome to Online Store, your number one source for all things.
+        We're dedicated to giving you the very best of our products,
+        with a focus on dependability, customer service and uniqueness.
+        Founded in 2021 by Mark, Dmitri and Vladimir, Online Store has come a long way from its beginnings in a home office, Estonia.
+        When store founders first started out, their passion for
+        helping people and programming drove them to do intense research,
+        and gave them the impetus to turn hard work and inspiration into to a booming online store.
+        We now serve customers all over Estonia, and are thrilled to be a part of its community.
+
+        We hope you enjoy our products as much as we enjoy offering them to you.
+        If you have any questions or comments, please don't hesitate to contact us.</p>
     </div>
   </section>
 </main>
